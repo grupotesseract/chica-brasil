@@ -1,0 +1,464 @@
+input.ciloe-price-filter-input.widefat {
+    width: 30%;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+.ciloe-price-filter label{
+    display: block;
+    margin-bottom: 15px;
+}
+
+img {
+    max-width: 100%;
+}
+/*flaticon*/
+[class^="flaticon-"],
+[class*=" flaticon-"],
+[class^="flaticon-"],
+[class*=" flaticon-"] {
+    display: inline-block;
+}
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+    display: block;
+    font-size: inherit !important;
+    margin-left: 0 !important;
+}
+.vc_add-element-container .vc_element-icon.fa,
+.vc_add-element-container .vc_element-icon.ti,
+.wpb_content_element > .wpb_element_wrapper > .wpb_element_title .vc_element-icon.fa,
+.wpb_content_element > .wpb_element_wrapper > .wpb_element_title .vc_element-icon.ti,
+.vc_element-icon, .vc_general.vc_element-icon.ti {
+    font-size: 33px;
+    background: none;
+    top: 18px;
+}
+div.chosen-container {
+    width: 100% !important;
+}
+div.chosen-container-multi .chosen-choices {
+    padding: 0 8px;
+}
+div.chosen-container-multi .chosen-choices li.search-choice {
+    padding: 5px 20px 5px 10px;
+    border-radius: 0;
+}
+div.chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+div.chosen-container-multi .chosen-choices li.search-field {
+    line-height: 30px;
+}
+.wpb_ciloe_tabs > .vc_controls, .wpb_ciloe_accordion > .vc_controls {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+    visibility: visible;
+    position: relative;
+    height: 23px;
+    margin: 18px 0 2px;
+    border: 1px dotted #e6e6e6;
+    border-bottom-width: 0;
+}
+.wpb_ciloe_tabs.vc_shortcodes_container, .wpb_ciloe_accordion.vc_shortcodes_container {
+    background: 0 0;
+}
+.wpb_ciloe_tabs.vc_general .vc_tta-tab > a, .wpb_ciloe_accordion.vc_general .vc_tta-tab > a {
+    padding: 10px 14px;
+}
+.wpb_el_type_taxonomy .chosen-container {
+    min-width: 200px;
+    width: 100% !important;
+}
+.wpb_el_type_taxonomy .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+    height: auto;
+}
+.nav-tab.active {
+    background-color: #fff;
+    color: #444;
+}
+.nav-tab:first-child {
+    margin-left: 0;
+}
+/* date picker */
+.cs-datepicker-wrapper * {
+    float: none;
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    border: none;
+    background: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+.cs-datepicker-wrapper .ui-datepicker {
+    margin-top: 5px;
+    width: auto;
+    background-color: #fff;
+    z-index: 9999999 !important;
+    -moz-box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+}
+.cs-datepicker-wrapper .ui-widget-header,
+.cs-datepicker-wrapper .ui-datepicker-header {
+    color: #fff;
+    background: #00a0d2;
+}
+.cs-datepicker-wrapper .ui-datepicker-header .ui-state-hover {
+    cursor: pointer;
+}
+.cs-datepicker-wrapper .ui-datepicker-title {
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+.cs-datepicker-wrapper .ui-datepicker-prev,
+.cs-datepicker-wrapper .ui-datepicker-next {
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    font-family: "FontAwesome";
+    font-size: 12px;
+    text-align: center;
+    width: 41px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.cs-datepicker-wrapper .ui-datepicker-next span,
+.cs-datepicker-wrapper .ui-datepicker-prev span {
+    display: none;
+}
+.cs-datepicker-wrapper .ui-datepicker-prev {
+    float: left;
+}
+.cs-datepicker-wrapper .ui-datepicker-next {
+    float: right;
+}
+.cs-datepicker-wrapper .ui-datepicker-prev:before {
+    content: '\f053';
+}
+.cs-datepicker-wrapper .ui-datepicker-next:before {
+    content: '\f054';
+}
+.cs-datepicker-wrapper .ui-datepicker-prev-hover,
+.cs-datepicker-wrapper .ui-datepicker-next-hover {
+    opacity: 0.75;
+}
+.cs-datepicker-wrapper tbody .ui-datepicker-week-col {
+    background-color: #f7f7f7;
+}
+.cs-datepicker-wrapper .ui-datepicker-buttonpane {
+    padding: 10px;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+.cs-datepicker-wrapper .ui-datepicker-buttonpane button {
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 7px 14px;
+    border: 1px solid #eee;
+    background-color: #fff;
+}
+.cs-datepicker-wrapper select {
+    margin: 0 4px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.cs-datepicker-wrapper select option {
+    color: #555;
+}
+.cs-datepicker-wrapper table {
+    font-size: 13px;
+    border-collapse: collapse;
+    width: 100%;
+}
+.cs-datepicker-wrapper thead {
+    color: #fff;
+    background: #32373c;
+}
+.cs-datepicker-wrapper th {
+    text-align: center;
+    padding: 7px;
+    border: 1px solid #444;
+}
+.cs-datepicker-wrapper td {
+    text-align: center;
+    border: 1px solid #f4f4f4;
+}
+.cs-datepicker-wrapper td.ui-datepicker-other-month {
+    border: transparent;
+}
+.cs-datepicker-wrapper td .ui-state-default {
+    color: #555;
+    width: auto;
+    display: block;
+    padding: 6px 12px;
+}
+.cs-datepicker-wrapper td .ui-state-active,
+.cs-datepicker-wrapper td .ui-state-hover {
+    color: #fff;
+    background-color: #0073aa;
+}
+.cs-datepicker-wrapper td.ui-state-disabled .ui-state-default {
+    opacity: 0.5;
+}
+.vc_edit-form-tab .tabs-css {
+    text-align: right;
+    padding: 10px 20px;
+    background-color: #F5F5F5;
+}
+.vc_edit-form-tab .tab_css {
+    display: inline-block;
+    padding: 0 15px;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+}
+.vc_edit-form-tab .tab_css.active {
+    color: #0473AA;
+}
+.ciloe_coming_soon > a {
+    background: chartreuse !important;
+    color: #000 !important;
+    border-radius: 5px !important;
+    font-weight: 700 !important;
+}
+.ciloe_coming_soon_expired > a {
+    background: red !important;
+}
+.cs-framework.cs-sticky-header .cs-header {
+    position: fixed;
+    z-index: 20;
+    top: 32px;
+    -moz-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+.cs-header h1 > a,
+.cs-header h1 > i {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.cs-header h1 > i {
+    padding-left: 15px;
+}
+.rp-row{
+    margin: 0 auto;
+    display: table;
+}
+.rp-col{
+    box-sizing: border-box;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+}
+.support-tabs .rp-col {
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 20px;
+}
+.ciloe-wrap .plugins .plugin {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 0 1px 1px -1px rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px -1px rgba(0,0,0,.1);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+.ciloe-wrap .plugins .plugin .preview{
+    float: none;
+    padding: 10px;
+}
+.ciloe-wrap .plugins .plugin .preview img{
+    width: 100%;
+    height:auto;
+}
+.ciloe-wrap .plugins .plugin .plugin-name,
+.ciloe-wrap .plugins .plugin .actions{
+    margin: 0;
+    padding: 20px 10px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 0 rgba(0,0,0,.1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: #fff;
+    width: 100%;
+    float: left;
+    display: block;
+
+}
+.ciloe-wrap .plugins .plugin h3{
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+.ciloe-wrap .plugins .plugin .actions .button{
+    display: none;
+}
+.ciloe-wrap .plugins .plugin.plugin-inactive .actions .button-activate-plugin,
+.ciloe-wrap .plugins .plugin.plugin-update  .button-update-plugin,
+.ciloe-wrap .plugins .plugin.not-intall .actions .button-install-plugin,
+.ciloe-wrap .plugins .plugin.is-active .actions .button-uninstall-plugin,
+.ciloe-wrap .plugins .plugin.no-intall .actions .button-install-plugin{
+    display: inline-block;
+}
+.support-item{
+    background-color: #fff;
+    padding: 10px;
+    position: relative;
+}
+.coming-soon::before {
+    background: rgba(255,255,255,.8);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    content: '';
+    display: inline-block;
+}
+.coming-soon::after {
+    content: 'COMING SOON';
+    top: 50%;
+    left: 50%;
+    font-size: 12px;
+    letter-spacing: 3px;
+    white-space: nowrap;
+    background: #000;
+    color: #fff;
+    padding: 3px 10px;
+    z-index: 2;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+@media (max-width: 1200px){
+    .rp-col{
+        -ms-flex-preferred-size: 33.333333%;
+        -webkit-flex-basis: 33.333333%;
+        flex-basis: 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+@media (max-width: 991px){
+    .rp-col{
+        -ms-flex-preferred-size: 50%;
+        -webkit-flex-basis: 50%;
+        flex-basis: 50%;
+        max-width: 50%;
+    }
+}
+@media (max-width: 480px){
+    .rp-col{
+        -ms-flex-preferred-size: 100%;
+        -webkit-flex-basis: 100%;
+        flex-basis: 100%;
+        max-width: 100%;
+
+    }
+}
+@media (max-width: 320px){
+
+}
+
+#ciloe_testimonial_option:before,
+#ciloe_testimonial_option:after{
+    content: '';
+    display: table;
+}
+#ciloe_testimonial_option:after{
+    clear: both;
+}
+.postbox .inside:before,
+.postbox .inside:after{
+    content: '';
+    display: table;
+}
+.postbox .inside:after{
+    clear: both;
+}
+.inside {
+    clear: both;
+}
+.dashboard-intro .image img{
+    width: 100%;
+}
+.dashboard-intro .image{
+    width: 50%;
+    float: left;
+    background-color: #fff;
+    padding: 10px;
+}
+.dashboard-intro .intro{
+    overflow: hidden;
+    padding-left: 30px;
+}
+.dashboard-intro .intro p{
+    font-size: 18px;
+    margin-top: 0;
+}
+.dashboard-intro .intro a{
+    text-decoration: none;
+}
+.dashboard-intro .intro h2{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+.dashboard h1{
+    font-size: 50px;
+}
+.dashboard  .about-text{
+    font-size: 18px;
+    max-width: 800px;
+    margin-bottom: 50px;
+
+}
+.nav-tab.active{
+    background-color: #fff;
+    color: #444;
+}
+.nav-tab:first-child{
+    margin-left: 0;
+}
+#tabs-container .tab-content{
+    overflow: hidden;
+    padding-top: 30px;
+}
+
+.menu-item-edit-active .menu-item-settings {
+    overflow: hidden;
+}

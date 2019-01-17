@@ -1,0 +1,584 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ciloe\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-22 21:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#. %s: title of menu item which is invalid
+#: framework/includes/megamenu/nav_edit_custom_walker.php:89
+#, php-format
+msgid "%s (Invalid)"
+msgstr ""
+
+#. %s: title of menu item in draft status
+#: framework/includes/megamenu/nav_edit_custom_walker.php:93
+#, php-format
+msgid "%s (Pending)"
+msgstr ""
+
+#: woocommerce/single-product/rating.php:38
+#, php-format
+msgid "%s customer review"
+msgid_plural "%s customer reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/rating.php:43
+msgid "0 reviews"
+msgstr ""
+
+#: 404.php:18
+msgid "404"
+msgstr ""
+
+#: templates/blog/blog-author.php:10
+msgid "About author"
+msgstr ""
+
+#. To add an additional character subset specific to your language,
+#. translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language.
+#: functions.php:177
+msgctxt "Add new subset (greek, cyrillic, devanagari, vietnamese)"
+msgid "no-subset"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:140
+msgid "Anti-spam"
+msgstr ""
+
+#: woocommerce/cart/cart.php:134 woocommerce/cart/cart.php:272
+msgid "Apply coupon"
+msgstr ""
+
+#: framework/includes/woo-functions.php:750
+msgid "Avaiability: "
+msgstr ""
+
+#: woocommerce/single-product/content-quickview.php:58
+#: woocommerce/single-product/product-image-mobile.php:45
+#: woocommerce/single-product/content-detail-sticky.php:55
+msgid "Awaiting product image"
+msgstr ""
+
+#: 404.php:23
+msgid "Back To Homepage"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:172
+msgid "Back to login"
+msgstr ""
+
+#: framework/includes/classes/breadcrumbs.php:256
+msgctxt "breadcrumbs aria label"
+msgid "Breadcrumbs"
+msgstr ""
+
+#: functions.php:263
+msgid "Browse Wishlist"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:265
+msgid "Cancel"
+msgstr ""
+
+#. Name of the theme
+msgid "Ciloe"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"Ciloe Shop is a simple but modern responsive WordPress theme that oozes high-"
+"street sophistication. Its sharp lines and flat design style has been "
+"designed to be pixel perfect. Simply load your photography and you can have "
+"an online shop to matches the likes of Prada, Gucci and Yves St Laurent."
+msgstr ""
+
+#: templates/header-mobile.php:22 woocommerce/content-single-product.php:78
+#: framework/includes/theme-functions.php:608
+msgid "Close"
+msgstr ""
+
+#: woocommerce/cart/cart.php:127 woocommerce/cart/cart.php:265
+msgid "Coupon"
+msgstr ""
+
+#: woocommerce/cart/cart.php:132 woocommerce/cart/cart.php:270
+msgid "Coupon code"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:178
+msgid "Create an account"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:41
+msgid ""
+"Create an account to expedite future checkouts, track order history & "
+"receive emails, discounts, & special offers"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:208
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: framework/includes/classes/breadcrumbs.php:766
+#: framework/includes/classes/breadcrumbs.php:1219
+msgctxt "daily archives date format"
+msgid "j"
+msgstr ""
+
+#: framework/includes/woo-functions.php:1288
+msgid "Default sorting"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:226
+msgid "Description"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:238
+msgid "Down one"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:162
+#: framework/includes/megamenu/nav_edit_custom_walker.php:164
+msgid "Edit Menu Item"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:120
+msgid "Email address"
+msgstr ""
+
+#: woocommerce/order/form-tracking.php:32
+msgid "Email you used during checkout."
+msgstr ""
+
+#: comments.php:75
+msgid "Email*"
+msgstr ""
+
+#: framework/includes/theme-functions.php:1039
+msgid "Enter your keywords..."
+msgstr ""
+
+#. Author of the theme
+msgid "Famithemes"
+msgstr ""
+
+#: template-parts/shop-top-control-mobile.php:73
+msgid "Filter"
+msgstr ""
+
+#: template-parts/header-language.php:17 template-parts/header-language.php:28
+msgid "flag"
+msgstr ""
+
+#: framework/includes/megamenu/nav_menu_custom_fields.php:21
+msgid "Font icon"
+msgstr ""
+
+#: woocommerce/order/form-tracking.php:31
+msgid "Found in your order confirmation email."
+msgstr ""
+
+#. Name of the template
+msgid "Full Page"
+msgstr ""
+
+#: functions.php:257
+msgid "has been added to cart!"
+msgstr ""
+
+#: template-parts/header-userlink.php:28
+msgid "Hi, "
+msgstr ""
+
+#: framework/includes/classes/breadcrumbs.php:747
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr ""
+
+#. URI of the theme
+msgid "http://ciloe.famithemes.net/"
+msgstr ""
+
+#. Author URI of the theme
+msgid "http://famithemes.com/"
+msgstr ""
+
+#: framework/includes/megamenu/nav_menu_custom_fields.php:71
+msgid "Icon Image "
+msgstr ""
+
+#: framework/includes/megamenu/nav_menu_custom_fields.php:19
+msgid "Icon Settings"
+msgstr ""
+
+#: framework/includes/megamenu/nav_menu_custom_fields.php:22
+msgid "Image"
+msgstr ""
+
+#: framework/includes/megamenu/nav_menu_custom_fields.php:69
+msgid "Image preview"
+msgstr ""
+
+#: framework/includes/woo-functions.php:750
+msgid "In Stock"
+msgstr ""
+
+#: content-none.php:8
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:217
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: woocommerce/loop/pagination.php:50
+msgid "Load More"
+msgstr ""
+
+#: templates/header-mobile.php:85 woocommerce/myaccount/form-login.php:83
+msgid "Login"
+msgstr ""
+
+#: framework/includes/megamenu/nav_menu_custom_fields.php:23
+msgid "Logo"
+msgstr ""
+
+#: template-parts/header-userlink.php:42
+msgid "Logout"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:80
+msgid "Lost your password?"
+msgstr ""
+
+#: framework/includes/megamenu/nav_menu_custom_fields.php:77
+msgid "Mega menu settings"
+msgstr ""
+
+#: templates/header-mobile.php:75
+msgid "Menu"
+msgstr ""
+
+#. Name of the template
+msgid "Menu Sidebar Page"
+msgstr ""
+
+#. Name of the template
+msgid "Minimal Page"
+msgstr ""
+
+#: framework/includes/classes/breadcrumbs.php:711
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr ""
+
+#: framework/includes/classes/breadcrumbs.php:729
+msgctxt "minute archives time format"
+msgid "i"
+msgstr ""
+
+#: framework/includes/classes/breadcrumbs.php:765
+#: framework/includes/classes/breadcrumbs.php:824
+#: framework/includes/classes/breadcrumbs.php:1216
+msgctxt "monthly archives date format"
+msgid "F"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:236
+msgid "Move"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:159
+msgid "Move down"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:146
+msgid "Move up"
+msgstr ""
+
+#: templates/header-mobile.php:83
+#: templates/headers/header-search_l_logo_c_menu_c_icons_r.php:122
+#: templates/headers/header-logo_l_menu_l_icons_r.php:109
+#: templates/headers/header-search_l_menu_logo_c_icons_r.php:118
+#: templates/headers/header-menu_l_logo_c_icons_r.php:109
+#: templates/headers/header-logo_l_menu_c_icons_r.php:108
+msgid "My Account"
+msgstr ""
+
+#: woocommerce/myaccount/my-account.php:35
+msgid "My account"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:35
+msgid "N/A"
+msgstr ""
+
+#: comments.php:72
+msgid "Name*"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:182
+msgid "Navigation Label"
+msgstr ""
+
+#: framework/includes/woo-functions.php:1129
+msgid "Next"
+msgstr ""
+
+#: framework/includes/megamenu/megamenu.php:152
+msgid "No Font"
+msgstr ""
+
+#: woocommerce/loop/pagination.php:54
+msgid "No More Products!"
+msgstr ""
+
+#: template-parts/header-minicart.php:112
+msgid "No products in the cart."
+msgstr ""
+
+#: framework/includes/megamenu/nav_menu_custom_fields.php:20
+msgid "None"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:203
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: framework/includes/woo-functions.php:1144
+msgid "OR"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:167
+msgid "Or"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:247
+#, php-format
+msgid "Original: %s"
+msgstr ""
+
+#: template-parts/header-minicart.php:118
+msgid "Our Shipping & Return Policy"
+msgstr ""
+
+#: woocommerce/content-single-product-mobile.php:130
+#: woocommerce/content-single-product.php:190
+#: framework/includes/woo-functions.php:750
+msgid "Out Of Stock"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:59
+#: woocommerce/myaccount/form-login.php:131
+msgid "Password"
+msgstr ""
+
+#: searchform.php:18
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr ""
+
+#. If there are characters in your language that are not supported
+#. by Poppins, translate this to 'off'. Do not translate into your own language.
+#: functions.php:169
+msgctxt "Poppins font: on or off"
+msgid "on"
+msgstr ""
+
+#: woocommerce/cart/cart.php:73 woocommerce/cart/cart.php:157
+#: woocommerce/cart/cart.php:206
+msgid "Price"
+msgstr ""
+
+#: woocommerce/cart/cart.php:155 woocommerce/cart/cart.php:188
+msgid "Product"
+msgstr ""
+
+#: functions.php:259
+msgid "Product has been added to cart!"
+msgstr ""
+
+#: functions.php:261
+msgid "Product has been added to wishlist!"
+msgstr ""
+
+#: woocommerce/cart/cart.php:57
+msgid "Product Info"
+msgstr ""
+
+#: framework/includes/woo-functions.php:1127
+msgid "Product navigation"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:39
+msgctxt "Product quantity input tooltip"
+msgid "Qty"
+msgstr ""
+
+#: functions.php:264
+msgid "Product Removed"
+msgstr ""
+
+#: woocommerce/cart/cart.php:158 woocommerce/cart/cart.php:212
+msgid "Quantity"
+msgstr ""
+
+#: framework/includes/woo-functions.php:333
+#, php-format
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:98
+#: woocommerce/myaccount/form-login.php:158
+msgid "Register"
+msgstr ""
+
+#: framework/includes/woo-functions.php:1300
+msgid "Relevance"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:77
+msgid "Remember me"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:261
+msgid "Remove"
+msgstr ""
+
+#: framework/includes/megamenu/nav_menu_custom_fields.php:37
+msgid "Select Icon"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:30
+msgid "SKU:"
+msgstr ""
+
+#: content-none.php:5
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: framework/includes/woo-functions.php:1290
+msgid "Sort by average rating"
+msgstr ""
+
+#: framework/includes/woo-functions.php:1291
+msgid "Sort by newness"
+msgstr ""
+
+#: framework/includes/woo-functions.php:1289
+msgid "Sort by popularity"
+msgstr ""
+
+#: framework/includes/woo-functions.php:1293
+msgid "Sort by price: high to low"
+msgstr ""
+
+#: framework/includes/woo-functions.php:1292
+msgid "Sort by price: low to high"
+msgstr ""
+
+#: templates/blog/blog-single-products-carousel.php:46
+msgid "Special Products"
+msgstr ""
+
+#: template-parts/header-minicart.php:114
+msgid "Start shopping"
+msgstr ""
+
+#: template-parts/search-form.php:29
+msgid "Start typing..."
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:130
+msgid "sub item"
+msgstr ""
+
+#: searchform.php:19
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:230
+msgid ""
+"The description will be displayed in the menu if the current theme supports "
+"it."
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:191
+msgid "Title Attribute"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:241
+msgid "To the top"
+msgstr ""
+
+#: woocommerce/cart/cart.php:159 woocommerce/cart/cart.php:229
+msgid "Total"
+msgstr ""
+
+#: woocommerce/order/form-tracking.php:35
+msgid "Track"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:237
+msgid "Up one"
+msgstr ""
+
+#: woocommerce/cart/cart.php:119 woocommerce/cart/cart.php:257
+msgid "Update cart"
+msgstr ""
+
+#: framework/includes/megamenu/nav_edit_custom_walker.php:172
+msgid "URL"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:51
+#: woocommerce/myaccount/form-login.php:109
+msgid "Username"
+msgstr ""
+
+#: functions.php:258 template-parts/header-minicart.php:93
+msgid "View Cart"
+msgstr ""
+
+#: 404.php:20
+msgid "We are sorry, the page you've requested is not available"
+msgstr ""
+
+#: framework/includes/classes/breadcrumbs.php:794
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr ""
+
+#: woocommerce/content-single-product.php:79
+#: framework/includes/theme-functions.php:609
+msgid "x"
+msgstr ""
+
+#: framework/includes/classes/breadcrumbs.php:764
+#: framework/includes/classes/breadcrumbs.php:793
+#: framework/includes/classes/breadcrumbs.php:823
+#: framework/includes/classes/breadcrumbs.php:850
+#: framework/includes/classes/breadcrumbs.php:1213
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: comments.php:67
+msgid "Your Comment here."
+msgstr ""

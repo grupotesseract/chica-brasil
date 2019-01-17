@@ -1,0 +1,374 @@
+body.post-type-ziss * {
+  box-sizing: border-box; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+.ziss-show {
+  display: block !important; }
+
+.ziss-cursor-default {
+  cursor: default !important; }
+
+.ziss-overflow-visible {
+  overflow: visible !important; }
+
+.ziss-info-lb {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px; }
+
+.zaniss-main {
+  display: inline-block;
+  width: 100%; }
+
+.title .post-title {
+  padding: 3px 8px;
+  font-size: 1.7em;
+  line-height: 100%;
+  height: 1.7em;
+  width: 100%;
+  outline: 0;
+  margin: 0 0 3px;
+  background-color: #fff; }
+
+.shortcode-wrap .ziss-shortcode {
+  font-family: Courier;
+  box-shadow: none;
+  background-color: #fff;
+  width: 650px;
+  max-width: 100%; }
+
+.hover-zoom-img {
+  overflow: hidden; }
+  .hover-zoom-img > img, .hover-zoom-img figure, .hover-zoom-img .ziss-add-image {
+    display: block;
+    transition: transform 3.5s ease-out .01s, background-color .8s ease-in-out, opacity 3.5s ease-out; }
+  .hover-zoom-img:hover > img, .hover-zoom-img:hover figure, .hover-zoom-img:hover .ziss-add-image {
+    transform: scaleX(1.15) scaleY(1.15) translateZ(0); }
+
+.ziss-hover-scan {
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: transform 0.2s; }
+  .ziss-hover-scan:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1); }
+
+.ziss-hover-scan-15 {
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: transform 0.2s; }
+  .ziss-hover-scan-15:hover {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5); }
+
+.img-items .img-item {
+  overflow: hidden;
+  margin-bottom: 30px; }
+.img-items .ziss-add-image {
+  display: block;
+  position: relative;
+  width: 100%;
+  background-position: 50%;
+  padding: 0 0 100% 0 !important;
+  margin: 0;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border: 1px solid #dedede; }
+  .img-items .ziss-add-image img {
+    display: none; }
+  .img-items .ziss-add-image:before {
+    font-family: FontAwesome;
+    font-size: 20px;
+    content: "\f058";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+    color: #cecece;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 3px; }
+  .img-items .ziss-add-image:hover:before, .img-items .ziss-add-image.added-to-list:before {
+    color: #00882a; }
+.img-items.dont-show-used-imgs .added-img-item {
+  display: none; }
+
+.ziss-tabs .ziss-nav.active {
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px; }
+.ziss-tabs .tab-content-wrapper {
+  background-color: #fff;
+  padding: 20px;
+  width: 100%; }
+.ziss-tabs .tab-content {
+  display: none; }
+.ziss-tabs .notice {
+  padding: 7px 10px; }
+
+.ziss-used-wrap .used-img-items {
+  display: inline-block;
+  width: 100%; }
+.ziss-used-wrap .ziss-used-imgs.has-img .no-img-message {
+  display: none; }
+.ziss-used-wrap .ziss-used-imgs .used-img-item-wrap {
+  margin-bottom: 30px; }
+.ziss-used-wrap .ziss-used-imgs .used-img-item {
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #dedede; }
+  .ziss-used-wrap .ziss-used-imgs .used-img-item figure {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 100%;
+    width: 100%;
+    background-size: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-color: #fff; }
+  .ziss-used-wrap .ziss-used-imgs .used-img-item .remove-img-item {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 22px;
+    color: #ff0000;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.85); }
+  .ziss-used-wrap .ziss-used-imgs .used-img-item .ziss-hotspot-wrap {
+    position: absolute;
+    z-index: 2; }
+
+body .ziss-popup-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: #000000;
+  opacity: 0.75;
+  filter: alpha(opacity=75); }
+body.ziss-show-popup {
+  overflow: hidden; }
+  body.ziss-show-popup .ziss-popup-backdrop {
+    display: block; }
+
+/* Popup */
+.ziss-popup-wrap {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10002;
+  -webkit-overflow-scrolling: touch;
+  outline: 0; }
+  .ziss-popup-wrap .ziss-popup-inner {
+    position: relative;
+    z-index: 10003;
+    top: initial;
+    left: initial;
+    width: 1000px;
+    max-width: 100%;
+    min-width: initial;
+    height: initial;
+    max-height: initial;
+    overflow-x: initial;
+    overflow-y: initial;
+    visibility: initial;
+    display: block;
+    border-radius: 8px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0;
+    text-align: left; }
+    .ziss-popup-wrap .ziss-popup-inner .popup-nav {
+      position: absolute;
+      top: 50%;
+      margin-top: -25px;
+      z-index: 1;
+      display: block;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      color: #fff; }
+      .ziss-popup-wrap .ziss-popup-inner .popup-nav i {
+        font-size: 24px; }
+      .ziss-popup-wrap .ziss-popup-inner .popup-nav.popup-nav-prev {
+        left: -40px; }
+      .ziss-popup-wrap .ziss-popup-inner .popup-nav.popup-nav-next {
+        right: -40px; }
+    .ziss-popup-wrap .ziss-popup-inner .ziss-popup-content {
+      padding: 0;
+      background-color: #fff; }
+      .ziss-popup-wrap .ziss-popup-inner .ziss-popup-content .ziss-single-shortcode-wrap {
+        padding: 15px;
+        border-top: 1px solid #dedede;
+        background-color: #e3f8fb; }
+        .ziss-popup-wrap .ziss-popup-inner .ziss-popup-content .ziss-single-shortcode-wrap label {
+          font-size: 16px; }
+        .ziss-popup-wrap .ziss-popup-inner .ziss-popup-content .ziss-single-shortcode-wrap .ziss-single-shortcode {
+          margin-top: 10px;
+          font-size: 14px; }
+    .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body {
+      overflow: hidden; }
+      .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body .ziss-close-popup {
+        position: absolute;
+        right: 0;
+        top: -45px;
+        color: white;
+        z-index: 1;
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center; }
+      .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body .ziss-popup-body-left {
+        float: left;
+        width: 60%;
+        min-height: 50px; }
+      .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body .ziss-popup-body-right {
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: calc(40% - 8px);
+        padding: 28px 6px 20px 20px;
+        margin-right: 8px;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+        color: #333;
+        background-color: #fff; }
+      .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body .img-holder {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative; }
+        .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body .img-holder img {
+          width: 100%;
+          height: auto; }
+    .ziss-popup-wrap .ziss-popup-inner .add-hotspot-btn {
+      display: block;
+      width: 32px;
+      height: 32px;
+      line-height: 28px;
+      text-align: center;
+      font-size: 20px;
+      color: #333;
+      border: 2px solid #333;
+      border-radius: 50%; }
+      .ziss-popup-wrap .ziss-popup-inner .add-hotspot-btn:hover {
+        color: #fff;
+        background-color: #00adff; }
+
+.ziss-hotspots-list {
+  margin-bottom: 10px; }
+
+.hotspot-num {
+  display: block;
+  width: 32px;
+  height: 32px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background-color: #fff;
+  overflow: hidden;
+  cursor: pointer; }
+  .hotspot-num.hotspot-num-on-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    cursor: move; }
+  .hotspot-num:hover {
+    background-color: #00adff;
+    color: #fff; }
+
+.add-hotspot-wrap {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative; }
+  .add-hotspot-wrap .add-hotspot-left-wrap {
+    float: left;
+    margin-right: 10px; }
+  .add-hotspot-wrap .add-select-product-wrap {
+    display: block;
+    overflow: hidden;
+    padding-right: 60px; }
+    .add-hotspot-wrap .add-select-product-wrap label {
+      display: inline-block;
+      width: 100%;
+      margin-top: 5px;
+      margin-bottom: 6px;
+      font-size: 14px; }
+    .add-hotspot-wrap .add-select-product-wrap .ziss-product-select {
+      width: 100%; }
+  .add-hotspot-wrap .remove-hotspot {
+    font-size: 20px;
+    color: #333;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    display: block; }
+  .add-hotspot-wrap .ziss-thumb-preview-wrap {
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    right: 5px;
+    bottom: 0; }
+    .add-hotspot-wrap .ziss-thumb-preview-wrap img {
+      width: 100%;
+      height: auto; }
+  .add-hotspot-wrap:hover .hotspot-num {
+    background-color: #00adff;
+    color: #fff; }
+
+@media (min-width: 768px) {
+  .ziss-popup-wrap .ziss-popup-inner {
+    width: 820px; }
+    .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body .ziss-popup-body-left {
+      width: 60%; }
+    .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body .ziss-popup-body-right {
+      width: calc(40% - 8px); } }
+@media (min-width: 992px) {
+  .ziss-popup-wrap .ziss-popup-inner {
+    width: 992px; } }
+@media (min-width: 1200px) {
+  .ziss-popup-wrap .ziss-popup-inner {
+    width: 1000px; } }
+@media (max-width: 991px) {
+  .ziss-popup-wrap {
+    overflow-y: auto; }
+    .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body .ziss-popup-body-left {
+      width: 100%;
+      height: auto !important; }
+    .ziss-popup-wrap .ziss-popup-inner .ziss-popup-body .ziss-popup-body-right {
+      width: 100%;
+      height: auto !important; } }
+.ziss-get-fb-token-wrap {
+  position: relative; }
+  .ziss-get-fb-token-wrap.processing:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    top: 0;
+    left: 0; }
+
+/*# sourceMappingURL=backend.css.map */

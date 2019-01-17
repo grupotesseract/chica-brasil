@@ -1,0 +1,80 @@
+<?php
+
+if ( ! class_exists( 'Ciloe_Shortcode_fullpageelem' ) ) {
+	class Ciloe_Shortcode_fullpageelem extends Ciloe_Shortcode {
+		/**
+		 * Shortcode name.
+		 *
+		 * @var  string
+		 */
+		public $shortcode = 'fullpageelem';
+		
+		
+		/**
+		 * Default $atts .
+		 *
+		 * @var  array
+		 */
+		public $default_atts = array();
+		
+		
+		public static function generate_css( $atts ) {
+			// Extract shortcode parameters.
+			extract( $atts );
+			$css = '';
+			
+			return $css;
+		}
+		
+		
+		public function output_html( $atts, $content = null ) {
+			$atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'ciloe_fullpageelem', $atts ) : $atts;
+			
+			// Extract shortcode parameters.
+			extract( $atts );
+			$css_class           = array( 'ciloe-full-page-elem-inner' );
+			$css_class[]         = $atts['style'];
+			$css_class[]         = $atts['el_class'];
+			$css_class[]         = $atts['fami_custom_id'];
+			$text_part_css_class = array( 'text-part', 'block-part' );
+			
+			if ( function_exists( 'vc_shortcode_custom_css_class' ) ) {
+				$text_part_css_class[] = ' ' . apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, vc_shortcode_custom_css_class( $css, ' ' ), '', $atts );
+			}
+			
+			
+			$link_default = array(
+				'url'    => '',
+				'title'  => '',
+				'target' => '',
+			);
+			$link         = $link_default;
+			if ( function_exists( 'vc_build_link' ) ):
+				$link = vc_build_link( $atts['link'] );
+			endif;
+			
+			$html           = '';
+			$text_part_html = '';
+			$img_part_html  = '';
+			
+			$title_html     = trim( $title ) != '' ? '<h3 class="block-title" style="color: ' . esc_attr( $title_color ) . ';">' . esc_html( $title ) . '</h3>' : '';
+			$sub_title_html = trim( $sub_title ) != '' ? '<span class="block-smtitle" style="color: ' . esc_attr( $sub_title_color ) . ';">' . esc_html( $sub_title ) . '</span>' : '';
+			$btn_html       = '';
+			if ( $link['url'] != '' ) {
+				$btn_html = '<a class="block-link" href="' . esc_url( $link['url'] ) . '" target="' . esc_attr( $link['target'] ) . '">' . esc_html( $link['title'] ) . '</a>';
+			}
+			
+			$text_part_html = '<div class="' . esc_attr( implode( ' ', $text_part_css_class ) ) . '">
+                                	<div class="block-part-inner">
+                                		' . $sub_title_html . $title_html . $btn_html . '
+                                	</div>
+                                </div>';
+			$img            = ciloe_toolkit_resize_image( $img_id, null, 4000, 4000, true, true, false );
+			$img_part_html  = '<div class="image-part block-part" style="background-image: url(' . esc_url( $img['url'] ) . '); background-color: ' . esc_attr( $img_block_bg_color ) . ';"></div>';
+			
+			$html = '<div class="ciloe-full-page-elem"><div class="' . esc_attr( implode( ' ', $css_class ) ) . '">' . $text_part_html . $img_part_html . '</div></div>';
+			
+			return apply_filters( 'Ciloe_Shortcode_fullpageelem', force_balance_tags( $html ), $atts, $content );
+		}
+	}
+}

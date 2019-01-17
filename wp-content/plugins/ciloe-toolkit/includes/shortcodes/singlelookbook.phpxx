@@ -1,0 +1,91 @@
+<?php
+
+if ( !class_exists( 'Ciloe_Shortcode_singlelookbook' ) ) {
+    class Ciloe_Shortcode_singlelookbook extends Ciloe_Shortcode
+    {
+        /**
+         * Shortcode name.
+         *
+         * @var  string
+         */
+        public $shortcode = 'singlelookbook';
+
+
+        /**
+         * Default $atts .
+         *
+         * @var  array
+         */
+        public $default_atts = array();
+
+
+        public static function generate_css( $atts )
+        {
+            // Extract shortcode parameters.
+            extract( $atts );
+            $css = '';
+
+            return $css;
+        }
+
+
+        public function output_html( $atts, $content = null )
+        {
+            $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'ciloe_singlelookbook', $atts ) : $atts;
+
+            // Extract shortcode parameters.
+            extract( $atts );
+
+            $css_class = array( 'ciloe-singlelookbook item-lookbook' );
+            $css_class[] = $atts[ 'el_class' ];
+            $css_class[] = $atts[ 'singlelookbook_custom_id' ];
+
+            if ( function_exists( 'vc_shortcode_custom_css_class' ) ) {
+                $css_class[] = ' ' . apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, vc_shortcode_custom_css_class( $css, ' ' ), '', $atts );
+            }
+            $img_size_x = 630;
+            $img_size_y = 654;
+            $img_size = $atts['image_size'];
+            if (trim($img_size) != '') {
+                $img_size = explode('x', $img_size);
+            }
+            $img_size_x = isset($img_size[0]) ? max(0, intval($img_size[0])) : $img_size_x;
+            $img_size_y = isset($img_size[1]) ? max(0, intval($img_size[1])) : $img_size_y;
+            $bg_image = ciloe_toolkit_resize_image($atts['bg_lookbook'], null, $img_size_x, $img_size_y, true, true, false);
+            $link_default = array(
+                'url'    => '',
+                'title'  => '',
+                'target' => '',
+            );
+            if (function_exists('vc_build_link')):
+                $link = vc_build_link($atts['link']);
+            else:
+                $link = $link_default;
+            endif;
+            ob_start();
+            ?>
+            <div class="<?php echo esc_attr( implode( ' ', $css_class ) ); ?>">
+                <div class="item-lookbook-inner">
+                    <div class="media-item-lookbook">
+                        <figure>
+                            <a href="<?php echo esc_url($link['url']);?>">
+                                <img src="<?php echo esc_url($bg_image['url']);?>" width="<?php echo esc_attr($bg_image['width'])?>" height="<?php echo esc_attr($bg_image['height'])?>" alt="">
+                            </a>
+                        </figure>
+                        <div class="item-lookbook-content">
+                            <div class="lookbook-content-wrap">
+                                <h3 class="lookbook-title"><a href="<?php echo esc_url($link['url']);?>"><?php echo esc_attr($atts['title']);?></a></h3>
+                                <div class="lookbook-desc"><?php echo esc_attr($atts['des']);?></div>
+                            </div>
+                            <a href="<?php echo esc_url($link['url']);?>" title="<?php echo esc_attr($link['title']);?>" target="<?php echo esc_attr($link['target']);?>"><?php echo esc_attr($link['title']);?></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <?php
+            $html = ob_get_clean();
+            return apply_filters( 'Ciloe_Shortcode_singlelookbook', force_balance_tags( $html ), $atts, $content );
+        }
+    }
+}

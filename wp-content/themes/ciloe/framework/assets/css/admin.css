@@ -1,0 +1,38 @@
+img{
+    max-width: 100%;
+    height: auto;
+}
+.wpb_ciloe_tabs > .vc_controls, .wpb_ciloe_accordions > .vc_controls{
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+    visibility: visible;
+    position: relative;
+    height: 23px;
+    margin: 18px 0 2px;
+    border: 1px dotted #e6e6e6;
+    border-bottom-width: 0;
+}
+.wpb_ciloe_tabs.vc_shortcodes_container, .wpb_ciloe_accordions.vc_shortcodes_container{
+    background: 0 0;
+}
+.wpb_ciloe_tabs.vc_general .vc_tta-tab > a, .wpb_ciloe_accordions.vc_general .vc_tta-tab > a {
+    padding: 10px 14px;
+}
+.wpb_el_type_taxonomy .chosen-container {
+    min-width: 200px;
+    width: 100% !important;
+}
+.wpb_el_type_taxonomy .chosen-container-multi .chosen-choices li.search-field input[type="text"]{
+    height: auto;
+}
+.nav-tab.active{
+    background-color: #fff;
+    color: #444;
+}
+.nav-tab:first-child{
+    margin-left: 0;
+}
+#tabs-container .tab-content{
+    overflow: hidden;
+    padding-top: 30px;
+}

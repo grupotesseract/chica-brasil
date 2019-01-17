@@ -1,0 +1,113 @@
+<?php
+
+if (!class_exists('Ciloe_Shortcode_Productsimple')) {
+    class Ciloe_Shortcode_Productsimple extends Ciloe_Shortcode
+    {
+        /**
+         * Shortcode name.
+         *
+         * @var  string
+         */
+        public $shortcode = 'productsimple';
+
+        /**
+         * Default $atts .
+         *
+         * @var  array
+         */
+        public $default_atts = array();
+
+
+        public static function generate_css($atts)
+        {
+            // Extract shortcode parameters.
+            extract($atts);
+            $css = '';
+
+            return $css;
+        }
+
+
+        public function output_html($atts, $content = null)
+        {
+            $atts = function_exists('vc_map_get_attributes') ? vc_map_get_attributes('ciloe_productsimple', $atts) : $atts;
+
+            // Extract shortcode parameters.
+            extract($atts);
+
+            $css_class = array('ciloe-productsimple');
+            $css_class[] = $atts['style'];
+            $css_class[] = $atts['el_class'];
+            $css_class[] = $atts['productsimple_custom_id'];
+            $args = array(
+                'a'      => array(
+                    'href'         => array(),
+                    'title' => array(),
+                ),
+                'br'     => array(),
+                'em'     => array(),
+                'strong' => array(),
+            );
+            if (function_exists('vc_shortcode_custom_css_class')) {
+                $css_class[] = ' ' . apply_filters(VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, vc_shortcode_custom_css_class($atts['css'], ' '), '', $atts);
+            }
+            if (is_wp_error($atts['ids'])) {
+                return $atts['ids'];
+            }
+            $product = wc_get_product($atts['ids']);
+            $img_size_x = 681;
+            $img_size_y = 804;
+            $img_size = $atts['img_size'];
+            if (trim($img_size) != '') {
+                $img_size = explode('x', $img_size);
+            }
+            $img_size_x = isset($img_size[0]) ? max(0, intval($img_size[0])) : $img_size_x;
+            $img_size_y = isset($img_size[1]) ? max(0, intval($img_size[1])) : $img_size_y;
+            ob_start();
+            if ($atts['bg_simple_image'] != '') {
+                $img_featured = ciloe_toolkit_resize_image($atts['bg_simple_image'], null, $img_size_x, $img_size_y, true, true, false);
+            } else {
+                $img_featured = ciloe_toolkit_resize_image(get_post_thumbnail_id($atts['ids']), null, $img_size_x, $img_size_y, true, true, false);
+            }
+            ?>
+            <div class="<?php echo esc_attr(implode(' ', $css_class)); ?>">
+                <?php if ($atts['style'] == 'default'): ?>
+                    <img src="<?php echo esc_url($img_featured['url']); ?>"
+                         width="<?php echo esc_attr($img_featured['width']); ?>"
+                         height="<?php echo esc_attr($img_featured['height']); ?>" alt="">
+                    <div class="ciloe-block-info text-center">
+                        <h3 class="block-title"><a
+                                    href="<?php the_permalink($atts['ids']); ?>"><?php echo esc_attr($product->get_title()); ?></a>
+                        </h3>
+                        <span class="block-price"><?php echo $product->get_price_html(); ?></span>
+                        <p class="block-des"><?php echo get_post_field('post_excerpt', $atts['ids']); ?></p>
+                        <a class="block-link"
+                           href="<?php the_permalink($atts['ids']); ?>"><?php echo esc_html__('SHOP NOW', 'ciloe-toolkit'); ?></a>
+                    </div>
+                <?php else: ?>
+                    <div class="product-simple-style1 equal-container better-height">
+                        <figure class="equal-elem">
+                            <img src="<?php echo esc_url($img_featured['url']); ?>"
+                                 width="<?php echo esc_attr($img_featured['width']); ?>"
+                                 height="<?php echo esc_attr($img_featured['height']); ?>" alt="">
+                        </figure>
+                        <div class="ciloe-block-info text-center equal-elem">
+                            <h3 class="block-title"><a
+                                        href="<?php the_permalink($atts['ids']); ?>"><?php echo esc_attr($product->get_title()); ?></a>
+                            </h3>
+                            <span class="block-price"><?php echo $product->get_price_html(); ?></span>
+                            <p class="block-des"><?php echo get_post_field('post_excerpt', $atts['ids']); ?></p>
+                            <a class="block-link"
+                               href="<?php the_permalink($atts['ids']); ?>"><?php echo esc_html__('SHOP NOW', 'ciloe-toolkit'); ?></a>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <?php
+            $html = ob_get_clean();
+
+            return apply_filters('Ciloe_Shortcode_productsimple', force_balance_tags($html), $atts, $content);
+        }
+    }
+}

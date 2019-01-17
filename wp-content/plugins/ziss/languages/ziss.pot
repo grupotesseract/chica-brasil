@@ -1,0 +1,490 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ziss - WooCommerce Product Pinner\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-26 03:45+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: core/shortcodes/shortcodes.php:32
+msgid " ----- Choose an Instagram shop ----- "
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:40
+msgid " ----- You need create an Instagram shop first ----- "
+msgstr ""
+
+#: core/functions.php:53
+msgid " ------ Chose Product ------ "
+msgstr ""
+
+#: core/functions.php:59
+msgid " ------ No Product ------ "
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:50
+msgid "1 Columns"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:49
+msgid "2 Columns"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:48
+msgid "3 Columns"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:47
+msgid "4 Columns"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:46
+msgid "5 Columns"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:45
+msgid "6 Columns"
+msgstr ""
+
+#: core/ziss-options.php:89
+msgid ""
+"<p class=\"description\">This is a section created by adding a filter to the "
+"sections array. Can be used by child themes to add/remove sections from the "
+"options.</p>"
+msgstr ""
+
+#: core/ziss-options.php:371 core/ziss-options.php:377
+#: core/ziss-options.php:381
+msgid "<p>This is the tab content, HTML is allowed.</p>"
+msgstr ""
+
+#: core/ziss-options.php:329
+msgid "Access Token"
+msgstr ""
+
+#: core/templates/admin/tab-content/facebook.php:116
+msgid "Access Token Key:"
+msgstr ""
+
+#: core/post-types/post-zaniss.php:18
+msgid "Add New"
+msgstr ""
+
+#: core/post-types/post-zaniss.php:19
+msgid "Add new Product Pin"
+msgstr ""
+
+#. To add an additional character subset specific to your language,
+#. translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language.
+#: zanisshop.php:113
+msgctxt "Add new subset (greek, cyrillic, devanagari, vietnamese)"
+msgid "no-subset"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:226
+msgid "Add To Cart"
+msgstr ""
+
+#: core/ziss-options.php:193
+#, php-format
+msgid "By %s"
+msgstr ""
+
+#: core/templates/admin/tab-content/shortcode_options.php:43
+msgid "Check this checkbox to use custom responsive"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:120
+msgid "Css"
+msgstr ""
+
+#: core/ziss-options.php:180 core/ziss-options.php:184
+msgid "Current theme preview"
+msgstr ""
+
+#: zanisshop.php:254
+msgid "Custom"
+msgstr ""
+
+#: core/ziss-options.php:251
+msgid "Custom CSS"
+msgstr ""
+
+#: core/ziss-options.php:255
+msgid "Custom css code."
+msgstr ""
+
+#: core/ziss-options.php:266
+msgid "Custom javascript code"
+msgstr ""
+
+#: core/ziss-options.php:262
+msgid "Custom JS"
+msgstr ""
+
+#: core/templates/admin/tab-content/shortcode_options.php:41
+msgid "Custom Responsive"
+msgstr ""
+
+#: core/ziss-options.php:172
+#, php-format
+msgid "Customize &#8220;%s&#8221;"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:122
+msgid "Design options"
+msgstr ""
+
+#: core/functions.php:703 core/templates/admin/tab-content/facebook.php:37
+#: core/templates/admin/tab-content/media_lib.php:38
+#: core/templates/admin/tab-content/instagram.php:68
+msgid "Don't show used images"
+msgstr ""
+
+#: core/post-types/post-zaniss.php:20
+msgid "Edit Product Pin"
+msgstr ""
+
+#: core/ziss-options.php:240
+msgid "Enable Custom Scroll"
+msgstr ""
+
+#: core/ziss-options.php:244
+msgid "Enable custom scroll for popup window."
+msgstr ""
+
+#: core/templates/admin/edit-ziss-form.php:54
+msgid "Enter Title Here"
+msgstr ""
+
+#. Description of the plugin
+msgid "Excellent product pinning for WooCommerce with social shop supported"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:101
+#: core/templates/admin/tab-content/shortcode_options.php:65
+msgid "Extra Small Screen"
+msgstr ""
+
+#: core/ziss-options.php:320
+msgid "Facebook ID"
+msgstr ""
+
+#: core/templates/admin/tab-content/facebook.php:110
+msgid "Facebook ID:"
+msgstr ""
+
+#: core/templates/admin/edit-ziss-form.php:18
+msgid "Facebook Images"
+msgstr ""
+
+#: core/ziss-options.php:338
+msgid "Facebook Images Per Page"
+msgstr ""
+
+#: core/ziss-options.php:314
+msgid "Facebook Settings"
+msgstr ""
+
+#: core/ziss-options.php:273
+msgid "General Settings"
+msgstr ""
+
+#: core/templates/admin/tab-content/facebook.php:106
+msgid "Get New Facebook Access Token"
+msgstr ""
+
+#: zanisshop.php:260
+msgid "Hotspot"
+msgstr ""
+
+#: core/ziss-options.php:201
+msgid "http://codex.wordpress.org/Child_Themes"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "http://zanisshop.zanthemes.net/"
+msgstr ""
+
+#: core/post-types/post-zaniss.php:105
+msgid "Images"
+msgstr ""
+
+#: core/ziss-options.php:286
+msgid "Instagram ID"
+msgstr ""
+
+#: core/templates/admin/edit-ziss-form.php:17
+msgid "Instagram Images"
+msgstr ""
+
+#: core/ziss-options.php:304
+msgid "Instagram Images Per Page"
+msgstr ""
+
+#: core/ziss-options.php:280
+msgid "Instagram Settings"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:56 core/shortcodes/shortcodes.php:64
+msgid "Instagram Shop"
+msgstr ""
+
+#: core/ziss-options.php:295
+msgid "Instagram Token"
+msgstr ""
+
+#: core/functions.php:742
+msgid "Invalid Facebook ID or token."
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:71
+#: core/templates/admin/tab-content/shortcode_options.php:47
+msgid "Large Screen"
+msgstr ""
+
+#. Author of the plugin
+msgid "Le Manh Linh"
+msgstr ""
+
+#: core/ziss-options.php:354
+msgid "Load Font Awesome"
+msgstr ""
+
+#: core/ziss-options.php:358
+msgid "Load font Awesome on the frontend."
+msgstr ""
+
+#: core/templates/admin/tab-content/facebook.php:75
+#: core/templates/admin/tab-content/media_lib.php:65
+#: core/templates/admin/tab-content/instagram.php:94
+msgid "Load more"
+msgstr ""
+
+#: core/templates/admin/edit-ziss-form.php:16
+msgid "Media Library"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:81
+#: core/templates/admin/tab-content/shortcode_options.php:53
+msgid "Medium Screen"
+msgstr ""
+
+#: core/post-types/post-zaniss.php:104
+msgid "Name"
+msgstr ""
+
+#: core/post-types/post-zaniss.php:21
+msgid "New Product Pin"
+msgstr ""
+
+#: core/templates/admin/tab-content/used.php:64
+msgid "No image chosen"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:112
+msgid "Number of columns on screen width <= 479px"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:72
+msgid "Number of columns on screen width >= 1200px"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:102
+msgid "Number of columns on screen width >= 480px and <= 767px"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:92
+msgid "Number of columns on screen width >= 768px and <= 991px"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:82
+msgid "Number of columns on screen width >= 992px and <= 1199px"
+msgstr ""
+
+#: core/ziss-options.php:242 core/ziss-options.php:356
+msgid "Off"
+msgstr ""
+
+#: core/ziss-options.php:241 core/ziss-options.php:355
+msgid "On"
+msgstr ""
+
+#. If there are characters in your language that are not supported
+#. by Open Sans, translate this to 'off'. Do not translate into your own language.
+#: zanisshop.php:105
+msgctxt "Open Sans font: on or off"
+msgid "on"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:251 core/shortcodes/shortcodes.php:267
+msgid "out of 5"
+msgstr ""
+
+#: core/ziss-options.php:252
+msgid "Paste your custom CSS code here."
+msgstr ""
+
+#: core/ziss-options.php:263
+msgid "Paste your custom JS code here."
+msgstr ""
+
+#: core/post-types/post-zaniss.php:16 core/post-types/post-zaniss.php:17
+#: core/post-types/post-zaniss.php:23
+msgid "Product Pin"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:251
+#, php-format
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:76 core/shortcodes/shortcodes.php:86
+#: core/shortcodes/shortcodes.php:96 core/shortcodes/shortcodes.php:106
+#: core/shortcodes/shortcodes.php:116
+#: core/templates/admin/tab-content/shortcode_options.php:33
+msgid "Responsive Options"
+msgstr ""
+
+#: core/ziss-options.php:88
+msgid "Section via hook"
+msgstr ""
+
+#: core/functions.php:572 core/functions.php:599 core/functions.php:626
+#: core/functions.php:654
+msgid "Security check error!!"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:228
+msgid "Select Options"
+msgstr ""
+
+#: zanisshop.php:257
+msgid "Select Product"
+msgstr ""
+
+#: core/post-types/post-zaniss.php:106
+#: core/templates/admin/edit-ziss-form.php:58
+msgid "Shortcode"
+msgstr ""
+
+#: zanisshop.php:244
+msgid "Shortcode for single image:"
+msgstr ""
+
+#: core/templates/admin/edit-ziss-form.php:19
+msgid "Shortcode Options"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:91
+#: core/templates/admin/tab-content/shortcode_options.php:59
+msgid "Small Screen"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:111
+#: core/templates/admin/tab-content/shortcode_options.php:71
+msgid "Smallest Screen"
+msgstr ""
+
+#: core/ziss-options.php:195
+msgid "Tags"
+msgstr ""
+
+#: core/ziss-options.php:370
+msgid "Theme Information 1"
+msgstr ""
+
+#: core/ziss-options.php:376
+msgid "Theme Information 2"
+msgstr ""
+
+#: core/ziss-options.php:201
+#, php-format
+msgid "This <a href=\"%1$s\">child theme</a> requires its parent theme, %2$s."
+msgstr ""
+
+#: core/post-types/post-zaniss.php:107
+msgid "Time"
+msgstr ""
+
+#: core/templates/admin/tab-content/facebook.php:81
+msgid "Token expired. Please get the token key again to display the images"
+msgstr ""
+
+#: zanisshop.php:251
+msgid "Type"
+msgstr ""
+
+#: core/templates/admin/edit-ziss-form.php:15
+msgid "Used"
+msgstr ""
+
+#: core/ziss-options.php:348
+msgid "Vendors Settings"
+msgstr ""
+
+#: core/ziss-options.php:194
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: core/post-types/post-zaniss.php:22
+msgid "View Product Pin"
+msgstr ""
+
+#: core/ziss-options.php:234
+msgid "Welcome to WooCommerce Product Pinner options panel"
+msgstr ""
+
+#: zanisshop.php:253
+msgid "WooCommerce"
+msgstr ""
+
+#: core/ziss-options.php:397
+msgid "WooCommerce Product Pinner"
+msgstr ""
+
+#: core/ziss-options.php:331
+#, php-format
+msgid "Your Facebook access token. %s"
+msgstr ""
+
+#: core/ziss-options.php:322
+#, php-format
+msgid "Your Facebook ID. Ex: 876410027050458. %s"
+msgstr ""
+
+#: core/ziss-options.php:288
+#, php-format
+msgid "Your Instagram ID. Ex: 2267639447. %s"
+msgstr ""
+
+#: core/ziss-options.php:297
+#, php-format
+msgid "Your Instagram token. Ex: 1677ed0.eade9f2bbe8245ea8bdedab984f3b4c3. %s"
+msgstr ""
+
+#: core/ziss-options.php:444
+msgid "Zan Themes WordPress Team"
+msgstr ""
+
+#: core/shortcodes/shortcodes.php:59
+msgid "Ziss"
+msgstr ""
+
+#. Name of the plugin
+msgid "Ziss - WooCommerce Product Pinner"
+msgstr ""
+
+#: core/ziss-options.php:404 core/ziss-options.php:405
+msgid "Ziss Options"
+msgstr ""

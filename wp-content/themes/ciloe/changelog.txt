@@ -1,0 +1,95 @@
+=== Ciloe ===
+
+Requires at least: 4.0
+Tested up to: 5.0
+Stable tag: 1.4.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+== Description ==
+
+Ciloe is a modern, clean and professional multi-purpose WordPress WooCommerce theme, It is fully responsive, it looks stunning on all types of screens and devices.
+It is super for fashion shop, digital shop, accessories shop, food shop, devices shop, household appliances shop or any other categories.
+
+== Installation ==
+	
+1. In your admin panel, go to Appearance > Themes and click the Add New button.
+2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
+3. Click Activate to use your new theme right away.
+
+== Changelog ==
+
+= 1.4.0 - December 07 2018 =
+    - Updated: WordPress 5.0 and gutenberg editor
+    - Updated: Ziss plugin version 1.1
+    - Fixed: No logo issue
+
+= 1.3.0 - December 03 2018 =
+    - Fixed: Products shortcode thumbnail size
+    - Fixed: Products widget thumbnail size
+    - Updated: WooCommerce version 3.5.2
+    - Updated: WPBakery Page Builder version 5.6
+
+= 1.2.9 - December 03 2018 =
+    - Updated: Fami Buy Together version 1.0.2
+
+= 1.2.8 - November 13 2018 =
+    - Fixed: Slider Revolution import issue
+
+= 1.2.7 - November 10 2018 =
+    - Updated: WooCommerce Product Filter version 6.6.3
+
+= 1.2.6 - November 08 2018 =
+    - Fixed: Product attributes error 500
+
+= 1.2.5 - November 07 2018 =
+    - Fixed: Variable product attributes not saved
+
+= 1.2.4 - October 26 2018 =
+    - Updated: Slider Revolution version 5.4.8 (fix previous update)
+
+= 1.2.3 - October 25 2018 =
+    - Updated: WooCommerce version 3.5.0
+    - Updated: WPBakery Page Builder version 5.5.5
+    - Updated: Slider Revolution version 5.4.8
+
+= 1.2.2 - October 24 2018 =
+    - Fixed: vc sort on php 7.x.x
+    - Fixed: Style issue when use child theme
+
+= 1.2.1 - October 17 2018 =
+    - Fixed: Logo mid issue on mobile
+
+= 1.2.0 - October 11 2018 =
+    - Updated: WC Marketplace
+
+= 1.1.4 - October 08 2018 =
+    - Fixed: Product variable issue
+
+= 1.1.3 - October 04 2018 =
+    - Fixed: Bakery Page Builder sort bug
+
+= 1.1.2 - October 03 2018 =
+    - Updated: Ciloe Toolkit plugin
+    - Added: Custom body text color
+
+= 1.1.1 - October 01 2018 =
+    - Fixed: Product attribute issue
+    - Fixed: Wish list style on mobile
+
+= 1.1.0 - September 28 2018 =
+    - Added: Fami Sales Popup
+    - Added: Child Theme
+    - Fixed: Mobile CSS issue
+    - Updated: Demo content
+
+= 1.0.1 - September 26 2018 =
+    - Fixed: Size guide popup CSS z-index
+    - Fixed: Pin Mapper CSS z-index
+    - Fixed: Shortcode custom menu on PHP 7.x
+    - Updated: Demo data
+    - Improve CSS
+
+
+= 1.0.0 - September 24 2018 =
+    - Initial release

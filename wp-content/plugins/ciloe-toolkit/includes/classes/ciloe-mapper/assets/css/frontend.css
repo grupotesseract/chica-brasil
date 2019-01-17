@@ -1,0 +1,638 @@
+/**
+ * @version    1.0.0
+ * @package    Ciloe
+ * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+ */
+.ciloe-mapper {
+    position: relative;
+}
+
+.ciloe-mapper img,
+.ciloe-mapper .mask {
+    transition: all .3s;
+}
+
+.ciloe-mapper > img {
+    width: 100%;
+}
+
+.ciloe-mapper .mask {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .5);
+    opacity: 0;
+}
+
+.ciloe-mapper .csre-pin {
+    position: absolute;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.ciloe-mapper .csre-pin.actived {
+    z-index: 10;
+}
+
+.ciloe-mapper .csre-pin .icon-pin {
+    cursor: pointer;
+    color: #fff;
+    background: #ff3535;
+    border-radius: 50%;
+    z-index: 10;
+    display: block;
+    text-align: center;
+    transition: all .3s;
+    font-size: 20px;
+    width: 24px;
+    line-height: 24px;
+}
+
+.ciloe-mapper .csre-pin .icon-pin:before {
+    display: block;
+}
+
+.ciloe-mapper .csre-pin .icon-pin.rotate:hover {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.ciloe-mapper .csre-pin .icon-pin.scale:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.ciloe-mapper .csre-pin .icon-pin.fade:after {
+    top: 0;
+    left: 0;
+    padding: 0;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content: '';
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+.ciloe-mapper .csre-pin .icon-pin.fade:hover:after {
+    -webkit-animation: sonarEffect .6s ease-out 75ms;
+    -moz-animation: sonarEffect .6s ease-out 75ms;
+    animation: sonarEffect .6s ease-out 75ms;
+}
+
+@-webkit-keyframes sonarEffect {
+    0% {
+        opacity: 0.3;
+    }
+    40% {
+        opacity: 0.5;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #fff, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #fff, 0 0 0 10px rgba(255, 255, 255, 0.5);
+        -webkit-transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes sonarEffect {
+    0% {
+        opacity: 0.3;
+    }
+    40% {
+        opacity: 0.5;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #fff, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #fff, 0 0 0 10px rgba(255, 255, 255, 0.5);
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.ciloe-mapper .csre-pin .csre-title {
+    background: #fff;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, .13);
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 38px;
+    padding: 0 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    white-space: nowrap;
+    margin: 0;
+    top: -65px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.ciloe-mapper .csre-pin .csre-title:before {
+    content: '';
+    position: absolute;
+    border: 6px solid transparent;
+    border-top: 6px solid #fff;
+    bottom: -12px;
+    left: calc(50% - 6px);
+}
+
+.ciloe-mapper .csre-pin .csre-link:hover ~ .csre-title,
+.ciloe-mapper .csre-pin .icon-pin:hover ~ .csre-title {
+    opacity: 1;
+    visibility: visible;
+    top: -55px;
+}
+
+.ciloe-mapper.dark .csre-pin .csre-title {
+    background: #3d3d3d;
+    color: #eee;
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.ciloe-mapper.dark .csre-pin .csre-title:before {
+    border-top-color: #3d3d3d;
+}
+
+.ciloe-mapper .csre-title,
+.ciloe-mapper .csre-pin.actived .csre-title,
+.ciloe-mapper .csre-pin.actived .icon-pin:hover + .csre-title,
+.ciloe-mapper .csre-pin .csre-popup {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ciloe-mapper .csre-pin .csre-popup {
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, .13);
+    border-radius: 3px;
+    position: absolute;
+    z-index: 99;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.ciloe-mapper.light .csre-pin .csre-popup {
+    background: #fff;
+}
+
+.ciloe-mapper.dark .csre-pin .csre-popup {
+    background: #3d3d3d;
+}
+
+.ciloe-mapper .csre-pin .csre-wc {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .ciloe-mapper .csre-pin:hover .csre-popup {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.ciloe-mapper .csre-pin .csre-popup:before {
+    content: '';
+    position: absolute;
+    border: 8px solid transparent;
+}
+
+.ciloe-mapper .remove-redirect.csre-popup:before {
+    display: none;
+}
+
+.ciloe-mapper .csre-pin .csre-popup.left:before,
+.ciloe-mapper .csre-pin .csre-popup.right:before {
+    top: calc(50% - 8px);
+}
+
+.ciloe-mapper .csre-pin .csre-popup.left:before {
+    border-left: 8px solid #fff;
+    right: -16px;
+}
+
+.ciloe-mapper .csre-pin .csre-popup.right:before {
+    border-right: 8px solid #fff;
+    left: -16px;
+}
+
+.ciloe-mapper .csre-pin .csre-popup.top:before,
+.ciloe-mapper .csre-pin .csre-popup.bottom:before {
+    left: calc(50% - 8px);
+}
+
+.ciloe-mapper .csre-pin .csre-popup.top:before {
+    border-top: 8px solid #fff;
+    bottom: -16px;
+}
+
+.ciloe-mapper .csre-pin .csre-popup.bottom:before {
+    border-bottom: 8px solid #fff;
+    top: -16px;
+}
+
+.ciloe-mapper.dark .csre-pin .csre-popup.left:before {
+    border-left-color: #3d3d3d;
+}
+
+.ciloe-mapper.dark .csre-pin .csre-popup.right:before {
+    border-right-color: #3d3d3d;
+}
+
+.ciloe-mapper.dark .csre-pin .csre-popup.top:before {
+    border-top-color: #3d3d3d;
+}
+
+.ciloe-mapper.dark .csre-pin .csre-popup.bottom:before {
+    border-bottom-color: #3d3d3d;
+}
+
+.ciloe-mapper .csre-pin .csre-popup.right,
+.ciloe-mapper .csre-pin .csre-popup.left {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.ciloe-mapper .csre-pin .csre-popup.top,
+.ciloe-mapper .csre-pin .csre-popup.bottom {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.ciloe-mapper .csre-pin .csre-popup.left,
+.ciloe-mapper.slide-left .csre-pin.actived .csre-popup.left,
+.ciloe-mapper.slide-right .csre-pin.actived .csre-popup.left {
+    right: calc(100% + 8px);
+}
+
+.ciloe-mapper .csre-pin .csre-popup.right,
+.ciloe-mapper.slide-left .csre-pin.actived .csre-popup.right,
+.ciloe-mapper.slide-right .csre-pin.actived .csre-popup.right {
+    left: calc(100% + 8px);
+}
+
+.ciloe-mapper .csre-pin .csre-popup.top,
+.ciloe-mapper.slide-top .csre-pin.actived .csre-popup.top,
+.ciloe-mapper.slide-bottom .csre-pin.actived .csre-popup.top {
+    bottom: calc(100% + 8px);
+}
+
+.ciloe-mapper .csre-pin .csre-popup.bottom,
+.ciloe-mapper.slide-top .csre-pin.actived .csre-popup.bottom,
+.ciloe-mapper.slide-bottom .csre-pin.actived .csre-popup.bottom {
+    top: calc(100% + 8px);
+}
+
+/*.ciloe-mapper.slide-left .csre-pin .csre-popup.top,*/
+/*.ciloe-mapper.slide-left .csre-pin .csre-popup.bottom {*/
+/*left: 0;*/
+/*}*/
+
+/*.ciloe-mapper.slide-right .csre-pin .csre-popup.top,*/
+/*.ciloe-mapper.slide-right .csre-pin .csre-popup.bottom {*/
+/*left: 100%;*/
+/*}*/
+
+.ciloe-mapper.slide-left .csre-pin.actived .csre-popup.top,
+.ciloe-mapper.slide-left .csre-pin.actived .csre-popup.bottom,
+.ciloe-mapper.slide-right .csre-pin.actived .csre-popup.top,
+.ciloe-mapper.slide-right .csre-pin.actived .csre-popup.bottom {
+    left: 50%;
+}
+
+.ciloe-mapper.slide-right .csre-pin .csre-popup.right {
+    left: calc(100% + 48px);
+}
+
+.ciloe-mapper.slide-top .csre-pin .csre-popup.left,
+.ciloe-mapper.slide-top .csre-pin .csre-popup.right {
+    top: 0;
+}
+
+.ciloe-mapper.slide-top .csre-pin.actived .csre-popup.left,
+.ciloe-mapper.slide-top .csre-pin.actived .csre-popup.right,
+.ciloe-mapper.slide-bottom .csre-pin.actived .csre-popup.left,
+.ciloe-mapper.slide-bottom .csre-pin.actived .csre-popup.right {
+    top: 50%;
+}
+
+.ciloe-mapper.slide-top .csre-pin .csre-popup.top {
+    bottom: calc(100% + 48px);
+}
+
+.ciloe-mapper.slide-top .csre-pin .csre-popup.bottom {
+    top: calc(100% + 48px);
+}
+
+.ciloe-mapper.slide-bottom .csre-pin .csre-popup.top {
+    bottom: calc(100% - 32px);
+}
+
+.ciloe-mapper .csre-pin .csre-popup-header {
+    padding: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-header .close-modal {
+    right: 10px;
+    top: 5px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.rtl .ciloe-mapper .csre-pin .csre-popup-header .close-modal {
+    right: auto;
+    left: 10px;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-header .close-modal:hover,
+.ciloe-mapper .csre-pin .csre-popup-header h2 a:hover,
+.ciloe-mapper.dark .csre-pin .csre-popup-header h2 a:hover {
+    color: #ffa749;
+}
+
+.ciloe-mapper.dark .csre-pin .csre-popup-header,
+.ciloe-mapper.dark .csre-pin .csre-popup-footer,
+.ciloe-mapper.dark .csre-pin .csre-popup-footer a:first-child {
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.ciloe-mapper.dark .csre-pin .csre-popup-header h2,
+.ciloe-mapper.dark .csre-pin .csre-popup-header h2 a,
+.ciloe-mapper.dark .csre-pin .csre-popup-main,
+.ciloe-mapper.dark .csre-pin .csre-popup-main p,
+.ciloe-mapper.dark .csre-pin .csre-popup-footer a {
+    color: #eee;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-header h2 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    padding-right: 15px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.rtl .ciloe-mapper .csre-pin .csre-popup-header h2 {
+    padding: 0 0 0 15px;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-header h2 a {
+    color: #383838;
+}
+
+.ciloe-mapper .csre-pin .csre-image .csre-popup-header h2 {
+    line-height: 20px;
+}
+
+.ciloe-mapper .csre-pin .csre-image .csre-popup-main img {
+    max-height: 100%;
+}
+
+.ciloe-mapper .csre-pin .csre-image .csre-popup-main {
+    text-align: center;
+}
+
+.ciloe-mapper .csre-pin .csre-wc-price .amount {
+    font-size: 13px;
+}
+
+.ciloe-mapper .csre-pin .csre-wc-price del .amount {
+    color: #999;
+}
+
+.ciloe-mapper .csre-pin .csre-wc-price ins {
+    background: none;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-main {
+    font-size: 13px;
+    color: #777;
+    padding: 10px;
+}
+
+.ciloe-mapper .csre-pin .csre-wc .csre-popup-main {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 10px;
+}
+
+.ciloe-mapper .csre-pin .csre-popup .csre-wc-info .csre-wc-price,
+.ciloe-mapper .csre-pin .csre-popup-main > [class*="col-"] {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-main > .csre-product-thumbnail {
+    -ms-flex-preferred-size: 90px;
+    -webkit-flex-basis: 90px;
+    flex-basis: 90px;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-main > .csre-product-thumbnail + .col-right {
+    margin-left: 10px;
+    -ms-flex-preferred-size: calc(100% - 110px);
+    -webkit-flex-basis: calc(100% - 110px);
+    flex-basis: calc(100% - 110px);
+}
+
+.ciloe-mapper .csre-pin .csre-popup-footer .add_to_cart_button.loading i:before {
+    content: "\e900";
+    top: 2px;
+    display: inline-block;
+    -webkit-animation: rotation 1s linear infinite;
+    animation: rotation 1s linear infinite;
+}
+
+@-webkit-keyframes rotation {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ciloe-mapper .csre-pin .csre-popup-footer a.added_to_cart {
+    display: none;
+}
+
+.ciloe-mapper .csre-pin .csre-popup .csre-wc-info,
+.ciloe-mapper .csre-pin .csre-popup .woocommerce-product-rating {
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+}
+
+.ciloe-mapper .csre-pin .csre-popup .star-rating {
+    font-family: "FontAwesome";
+    font-size: 10px;
+    height: 20px;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    width: 6.2em;
+    letter-spacing: 3px;
+    margin-right: 3px;
+}
+
+.ciloe-mapper .csre-pin .csre-popup .star-rating:before,
+.ciloe-mapper .csre-pin .csre-popup .star-rating span:before {
+    content: "\f005\f005\f005\f005\f005";
+    left: 0;
+    top: 0;
+    position: absolute;
+    font-size: 10px;
+}
+
+.ciloe-mapper .csre-pin .csre-popup .star-rating:before {
+    color: #e2e2e2;
+}
+
+.ciloe-mapper .csre-pin .csre-popup .star-rating span {
+    overflow: hidden;
+    position: absolute;
+    text-indent: -999em;
+}
+
+.ciloe-mapper .csre-pin .csre-popup .star-rating span:before {
+    color: #ffbc5b;
+    text-indent: 0;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-footer a {
+    display: block;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+    position: absolute;
+    font-size: 14px;
+    text-align: center;
+    height: 56px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0 0 3px 3px;
+    font-style: normal;
+    background: #fff;
+    line-height: 54px;
+    padding: 0;
+    color: #383838;
+    text-transform: none;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-footer a:hover {
+    background: #ffa749;
+    border-color: #ffa749;
+    color: #fff;
+}
+
+.ciloe-mapper .csre-pin .csre-popup-footer a i {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.ciloe-mapper .woocommerce-product-rating {
+    font-size: 13px;
+}
+
+.ciloe-mapper .csre-pin .csre-link {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+body .ciloe-mapper .csre-pin .csre-popup-header h2 {
+    text-align: left;
+}
+
+body .ciloe-mapper .csre-pin .csre-popup .csre-wc-info {
+    overflow: hidden;
+}
+
+body .ciloe-mapper .csre-pin .csre-popup .csre-wc-info .csre-wc-price {
+    display: inline-block;
+    text-align: left;
+}
+
+body .ciloe-mapper .csre-pin .csre-popup .woocommerce-product-rating {
+    display: inline-block;
+    float: right;
+    margin: 0;
+    line-height: 27px;
+}
+
+body .ciloe-mapper .csre-pin .csre-wc .csre-popup-main p {
+    text-align: left;
+}
+
+body .ciloe-mapper .text__area {
+    text-align: center;
+}
+
+/*@media (max-width: 640px) {
+    .ciloe-mapper .csre-pin {
+        display: none;
+    }
+}*/
+
+.ciloe-mapper .csre-pin .csre-popup.force-center {
+    top: auto;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    margin-top: 10px;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}

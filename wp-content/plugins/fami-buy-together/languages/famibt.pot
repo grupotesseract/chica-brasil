@@ -1,0 +1,329 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Fami Buy Together\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-22 21:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: includes/helpers.php:40
+msgid "1 Column"
+msgstr ""
+
+#: includes/helpers.php:39
+msgid "2 Columns"
+msgstr ""
+
+#: includes/helpers.php:38
+msgid "3 Columns"
+msgstr ""
+
+#: includes/helpers.php:37
+msgid "4 Columns"
+msgstr ""
+
+#: includes/helpers.php:36
+msgid "5 Columns"
+msgstr ""
+
+#: includes/helpers.php:35
+msgid "6 Columns"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"A complete product grouping toolkit for creating customizable product kits "
+"and assembled products"
+msgstr ""
+
+#: includes/frontend.php:33
+msgid "Accessories"
+msgstr ""
+
+#: includes/menu-scripts-styles.php:105 includes/frontend.php:82
+#: includes/admin-pages/famibt.php:53
+msgid "Add All To Cart"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:99
+msgid "Add to cart button text"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:94
+msgid "Add To Cart Text"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:97
+msgid "Add to cart text"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:109
+msgid "Adding to cart button text"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:103
+msgid "Adding To Cart Text"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:107
+msgid "Adding to cart text"
+msgstr ""
+
+#: includes/menu-scripts-styles.php:106 includes/admin-pages/famibt.php:54
+msgid "Adding To Cart..."
+msgstr ""
+
+#: includes/backend.php:40
+msgid "All settings saved"
+msgstr ""
+
+#: fami-buy-together.php:209
+msgid "Bundle After Text"
+msgstr ""
+
+#: fami-buy-together.php:199
+msgid "Bundle Short Description"
+msgstr ""
+
+#: fami-buy-together.php:83 includes/menu-scripts-styles.php:26
+#: includes/menu-scripts-styles.php:36 includes/menu-scripts-styles.php:37
+msgid "Buy Together"
+msgstr ""
+
+#: fami-buy-together.php:189 fami-buy-together.php:193
+msgid "Buy Together Title"
+msgstr ""
+
+#: includes/backend.php:18
+msgid "Cheating!? Huh?"
+msgstr ""
+
+#: fami-buy-together.php:200
+msgid "Display after bundle title"
+msgstr ""
+
+#: fami-buy-together.php:210
+msgid "Display after list of products"
+msgstr ""
+
+#: fami-buy-together.php:101
+msgid "Enable Buy Together"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:127
+msgid "Enter message when no product is selected"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:144
+msgid "Extra Large Screen"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:172
+msgid "Extra Small Screen"
+msgstr ""
+
+#. Name of the plugin
+msgid "Fami Buy Together"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:69
+msgid ""
+"Fami Buy Together is a plugin for WooCommerce that allows you to create one "
+"or more products that come with your main product. Make it more convenient "
+"for buyers and stimulate buying more of your products. Buyers just need a "
+"single click to buy all the products included."
+msgstr ""
+
+#: includes/admin-pages/famibt.php:67
+msgid "Fami Buy Together Settings"
+msgstr ""
+
+#. Author of the plugin
+msgid "Fami Themes"
+msgstr ""
+
+#: includes/frontend.php:223
+#, php-format
+msgid "For %s item(s)"
+msgstr ""
+
+#: includes/menu-scripts-styles.php:114
+msgid "For {{number}} item(s)"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:81
+msgid "Hook"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://themeforest.net/user/fami_themes"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:28
+msgid "In Single Product Tabs"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:151
+msgid "Large Screen"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:158
+msgid "Medium Screen"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:129
+msgid "Message when no product is selected"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:123
+msgid "No Product Selected Message"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:140
+msgid "Number of products per row on different screen sizes"
+msgstr ""
+
+#: includes/menu-scripts-styles.php:120
+msgid "One product is out of stock."
+msgstr ""
+
+#: includes/admin-pages/famibt.php:9
+msgid "Responsive"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:139
+msgid "Responsive Options"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:192
+msgid "Save All Settings"
+msgstr ""
+
+#: fami-buy-together.php:113
+msgid "Search"
+msgstr ""
+
+#: includes/backend.php:24
+msgid "Security check error!"
+msgstr ""
+
+#: fami-buy-together.php:125
+msgid "Selected"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:8
+msgid "Settings"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:165
+msgid "Small Screen"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:179
+msgid "Smallest Screen"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:119
+msgid ""
+"Text displayed on the \"View cart\" button when adding \"Buy Together\" "
+"successfully"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:154
+msgid "The number of products per row if 1200px <= screen width < 1500px"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:175
+msgid "The number of products per row if 480px <= screen width < 768px"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:168
+msgid "The number of products per row if 768px <= screen width < 1200px"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:161
+msgid "The number of products per row if 992px <= screen width < 1200px"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:182
+msgid "The number of products per row if screen width < 480px"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:147
+msgid "The number of products per row if screen width >= 1500px"
+msgstr ""
+
+#: fami-buy-together.php:214
+msgid "The text display after list of products"
+msgstr ""
+
+#: fami-buy-together.php:204
+msgid "The text display after title and before list of products"
+msgstr ""
+
+#: includes/frontend.php:151
+msgid "This product: "
+msgstr ""
+
+#: fami-buy-together.php:118
+msgid "Type any keyword to search"
+msgstr ""
+
+#: includes/menu-scripts-styles.php:107 includes/admin-pages/famibt.php:55
+msgid "View cart"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:113
+msgid "View Cart Text"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:117
+msgid "View cart text"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:90
+msgid ""
+"Where would you like to show \"Buy Together\"?. Default: "
+"woocommerce_product_tabs (In Single Product Tabs)"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:33
+msgid "woocommerce_after_single_product"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:32
+msgid "woocommerce_after_single_product_summary"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:29
+msgid "woocommerce_before_single_product"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:30
+msgid "woocommerce_before_single_product_summary"
+msgstr ""
+
+#: includes/admin-pages/famibt.php:31
+msgid "woocommerce_single_product_summary"
+msgstr ""
+
+#: includes/menu-scripts-styles.php:108 includes/admin-pages/famibt.php:56
+msgid "You must select at least one product"
+msgstr ""
+
+#: includes/menu-scripts-styles.php:119
+msgid "{{number}} product(s) was successfully added to your cart."
+msgstr ""
+
+#: includes/menu-scripts-styles.php:121
+msgid "{{number}} products were out of stocks."
+msgstr ""
