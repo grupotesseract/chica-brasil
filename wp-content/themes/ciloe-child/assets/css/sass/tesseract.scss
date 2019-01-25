@@ -1,0 +1,191 @@
+$phone-width: 319px;
+$tablet-portrait: 768px;
+$tablet-landscape: 1025px;
+$laptop-width: 1201px;
+$desktop-1366-width: 1367px;
+$desktop-1440-width: 1441px;
+$desktop-1280-width: 1281px;
+
+$chica-blu: #CBE0F5;
+$chica-red: #D54E66;
+$font-primary: 'Bebas Neue';
+$font-secondary: 'Josefin Sans';
+
+@mixin phone {
+	@media (min-width: #{$phone-width}) and (max-width: #{$tablet-portrait - 1px}) {
+		@content;
+	}
+}
+
+@mixin tablet-portrait {
+    @media (min-width: #{$tablet-portrait}) and (max-width: #{$tablet-landscape - 1px}) and (orientation : portrait) {
+        @content;
+    }
+}
+
+@mixin tablet-landscape {
+    @media (min-width: #{$tablet-portrait}) and (max-width: #{$tablet-landscape - 1px}) and (orientation : landscape) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (max-width: #{$laptop-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop-1366 {
+    @media (max-width: #{$desktop-1366-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop-1440 {
+    @media (max-width: #{$desktop-1440-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop-1280 {
+    @media (max-width: #{$desktop-1280-width - 1px}) {
+        @content;
+    }
+}
+
+@font-face {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: 100;
+    src: url('fonts/BebasNeue Thin.otf');
+}
+@font-face {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: 300;
+    src: url('fonts/BebasNeue Light.otf');
+}
+@font-face {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/BebasNeue Regular.otf');
+}
+@font-face {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/BebasNeue Bold.otf');
+}
+@font-face {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: 900;
+    src: url('fonts/BebasNeue Book.otf');
+}
+
+%bfaf {
+  content: "";
+  position: absolute;
+  display: block;
+}
+
+// CORPO GERAL
+body {
+	background-color: #E8EAEE;
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: $font-primary;
+    }
+    p {
+        font-family: $font-secondary;
+		font-size: 16px;
+    }
+    img {
+        vertical-align: middle;
+    }
+    .mobile-only {
+        display: none !important;
+
+        @include phone {
+            display: block !important;
+        }
+    }
+	.hidden {
+		display: none !important;
+	}
+}
+
+// HEADER
+header {
+	.header-wrap {
+		.is-sticky {
+			.header-position {
+				width: 100% !important;
+			}
+		}
+	}
+}
+
+// FOOTER
+footer {
+	position: relative;
+
+	&:after, &:before {
+		@extend %bfaf;
+		top: 0;
+		width: 50%;
+		height: 100%;
+		z-index: -1;
+	}
+	&:before {
+		background-color: $chica-red;
+		left: 0;
+	}
+	&:after {
+		background-color: $chica-blu;
+		right: 0;
+	}
+	.footer-wrapper {
+		display: flex;
+		align-items: center;
+		padding: 25px 0;
+		max-width: 100%;
+		padding-left: 35px;
+		padding-right: 35px;
+		justify-content: center;
+
+		p {
+			color: #fff;
+			margin-bottom: 0;
+		}
+		.meta-content {
+			display: flex;
+			align-items: center;
+
+			img {
+				width: 36px;
+			}
+		}
+		.framed-box {
+			border: 2px solid #fff;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			margin-top: 12px;
+
+			img {
+				width: 36px;
+			}
+			p {
+				text-transform: uppercase;
+
+				&:last-of-type {
+					font-size: 22px;
+				}
+			}
+		}
+	}
+}
