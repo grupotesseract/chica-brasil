@@ -46,7 +46,7 @@ if ( $ciloe_page_layout != 'full' ) {
 }
 ?>
     <main class="site-main <?php echo esc_attr( implode( ' ', $ciloe_main_container_class ) ); ?>">
-        <div class="container">
+        <div class="main-container">
             <div class="row">
                 <div class="<?php echo esc_attr( implode( ' ', $ciloe_main_content_class ) ); ?>">
 					<?php

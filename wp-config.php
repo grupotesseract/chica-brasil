@@ -18,6 +18,9 @@
  * @package WordPress
  */
 
+ // admin - admin@grupotesseract.com
+ // chica#brasil#1601
+
 // ** Configurações do MySQL - Você pode pegar estas informações com o serviço de hospedagem ** //
 /** O nome do banco de dados do WordPress */
 define('DB_NAME', 'chica_brasil');

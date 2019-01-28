@@ -4,27 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// if ( ! function_exists( 'ciloe_child_parent_css' ) ):
-// 	function ciloe_child_parent_css() {
-// 		wp_enqueue_style( 'ciloe_child_parent', trailingslashit( get_template_directory_uri() ) . 'style.css', array(
-// 			'boostrap',
-// 			'owl-carousel',
-// 			'simple-line-icons',
-// 			'flat-icons',
-// 			'scrollbar',
-// 			'chosen',
-// 			'ciloe-custom'
-// 		) );
-//
-// 		wp_enqueue_style( 'tesseract-style',
-// 			get_stylesheet_directory_uri() . '/assets/css/tesseract.css',
-// 			array( 'ciloe_child_parent' ),
-// 			wp_get_theme()->get('Version')
-// 		);
-// 	}
-// endif;
-// add_action( 'wp_enqueue_scripts', 'ciloe_child_parent_css', 10 );
-
 add_filter('show_admin_bar', '__return_false');
 
 if ( !function_exists( 'my_theme_enqueue_styles') ) :

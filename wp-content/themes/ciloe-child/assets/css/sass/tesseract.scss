@@ -6,9 +6,11 @@ $desktop-1366-width: 1367px;
 $desktop-1440-width: 1441px;
 $desktop-1280-width: 1281px;
 
-$chica-blu: #CBE0F5;
+$chica-cyan: #84D8E3;
+$chica-lightblu: #CBE0F5;
 $chica-red: #D54E66;
-$font-primary: 'Bebas Neue';
+$chica-darkgray: #4B4B54;
+$font-primary: 'Gloss Bloom', 'Arial';
 $font-secondary: 'Josefin Sans';
 
 @mixin phone {
@@ -54,34 +56,10 @@ $font-secondary: 'Josefin Sans';
 }
 
 @font-face {
-    font-family: Bebas Neue;
+    font-family: Gloss Bloom;
     font-style: normal;
-    font-weight: 100;
-    src: url('fonts/BebasNeue Thin.otf');
-}
-@font-face {
-    font-family: Bebas Neue;
-    font-style: normal;
-    font-weight: 300;
-    src: url('fonts/BebasNeue Light.otf');
-}
-@font-face {
-    font-family: Bebas Neue;
-    font-style: normal;
-    font-weight: 500;
-    src: url('fonts/BebasNeue Regular.otf');
-}
-@font-face {
-    font-family: Bebas Neue;
-    font-style: normal;
-    font-weight: 700;
-    src: url('fonts/BebasNeue Bold.otf');
-}
-@font-face {
-    font-family: Bebas Neue;
-    font-style: normal;
-    font-weight: 900;
-    src: url('fonts/BebasNeue Book.otf');
+    font-weight: normal;
+    src: url('fonts/Gloss_And_Bloom.ttf') format('truetype');
 }
 
 %bfaf {
@@ -90,12 +68,60 @@ $font-secondary: 'Josefin Sans';
   display: block;
 }
 
+.bg-image {
+	object-fit: cover;
+}
+
+.cyan-text {
+	color: $chica-cyan;
+}
+
+.cyan-bg {
+	background-color: $chica-cyan;
+	color: white;
+}
+
+.blu-text {
+	color: $chica-lightblu
+}
+
+.blu-bg {
+	background-color: $chica-lightblu;
+	color: white;
+}
+
+.red-text {
+	color: $chica-red;
+}
+
+.red-bg {
+	background-color: $chica-red;
+	color: white;
+}
+
+.darkgray-text {
+	color: $chica-darkgray;
+}
+
+.main-btn {
+	border-radius: 40px;
+	padding: 0 25px;
+
+	&:hover {
+		color: white;
+		background-color: $chica-lightblu;
+	}
+}
+
 // CORPO GERAL
 body {
 	background-color: #E8EAEE;
 
-    h1, h2, h3, h4, h5, h6 {
-        font-family: $font-primary;
+	h1, h2 {
+		font-family: $font-primary
+	}
+    h3, h4, h5, h6 {
+        font-family: $font-secondary;
     }
     p {
         font-family: $font-secondary;
@@ -130,6 +156,7 @@ header {
 // FOOTER
 footer {
 	position: relative;
+	padding: 20px 0;
 
 	&:after, &:before {
 		@extend %bfaf;
@@ -137,14 +164,27 @@ footer {
 		width: 50%;
 		height: 100%;
 		z-index: -1;
+
+		@include phone {
+			width: 100%;
+			height: 50%;
+		}
 	}
 	&:before {
 		background-color: $chica-red;
 		left: 0;
+
+		@include phone {
+			top: 0;
+		}
 	}
 	&:after {
-		background-color: $chica-blu;
+		background-color: $chica-lightblu;
 		right: 0;
+
+		@include phone {
+			top: 50%;
+		}
 	}
 	.footer-wrapper {
 		display: flex;
@@ -155,36 +195,208 @@ footer {
 		padding-right: 35px;
 		justify-content: center;
 
+		@include phone {
+			flex-direction: column;
+		}
 		p {
-			color: #fff;
+			color: white;
 			margin-bottom: 0;
 		}
+		// .textwidget {
+		// 	&.custom-html-widget {
+		// 		display: flex;
+		// 		justify-content: center;
+		// 		flex-direction: column;
+		// 	}
+		// }
 		.meta-content {
 			display: flex;
 			align-items: center;
 
 			img {
 				width: 36px;
+
+				&:last-of-type {
+					margin: 0 10px 0 3px;
+				}
+			}
+			p {
+				font-size: 20px;
+				text-transform: uppercase;
+				position: absolute;
+				right: 15px;
 			}
 		}
 		.framed-box {
-			border: 2px solid #fff;
-			display: inline-flex;
+			border: 2px solid white;
+			display: flex;
 			align-items: center;
 			justify-content: center;
 			flex-direction: column;
 			padding: 10px;
-			margin-top: 12px;
+			margin-top: 40px;
 
 			img {
 				width: 36px;
 			}
 			p {
 				text-transform: uppercase;
+				font-size: 24.5px;
+				margin-bottom: 5px;
+				margin-top: 6px;
 
 				&:last-of-type {
-					font-size: 22px;
+					font-size: 32px;
+					margin-top: 0;
+					margin-bottom: 0;
 				}
+			}
+		}
+		.menu {
+			list-style: none;
+
+			.menu-item {
+				font-family: $font-secondary;
+			}
+		}
+	}
+}
+
+#hits {
+	padding: 80px 0;
+
+	.section-meta {
+		display: flex;
+
+		.section-title {
+			font-size: 8rem;
+			letter-spacing: 20px;
+			margin-right: 45px;
+
+			@include desktop-1440 {
+				font-size: 5.5rem;
+			}
+		}
+		.meta-content {
+			padding-top: 30px;
+
+			.section-subtitle {
+				margin-bottom: 10px;;
+				text-transform: uppercase;
+				font-size: 2rem;
+			}
+			p {
+				margin-bottom: 0;
+				padding-right: 25px;
+			}
+			.btn-container {
+				position: relative;
+				padding-top: 45px;
+				margin-bottom: 30px;
+			}
+			.main-btn {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+		}
+	}
+	.img-container {
+		.bg-image {
+			width: 100%;
+			height: 415px;
+
+			@include desktop-1440 {
+				height: 471px;
+			}
+		}
+	}
+	.col-3-wrapper {
+		margin-top: 30px;
+	}
+}
+
+#dna {
+	background-color: #f6f6f6;
+	padding: 80px 0;
+
+	.section-title {
+		font-size: 8rem;
+		letter-spacing: 20px;
+		margin-bottom: -30px;
+	}
+	p {
+		margin-bottom: 0;
+	}
+	.col-md-12 {
+		display: flex;
+		margin-bottom: 15px;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+	.dna-box-wrapper {
+		position: relative;
+
+		.chica-logo {
+			width: 350px;
+			margin-left: 90px;
+		}
+		.dna-box {
+			padding: 30px;
+			display: inline-flex;
+			flex-direction: column;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			min-width: 350px;
+
+			&.red-bg {
+				.box-title {
+					color: white;
+				}
+				p {
+					color: white;
+				}
+			}
+			&.right-aligned {
+				right: 0;
+				left: auto;
+			}
+			&.top-aligned {
+				bottom: auto;
+				top: 0;
+			}
+			&.full-sized {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				left: -15px;
+				width: calc(100% + 15px);
+
+				p {
+					position: absolute;
+					bottom: 30px;
+					right: 30px;
+				}
+			}
+			.box-title {
+				font-size: 2.5rem;
+				font-family: $font-primary;
+				margin-bottom: 30px;
+
+				span {
+					display: block;
+					padding-left: 60px;
+				}
+			}
+			p {
+				text-align: right;
+				color: $chica-darkgray;
+				text-transform: uppercase;
+				font-size: 1.5rem;
+				line-height: 42px;
 			}
 		}
 	}
