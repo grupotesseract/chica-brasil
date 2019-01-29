@@ -12,6 +12,7 @@ $chica-red: #D54E66;
 $chica-darkgray: #4B4B54;
 $font-primary: 'Gloss Bloom', 'Arial';
 $font-secondary: 'Josefin Sans';
+$font-terciary: 'Caviar Dreams';
 
 @mixin phone {
 	@media (min-width: #{$phone-width}) and (max-width: #{$tablet-portrait - 1px}) {
@@ -58,8 +59,22 @@ $font-secondary: 'Josefin Sans';
 @font-face {
     font-family: Gloss Bloom;
     font-style: normal;
-    font-weight: normal;
-    src: url('fonts/Gloss_And_Bloom.ttf') format('truetype');
+    font-weight: 400;
+    src: url('fonts/Gloss_And_Bloom.ttf');
+}
+
+@font-face {
+    font-family: Caviar Dreams;
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/CaviarDreams.woff');
+}
+
+@font-face {
+    font-family: Caviar Dreams;
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/Caviar_Dreams_Bold.woff');
 }
 
 %bfaf {
@@ -148,6 +163,13 @@ header {
 		.is-sticky {
 			.header-position {
 				width: 100% !important;
+			}
+		}
+	}
+	.header-mobile {
+		.logo {
+			img {
+				max-width: 100%;
 			}
 		}
 	}
@@ -254,9 +276,37 @@ footer {
 		}
 		.menu {
 			list-style: none;
+			padding-left: 0;
 
 			.menu-item {
 				font-family: $font-secondary;
+
+				a {
+					color: $chica-red;
+					position: relative;
+					padding: 10px 0;
+					// padding-left: 15px;
+					font-size: 1rem;
+					text-transform: uppercase;
+					transition: all ease 0.2s;
+
+					&:hover, &.active {
+						padding-left: 10px;
+						&:before {
+							opacity: 1;
+						}
+					}
+					&:before {
+						@extend %bfaf;
+						width: 1px;
+						height: 100%;
+						top: 0;
+						left: 0;
+						background-color: $chica-red;
+						opacity: 0;
+						transition: all ease 0.3s;
+					}
+				}
 			}
 		}
 	}
@@ -269,13 +319,9 @@ footer {
 		display: flex;
 
 		.section-title {
-			font-size: 8rem;
+			font-size: 5.5rem;
 			letter-spacing: 20px;
-			margin-right: 45px;
-
-			@include desktop-1440 {
-				font-size: 5.5rem;
-			}
+			margin-right: 30px;
 		}
 		.meta-content {
 			padding-top: 30px;
@@ -284,10 +330,14 @@ footer {
 				margin-bottom: 10px;;
 				text-transform: uppercase;
 				font-size: 2rem;
+				color: #808778;
+				font-weight: 300;
 			}
 			p {
 				margin-bottom: 0;
 				padding-right: 25px;
+				color: #808778;
+				font-weight: 300;
 			}
 			.btn-container {
 				position: relative;
@@ -311,8 +361,15 @@ footer {
 			}
 		}
 	}
-	.col-3-wrapper {
-		margin-top: 30px;
+	.col-md-12 {
+		&.col-3-wrapper {
+			margin-top: 30px;
+		}
+		&:not(.col-3-wrapper) {
+			&:before {
+
+			}
+		}
 	}
 }
 
@@ -321,7 +378,7 @@ footer {
 	padding: 80px 0;
 
 	.section-title {
-		font-size: 8rem;
+		font-size: 5.5rem;
 		letter-spacing: 20px;
 		margin-bottom: -30px;
 	}
@@ -398,6 +455,26 @@ footer {
 				font-size: 1.5rem;
 				line-height: 42px;
 			}
+		}
+	}
+}
+
+#instragram-section {
+	padding: 60px 0;
+
+	.section-title {
+		text-align: center;
+		font-family: $font-secondary;
+		text-transform: uppercase;
+		font-family: $font-terciary;
+		font-weight: 700;
+		font-size: 2.8rem;
+
+		span {
+			display: block;
+			text-transform: lowercase;
+			font-weight: 400;
+			font-size: 2.2rem;
 		}
 	}
 }

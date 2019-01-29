@@ -99,7 +99,7 @@ if ( $enable_info_product_single ) {
                                     <span class="flaticon-search-1 icons"></span>
 									<?php ciloe_search_form(); ?>
                                 </div>
-								
+
 								<?php if ( class_exists( 'WooCommerce' ) ) { ?>
                                     <div class="block-account">
 										<?php if ( is_user_logged_in() ) { ?>
@@ -134,7 +134,7 @@ if ( $enable_info_product_single ) {
             </div>
         </div>
     </div>
-	
+
 	<?php
 	get_template_part( 'template-parts/hero', 'section' );
 	?>
