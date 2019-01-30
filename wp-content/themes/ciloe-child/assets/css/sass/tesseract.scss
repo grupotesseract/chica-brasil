@@ -533,6 +533,25 @@ footer {
 			}
 		}
 	}
+	.banner-page {
+		.content-banner {
+			.title-page.page-title {
+				text-transform: uppercase;
+				display: inline-flex;
+				position: relative;
+				font-weight: 300;
+				letter-spacing: 2px;
+				padding-bottom: 20px;
+
+				&:before {
+					transform: none;
+					left: 0;
+					width: 70px;
+					border: 2px solid white;
+				}
+			}
+		}
+	}
 	.container {
 		// max-width: 700px;
 
@@ -556,10 +575,67 @@ footer {
 				}
 			}
 		}
-		.frm_style_formidable-style.with_frm_style {
-			label.frm_primary_label {
-				font-family: $font-secondary;
-				color: #808778
+	}
+}
+
+.page-template-template-contato {
+	.container {
+		max-width: 500px;
+	}
+	.banner-page {
+		&.has_background {
+			.content-banner {
+				// bottom: 70%;
+			}
+		}
+		.content-banner {
+			.container {
+				text-align: right;
+				max-width: 100%;
+			}
+		}
+	}
+	.wpp-container {
+		display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    border: 3px solid $chica-lightblu;
+	    border-radius: 100px;
+	    padding: 10px 65px;
+	    margin-bottom: 60px;
+
+		img {
+			height: 40px;
+		}
+		p {
+			margin-bottom: 0;
+			margin-left: 10px;
+			color: $chica-lightblu;
+			font-size: 2rem;
+		}
+	}
+	.frm_style_formidable-style.with_frm_style {
+		label.frm_primary_label {
+			font-family: $font-secondary;
+			color: #808778
+		}
+		.frm_button_submit {
+			border-radius: 0;
+			outline: none;
+			border: none;
+			font-family: $font-secondary;
+			padding: 20px 50px 15px;
+			margin-bottom: 40px;
+		}
+		.frm_form_field {
+			&.form-field {
+				textarea, input {
+					border-radius: 0;
+					resize: none;
+				}
+				input {
+					height: 45px;
+				}
 			}
 		}
 	}
@@ -568,6 +644,18 @@ footer {
 .page-template-template-lojas {
 	.col-md-6 {
 		padding: 0 30px;
+	}
+	.banner-page {
+		&.has_background {
+			.content-banner {
+				bottom: 25%;
+			}
+		}
+		.content-banner {
+			.container {
+				text-align: left;
+			}
+		}
 	}
 	.item-title {
 		font-size: 2rem;
