@@ -4,8 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// esconde a barra de admin do top, no front
 add_filter('show_admin_bar', '__return_false');
 
+// registra novos scripts/css
 if ( !function_exists( 'my_theme_enqueue_styles') ) :
 	function my_theme_enqueue_styles() {
 	    $parent_style = 'parent-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
@@ -25,6 +27,7 @@ if ( !function_exists( 'my_theme_enqueue_styles') ) :
 endif;
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
+// registra sidebars
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(
 		array(
@@ -49,6 +52,7 @@ if ( function_exists('register_sidebar') ) {
 	);
 }
 
+// pega o footer do tema pai
 function ciloe_get_footer() {
 	$ciloe_footer_id = ciloe_get_option( 'ciloe_footer_options', '' );
 	/* Data MetaBox */
@@ -93,3 +97,16 @@ function ciloe_get_footer() {
 	endif;
 	wp_reset_postdata();
 }
+
+// adiciona metabox customizadas
+function tesseract_add_custom_box()
+{
+    add_meta_box(
+        'tesseract_product_category_page',           // Unique ID
+        'Categoria dos Produtos',  // Box title
+        'tesseract_custom_box_html',  // Content callback, must be of type callable
+        'page',		// Post type
+		'side'
+    );
+}
+add_action('add_meta_boxes', 'tesseract_add_custom_box');

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Contato
+ * Template Name: Chica - Contato
  *
  * @package WordPress
  * @subpackage ciloe
