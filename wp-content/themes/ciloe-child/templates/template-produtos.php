@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Chica - Produtos
+ * Template Name: Chica - Produtos Coleção
  *
  * @package WordPress
  * @subpackage ciloe
@@ -13,11 +13,10 @@ get_header();
             <?php
                 while (have_posts()) : the_post();
 
-                    echo '<h2 class="section-title">' . get_the_title() . '</h2>';
-
                     the_content();
-                    // End the loop.
-                    $category_type = 'hits';
+
+                    // $category_type = 'hits';
+                    $category_type = 'colecao-2019';
 
                 endwhile;
 
@@ -37,7 +36,7 @@ get_header();
             <?php
                 $args = array(
                     'post_type'         => 'product',
-                    'posts_per_page'    => 10,
+                    'posts_per_page'    => 12,
                     'product_cat'       => $category_type,
                     'status'            => 'publish'
                 );
@@ -53,8 +52,13 @@ get_header();
                         $categories[] = $term->slug;
                     }
 
+                    $destaque_tag = false;
+
                     if ( in_array('destaque', $categories) ) {
                         $class_product = 'col-md-6 destaque';
+                    } else if ( in_array('aposta-do-verao', $categories) ) {
+                        $class_product = 'col-md-6 destaque';
+                        $destaque_tag = true;
                     } else {
                         $class_product = 'col-md-3';
                     }
@@ -72,6 +76,29 @@ get_header();
                 wp_reset_query();
             ?>
         </div>
+
+        <?php
+
+            if ( ! wp_is_mobile() ) {
+                ?>
+                <script src="<?php echo get_site_url(); ?>/wp-content/themes/ciloe-child/assets/js/isotope.pkgd.min.js" charset="utf-8"></script>
+                <script>
+                jQuery(document).ready(function($) {
+                    $('.items-wrapper').isotope({
+                        itemSelector: '.item',
+                        percentPosition: true,
+                        masonry: {
+                            // use outer width of grid-sizer for columnWidth
+                            columnWidth: '.col-md-3'
+                        }
+                    });
+                });
+                </script>
+                <?php
+            }
+
+         ?>
     </section>
+
 <?php
 get_footer();
