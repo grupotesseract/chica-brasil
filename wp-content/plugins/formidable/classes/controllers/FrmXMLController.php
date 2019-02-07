@@ -15,23 +15,97 @@ class FrmXMLController {
 		$set_err = libxml_use_internal_errors( true );
 		$loader = libxml_disable_entity_loader( true );
 
-		$files = apply_filters( 'frm_default_templates_files', array( FrmAppHelper::plugin_path() . '/classes/views/xml/default-templates.xml' ) );
+		$files = apply_filters( 'frm_default_templates_files', array() );
 
 		foreach ( (array) $files as $file ) {
 			FrmXMLHelper::import_xml( $file );
 			unset( $file );
 		}
-		/*
-		if(is_wp_error($result))
-			$errors[] = $result->get_error_message();
-		else if($result)
-			$message = $result;
-		*/
 
 		unset( $files );
 
 		libxml_use_internal_errors( $set_err );
 		libxml_disable_entity_loader( $loader );
+	}
+
+
+	/**
+	 * Use the template link to install the XML template
+	 *
+	 * @since 3.06
+	 */
+	public static function install_template() {
+		FrmAppHelper::permission_check( 'frm_create_forms' );
+		check_ajax_referer( 'frm_ajax', 'nonce' );
+
+		$url = FrmAppHelper::get_param( 'xml', '', 'post', 'esc_url_raw' );
+
+		$response = wp_remote_get( $url );
+		$body     = wp_remote_retrieve_body( $response );
+		$xml      = simplexml_load_string( $body );
+
+		if ( ! $xml ) {
+			$response = array(
+				'message' => __( 'There was an error reading the form template', 'formidable' ),
+			);
+			echo wp_json_encode( $response );
+			wp_die();
+		}
+
+		self::set_new_form_name( $xml );
+
+		$imported = FrmXMLHelper::import_xml_now( $xml );
+		if ( isset( $imported['form_status'] ) && ! empty( $imported['form_status'] ) ) {
+			// Get the last form id in case there are child forms.
+			end( $imported['form_status'] );
+			$form_id = key( $imported['form_status'] );
+			$response = array(
+				'id'       => $form_id,
+				'redirect' => admin_url( 'admin.php?page=formidable&frm_action=edit&id=' . absint( $form_id ) ),
+				'success'  => 1,
+			);
+		} else {
+			$response = array(
+				'message' => __( 'There was an error importing form', 'formidable' ),
+			);
+		}
+
+		echo wp_json_encode( $response );
+		wp_die();
+	}
+
+	/**
+	 * Change the name of the last form that is not a child.
+	 * This will allow for lookup fields and embedded forms
+	 * since we redirect to the last form.
+	 *
+	 * @since 3.06
+	 * @param object $xml The values included in the XML.
+	 */
+	private static function set_new_form_name( &$xml ) {
+		if ( ! isset( $xml->form ) ) {
+			return;
+		}
+
+		// Get the main form ID.
+		$set_name = 0;
+		foreach ( $xml->form as $form ) {
+			if ( ! isset( $form->parent_form_id ) || empty( $form->parent_form_id ) ) {
+				$set_name = $form->id;
+			}
+		}
+
+		foreach ( $xml->form as $form ) {
+			// Maybe set the form name if this isn't a child form.
+			if ( $set_name == $form->id ) {
+				$form->name        = FrmAppHelper::get_param( 'name', '', 'post', 'sanitize_text_field' );
+				$form->description = FrmAppHelper::get_param( 'desc', '', 'post', 'sanitize_textarea_field' );
+			}
+
+			// Use a unique key to prevent editing existing form.
+			$name = sanitize_title( $form->name );
+			$form->form_key = FrmAppHelper::get_unique_key( $name, 'frm_forms', 'form_key' );
+		}
 	}
 
 	public static function route() {
@@ -184,18 +258,7 @@ class FrmXMLController {
 		);
 		$args = wp_parse_args( $args, $defaults );
 
-		$sitename = sanitize_key( get_bloginfo( 'name' ) );
-
-		if ( ! empty( $sitename ) ) {
-			$sitename .= '.';
-		}
-		$filename = $sitename . 'formidable.' . date( 'Y-m-d' ) . '.xml';
-
-		header( 'Content-Description: File Transfer' );
-		header( 'Content-Disposition: attachment; filename=' . $filename );
-		header( 'Content-Type: text/xml; charset=' . get_option( 'blog_charset' ), true );
-
-		//make sure ids are numeric
+		// Make sure ids are numeric.
 		if ( is_array( $args['ids'] ) && ! empty( $args['ids'] ) ) {
 			$args['ids'] = array_filter( $args['ids'], 'is_numeric' );
 		}
@@ -278,6 +341,12 @@ class FrmXMLController {
 			unset( $tb_type );
 		}
 
+		$filename = self::get_file_name( $args, $type, $records );
+
+		header( 'Content-Description: File Transfer' );
+		header( 'Content-Disposition: attachment; filename=' . $filename );
+		header( 'Content-Type: text/xml; charset=' . get_option( 'blog_charset' ), true );
+
 		echo '<?xml version="1.0" encoding="' . esc_attr( get_bloginfo( 'charset' ) ) . "\" ?>\n";
 		include( FrmAppHelper::plugin_path() . '/classes/views/xml/xml.php' );
 	}
@@ -293,6 +362,38 @@ class FrmXMLController {
 			// include actions with forms
 			$type[] = 'actions';
 		}
+	}
+
+	/**
+	 * Use a generic file name if multiple items are exported.
+	 * Use the nme of the form if only one form is exported.
+	 *
+	 * @since 3.06
+	 *
+	 * @return string
+	 */
+	private static function get_file_name( $args, $type, $records ) {
+		$has_one_form = isset( $records['forms'] ) && ! empty( $records['forms'] ) && count( $args['ids'] ) === 1;
+		if ( $has_one_form ) {
+			// one form is being exported
+			$selected_form_id = reset( $args['ids'] );
+			foreach ( $records['forms'] as $form_id ) {
+				$filename = 'form-' . $form_id . '.xml';
+				if ( $selected_form_id === $form_id ) {
+					$form = FrmForm::getOne( $form_id );
+					$filename = sanitize_title( $form->name ) . '-form.xml';
+					break;
+				}
+			}
+		} else {
+			$sitename = sanitize_key( get_bloginfo( 'name' ) );
+
+			if ( ! empty( $sitename ) ) {
+				$sitename .= '.';
+			}
+			$filename = $sitename . 'formidable.' . date( 'Y-m-d' ) . '.xml';
+		}
+		return $filename;
 	}
 
 	public static function generate_csv( $atts ) {

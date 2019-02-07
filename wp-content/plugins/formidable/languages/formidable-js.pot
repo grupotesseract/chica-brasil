@@ -1,0 +1,60 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: js/src/common/components/itemselect.js:26
+msgid "Select a %s"
+msgstr ""
+
+#: js/src/common/components/itemselect.js:47
+msgid "Currently, there are no %s"
+msgstr ""
+
+#: js/src/form/block.js:19
+msgid "Display a Form"
+msgstr ""
+
+#: js/src/form/block.js:23
+msgid "contact forms"
+msgstr ""
+
+#: js/src/form/block.js:35
+msgid "This site does not have any forms."
+msgstr ""
+
+#: js/src/form/formselect.js:23
+msgid "form"
+msgstr ""
+
+#: js/src/form/formselect.js:24
+msgid "forms"
+msgstr ""
+
+#: js/src/form/inspector.js:43
+msgid "Select Form"
+msgstr ""
+
+#: js/src/form/inspector.js:57
+msgid "Go to form"
+msgstr ""
+
+#: js/src/form/inspector.js:62
+msgid "Options"
+msgstr ""
+
+#: js/src/form/inspector.js:66
+msgid "Show Form Title"
+msgstr ""
+
+#: js/src/form/inspector.js:73
+msgid "Show Form Description"
+msgstr ""
+
+#: js/src/form/inspector.js:80
+msgid "Minimize HTML"
+msgstr ""
+
+#: js/src/form/inspector.js:88
+msgid "Shortcode"
+msgstr ""

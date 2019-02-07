@@ -7,13 +7,13 @@ $generated_i18n_strings = array(
 	// Reference: js/src/common/components/itemselect.js:47
 	__( 'Currently, there are no %s', 'formidable' ),
 
-	// Reference: js/src/form/block.js:18
+	// Reference: js/src/form/block.js:19
 	__( 'Display a Form', 'formidable' ),
 
-	// Reference: js/src/form/block.js:22
+	// Reference: js/src/form/block.js:23
 	__( 'contact forms', 'formidable' ),
 
-	// Reference: js/src/form/block.js:34
+	// Reference: js/src/form/block.js:35
 	__( 'This site does not have any forms.', 'formidable' ),
 
 	// Reference: js/src/form/formselect.js:23

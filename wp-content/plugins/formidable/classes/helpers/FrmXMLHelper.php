@@ -23,25 +23,6 @@ class FrmXMLHelper {
 	}
 
 	public static function import_xml( $file ) {
-		$defaults = array(
-			'forms'   => 0,
-			'fields'  => 0,
-			'terms'   => 0,
-			'posts'   => 0,
-			'views'   => 0,
-			'actions' => 0,
-			'styles'  => 0,
-		);
-
-        $imported = array(
-            'imported' => $defaults,
-			'updated'  => $defaults,
-			'forms'    => array(),
-			'terms'    => array(),
-        );
-
-		unset( $defaults );
-
 		if ( ! defined( 'WP_IMPORTING' ) ) {
 			define( 'WP_IMPORTING', true );
         }
@@ -68,7 +49,18 @@ class FrmXMLHelper {
 			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this XML file', 'formidable' ), libxml_get_errors() );
 		}
 
-        // add terms, forms (form and field ids), posts (post ids), and entries to db, in that order
+		return self::import_xml_now( $xml );
+	}
+
+	/**
+	 * Add terms, forms (form and field ids), posts (post ids), and entries to db, in that order
+	 *
+	 * @since 3.06
+	 * @return array The number of items imported
+	 */
+	public static function import_xml_now( $xml ) {
+		$imported = self::pre_import_data();
+
 		foreach ( array( 'term', 'form', 'view' ) as $item_type ) {
             // grab cats, tags, and terms, or forms or posts
 			if ( isset( $xml->{$item_type} ) ) {
@@ -78,10 +70,31 @@ class FrmXMLHelper {
             }
         }
 
-		$return = apply_filters( 'frm_importing_xml', $imported, $xml );
+		return apply_filters( 'frm_importing_xml', $imported, $xml );
+	}
 
-	    return $return;
-    }
+	/**
+	 * @since 3.06
+	 * @return array
+	 */
+	private static function pre_import_data() {
+		$defaults = array(
+			'forms'   => 0,
+			'fields'  => 0,
+			'terms'   => 0,
+			'posts'   => 0,
+			'views'   => 0,
+			'actions' => 0,
+			'styles'  => 0,
+		);
+
+		return array(
+			'imported' => $defaults,
+			'updated'  => $defaults,
+			'forms'    => array(),
+			'terms'    => array(),
+		);
+	}
 
 	public static function import_xml_terms( $terms, $imported ) {
         foreach ( $terms as $t ) {
@@ -190,7 +203,6 @@ class FrmXMLHelper {
 			'options'       => (string) $item->options,
 			'logged_in'     => (int) $item->logged_in,
 			'is_template'   => (int) $item->is_template,
-			'default_template' => (int) $item->default_template,
 			'editable'      => (int) $item->editable,
 			'status'        => (string) $item->status,
 			'parent_form_id' => isset( $item->parent_form_id ) ? (int) $item->parent_form_id : 0,
@@ -872,8 +884,9 @@ class FrmXMLHelper {
 	 */
 	public static function prepare_form_options_for_export( $options ) {
 		$options = maybe_unserialize( $options );
-		// Change custom_style to the post_name instead of ID
-		if ( isset( $options['custom_style'] ) && 1 !== $options['custom_style'] ) {
+		// Change custom_style to the post_name instead of ID (1 may be a string)
+		$not_default = isset( $options['custom_style'] ) && 1 != $options['custom_style'];
+		if ( $not_default ) {
 			global $wpdb;
 			$table = $wpdb->prefix . 'posts';
 			$where = array( 'ID' => $options['custom_style'] );
@@ -887,8 +900,105 @@ class FrmXMLHelper {
 				$options['custom_style'] = 1;
 			}
 		}
+		self::remove_default_form_options( $options );
 		$options = serialize( $options );
 		return self::cdata( $options );
+	}
+
+	/**
+	 * If the saved value is the same as the default, remove it from the export
+	 * This keeps file size down and prevents overriding global settings after import
+	 *
+	 * @since 3.06
+	 */
+	private static function remove_default_form_options( &$options ) {
+		$defaults = FrmFormsHelper::get_default_opts();
+		if ( is_callable( 'FrmProFormsHelper::get_default_opts' ) ) {
+			$defaults += FrmProFormsHelper::get_default_opts();
+		}
+ 		self::remove_defaults( $defaults, $options );
+	}
+
+	/**
+	 * Remove extra settings from field to keep file size down
+	 *
+	 * @since 3.06
+	 */
+	public static function prepare_field_for_export( &$field ) {
+		self::remove_default_field_options( $field );
+	}
+
+	/**
+	 * Remove defaults from field options too
+	 *
+	 * @since 3.06
+	 */
+	private static function remove_default_field_options( &$field ) {
+		$defaults = FrmFieldsHelper::get_default_field_options( $field->type );
+		if ( empty( $defaults['blank'] ) ) {
+			$global_settings = new FrmSettings();
+			$global_defaults = $global_settings->default_options();
+			$defaults['blank'] = $global_defaults['blank_msg'];
+		}
+
+		if ( empty( $defaults['custom_html'] ) ) {
+			$defaults['custom_html'] = FrmFieldsHelper::get_default_html( $field->type );
+		}
+		$options = maybe_unserialize( $field->field_options );
+ 		self::remove_defaults( $defaults, $options );
+		self::remove_default_html( 'custom_html', $defaults, $options );
+
+		// Get variations on the defaults.
+		if ( isset( $options['invalid'] ) ) {
+			$defaults = array(
+				'invalid' => sprintf( __( '%s is invalid', 'formidable' ), $field->name ),
+			);
+			self::remove_defaults( $defaults, $options );
+		}
+
+		$field->field_options = serialize( $options );
+	}
+
+ 	/**
+	 * Compare the default array to the saved values and
+	 * remove if they are the same
+	 *
+	 * @since 3.06
+	 */
+	private static function remove_defaults( $defaults, &$saved ) {
+		$array_defaults = array_filter( $defaults, 'is_array' );
+		foreach ( $array_defaults as $d => $default ) {
+			// compare array defaults
+			if ( $default == $saved[ $d ] ) {
+				unset( $saved[ $d ] );
+			}
+			unset( $defaults[ $d ] );
+		}
+ 		$saved = array_diff_assoc( (array) $saved, $defaults );
+	}
+
+ 	/**
+	 * The line endings may prevent html from being equal when it should
+	 *
+	 * @since 3.06
+	 */
+	private static function remove_default_html( $html_name, $defaults, &$options ) {
+		if ( ! isset( $options[ $html_name ] ) || ! isset( $defaults[ $html_name ] ) ) {
+			return;
+		}
+
+		$old_html = str_replace( "\r\n", "\n", $options[ $html_name ] );
+		$default_html = $defaults[ $html_name ];
+		if ( $old_html == $default_html ) {
+			unset( $options[ $html_name ] );
+			return;
+		}
+
+		// Account for some of the older field default HTML.
+		$default_html = str_replace( ' id="frm_desc_field_[key]"', '', $default_html );
+		if ( $old_html == $default_html ) {
+			unset( $options[ $html_name ] );
+		}
 	}
 
 	public static function cdata( $str ) {
