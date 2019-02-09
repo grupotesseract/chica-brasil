@@ -7,9 +7,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 // esconde a barra de admin do top, no front
 add_filter('show_admin_bar', '__return_false');
 
+// Including main ajax functions file
+include_once ( dirname( __FILE__ ) . '/includes/tesseract-ajax.php' );
+
 // registra novos scripts/css
-if ( !function_exists( 'my_theme_enqueue_styles') ) :
-	function my_theme_enqueue_styles() {
+if ( !function_exists( 'tesseract_enqueue_styles') ) :
+	function tesseract_enqueue_styles() {
 	    $parent_style = 'parent-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
 
 	    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
@@ -23,9 +26,12 @@ if ( !function_exists( 'my_theme_enqueue_styles') ) :
 	    	array( $parent_style ),
 	    	wp_get_theme()->get('Version')
 	    );
+
+		wp_enqueue_script( 'tesseract_ajax', get_stylesheet_directory_uri() . '/assets/js/tesseract-ajax.js' );
+		wp_localize_script( 'tesseract_ajax', 'TesseractAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}
 endif;
-add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'tesseract_enqueue_styles' );
 
 // registra sidebars
 if ( function_exists('register_sidebar') ) {
