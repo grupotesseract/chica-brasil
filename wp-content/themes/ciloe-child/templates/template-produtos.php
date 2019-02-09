@@ -36,9 +36,11 @@ get_header();
         <div id="products">
             <div class="produtos-wrapper items-wrapper container">
                 <?php
+                    $number_of_posts = 10;
+
                     $args = array(
                         'post_type'         => 'product',
-                        'posts_per_page'    => 12,
+                        'posts_per_page'    => 10,
                         'product_cat'       => $category_type,
                         'status'            => 'publish'
                     );
@@ -79,6 +81,8 @@ get_header();
                     endwhile;
 
                     wp_reset_query();
+
+                    // echo do_shortcode('[ajax_load_more repeater="post" post_type="products" exclude="'.$posts_notIn.'" pause="true" scroll="false" posts_per_page="'.$number_of_posts.'" max_pages="0" button_label="Carregar mais"]');
                 ?>
             </div>
         </div>

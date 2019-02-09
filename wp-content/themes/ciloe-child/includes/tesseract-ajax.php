@@ -106,7 +106,7 @@ function display_query( $args, $type ) {
         $_SESSION['class_counter'] = $class_counter;
         $posts_notIn = implode(',', $posts_notIn);
 
-        echo do_shortcode('[ajax_load_more repeater="post" post_type="post" exclude="'.$posts_notIn.'" pause="true" scroll="false" posts_per_page="'.$number_of_posts.'" max_pages="0" button_label="Carregar mais"]');
+        // echo do_shortcode('[ajax_load_more repeater="post" post_type="post" exclude="'.$posts_notIn.'" pause="true" scroll="false" posts_per_page="'.$number_of_posts.'" max_pages="0" button_label="Carregar mais"]');
     }
 }
 
