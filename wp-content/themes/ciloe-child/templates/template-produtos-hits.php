@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Chica - Produtos Hits
+ * Template Name: Chica - Produtos Coleção
  *
  * @package WordPress
  * @subpackage ciloe
@@ -25,56 +25,66 @@ get_header();
         </div>
         <div class="filtros-wrapper container">
             <ul class="filtros">
-                <li class="filtros-item">Todos</li>
-                <li class="filtros-item">Biquinis</li>
-                <li class="filtros-item">Maiôs - Bodies</li>
-                <li class="filtros-item">Saídas</li>
-                <li class="filtros-item">Casual</li>
+                <li class="filtros-item active" data-cat="all">Todos</li>
+                <li class="filtros-item" data-cat="biquinis">Biquinis</li>
+                <li class="filtros-item" data-cat="maios-bodies">Maiôs - Bodies</li>
+                <li class="filtros-item" data-cat="saidas">Saídas</li>
+                <li class="filtros-item" data-cat="casual">Casual</li>
             </ul>
         </div>
-        <div class="produtos-wrapper items-wrapper container">
-            <?php
-                $args = array(
-                    'post_type'         => 'product',
-                    'posts_per_page'    => 12,
-                    'product_cat'       => $category_type,
-                    'status'            => 'publish'
-                );
 
-                $loop = new WP_Query( $args );
+        <div id="products">
+            <div class="produtos-wrapper items-wrapper container">
+                <?php
+                    $number_of_posts = 10;
 
-                while ( $loop->have_posts() ) : $loop->the_post();
-                    global $product;
+                    $args = array(
+                        'post_type'         => 'product',
+                        'posts_per_page'    => 10,
+                        'product_cat'       => $category_type,
+                        'status'            => 'publish'
+                    );
 
-                    $terms = wp_get_post_terms( $post->ID, 'product_cat' );
-                    $categories = array();
-                    foreach ( $terms as $term ) {
-                        $categories[] = $term->slug;
-                    }
+                    $loop = new WP_Query( $args );
 
-                    $destaque_tag = false;
+                    while ( $loop->have_posts() ) : $loop->the_post();
+                        global $product;
 
-                    if ( in_array('destaque', $categories) ) {
-                        $class_product = 'col-md-6 destaque';
-                    } else if ( in_array('aposta-do-verao', $categories) ) {
-                        $class_product = 'col-md-6 destaque';
-                        $destaque_tag = true;
-                    } else {
-                        $class_product = 'col-md-3';
-                    }
+                        $terms = wp_get_post_terms( $post->ID, 'product_cat' );
+                        $categories = array();
+                        foreach ( $terms as $term ) {
+                            $categories[] = $term->slug;
+                        }
 
-                    $image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
-                    ?>
-                    <div class="item <?php echo $class_product; ?>">
-                        <img src="<?php echo $image[0] ?>" alt="">
-                        <h4 class="item-title"><?php the_title(); ?></h4>
-                    </div>
-                    <?php
-                    // echo '<br /><a href="'.get_permalink().'">' . woocommerce_get_product_thumbnail().' '.get_the_title().'</a>';
-                endwhile;
+                        $destaque_tag = '';
 
-                wp_reset_query();
-            ?>
+                        if ( in_array('destaque', $categories) ) {
+                            $class_product = 'col-md-6 destaque';
+                        } else if ( in_array('aposta-do-verao', $categories) ) {
+                            $class_product = 'col-md-6 destaque';
+                            $destaque_tag = '<div class="destaque-tag">Aposta do verão</div>';
+                        } else {
+                            $class_product = 'col-md-3';
+                        }
+
+                        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
+                        ?>
+                        <div class="item <?php echo $class_product; ?>">
+                            <div class="img-wrapper">
+                                <img src="<?php echo $image[0] ?>" alt="">
+                                <?php echo $destaque_tag ?>
+                            </div>
+                            <h4 class="item-title"><?php the_title(); ?></h4>
+                        </div>
+                        <?php
+                        // echo '<br /><a href="'.get_permalink().'">' . woocommerce_get_product_thumbnail().' '.get_the_title().'</a>';
+                    endwhile;
+
+                    wp_reset_query();
+
+                    // echo do_shortcode('[ajax_load_more repeater="post" post_type="products" exclude="'.$posts_notIn.'" pause="true" scroll="false" posts_per_page="'.$number_of_posts.'" max_pages="0" button_label="Carregar mais"]');
+                ?>
+            </div>
         </div>
 
         <?php
@@ -99,6 +109,17 @@ get_header();
 
          ?>
     </section>
+
+    <script>
+        jQuery(document).ready(function($) {
+            $('.filtros-item').click(function() {
+                $('.filtros-item').removeClass('active');
+                $(this).addClass('active');
+                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).attr('data-cat')], '');
+            });
+        });
+
+    </script>
 
 <?php
 get_footer();
