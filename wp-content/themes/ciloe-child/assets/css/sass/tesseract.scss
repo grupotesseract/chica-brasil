@@ -130,6 +130,11 @@ $font-terciary: 'Caviar Dreams';
 		position: absolute;
 		right: 30px;
 		bottom: 0;
+
+		@include phone {
+			position: relative;
+			right: 0;
+		}
 	}
 }
 
@@ -138,6 +143,14 @@ $font-terciary: 'Caviar Dreams';
 	justify-content: center;
 	align-items: center;
 	min-height: 300px;
+}
+
+html {
+	overflow-y: auto;
+}
+
+.box-tab-nav:last-of-type {
+	display: none !important;
 }
 
 // CORPO GERAL
@@ -157,6 +170,11 @@ body {
     img {
         vertical-align: middle;
     }
+	.desktop-only {
+		@include phone {
+			display: none !important;
+		}
+	}
     .mobile-only {
         display: none !important;
 
@@ -312,7 +330,7 @@ footer {
 				}
 			}
 		}
-		.menu-principal-container {
+		.menu-rodape-container {
 			@include phone {
 				margin-top: 60px;
 			}
@@ -835,6 +853,9 @@ footer {
 		position: relative;
 		margin-bottom: 45px;
 
+		@include phone {
+			margin-bottom: 0;
+		}
 		.section-title {
 			font-family: $font-secondary;
 			text-transform: uppercase;
@@ -894,6 +915,11 @@ footer {
 					// }
 				}
 			}
+		}
+		.filtros-mobile {
+			width: 100%;
+			border-radius: 20px !important;
+			padding-right: 10px;
 		}
 	}
 	.produtos-wrapper {

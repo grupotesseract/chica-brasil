@@ -24,13 +24,20 @@ get_header();
             ?>
         </div>
         <div class="filtros-wrapper container">
-            <ul class="filtros">
+            <ul class="filtros desktop-only">
                 <li class="filtros-item active" data-cat="all">Todos</li>
                 <li class="filtros-item" data-cat="biquinis">Biquinis</li>
                 <li class="filtros-item" data-cat="maios-bodies">Maiôs - Bodies</li>
                 <li class="filtros-item" data-cat="saidas">Saídas</li>
                 <li class="filtros-item" data-cat="casual">Casual</li>
             </ul>
+            <select class="filtros-mobile mobile-only">
+                <option value="all">Todos</option>
+                <option value="biquinis">Biquinis</option>
+                <option value="maios-bodies">Maiôs - Bodies</option>
+                <option value="saidas">Saídas</option>
+                <option value="casual">Casual</option>
+            </select>
         </div>
 
         <div id="products">
@@ -116,6 +123,9 @@ get_header();
                 $('.filtros-item').removeClass('active');
                 $(this).addClass('active');
                 FilterProducts('desc', ['<?php echo $category_type ?>', $(this).attr('data-cat')], '');
+            });
+            $('.filtros-mobile').change(function() {
+                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).val()], '');
             });
         });
 
