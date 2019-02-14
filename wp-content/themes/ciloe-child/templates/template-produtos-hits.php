@@ -66,12 +66,12 @@ get_header();
                         $destaque_tag = '';
 
                         if ( in_array('destaque', $categories) ) {
-                            $class_product = 'col-md-6 destaque';
+                            $class_product = 'col-md-6 col-xs-12 destaque';
                         } else if ( in_array('aposta-do-verao', $categories) ) {
-                            $class_product = 'col-md-6 destaque';
+                            $class_product = 'col-md-6 col-xs-12 destaque';
                             $destaque_tag = '<div class="destaque-tag">Aposta do verão</div>';
                         } else {
-                            $class_product = 'col-md-3';
+                            $class_product = 'col-md-3 col-xs-6';
                         }
 
                         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );

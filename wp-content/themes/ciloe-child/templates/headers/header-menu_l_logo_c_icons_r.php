@@ -95,12 +95,12 @@ if ( $enable_info_product_single ) {
 										?>
                                     </ul>
 								<?php } ?>
-                                <div class="header-search-box">
-                                    <span class="flaticon-search-1 icons"></span>
-									<?php ciloe_search_form(); ?>
-                                </div>
 
 								<?php /**
+								<div class="header-search-box">
+								<span class="flaticon-search-1 icons"></span>
+								<?php ciloe_search_form(); ?>
+								</div>
 								<?php if ( class_exists( 'WooCommerce' ) ) { ?>
                                     <div class="block-account">
 										<?php if ( is_user_logged_in() ) { ?>

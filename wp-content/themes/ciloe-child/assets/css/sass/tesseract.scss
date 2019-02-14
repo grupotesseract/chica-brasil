@@ -279,6 +279,8 @@ footer {
 		@include phone {
 			flex-direction: column;
 			padding-bottom: 0;
+			padding-left: 0;
+			padding-right: 0;
 		}
 		p {
 			color: white;
@@ -295,15 +297,27 @@ footer {
 			display: flex;
 			align-items: center;
 
-			img {
-				width: 36px;
+			@include phone {
+				display: block;
+				margin-top: 30px;
+			}
+			.img-wrapper {
+				display: flex;
 
-				&:last-of-type {
-					margin: 0 10px 0 3px;
+				@include phone {
+					width: 100%;
+					justify-content: center;
+				}
+				img {
+					width: 36px;
 
-					@include desktop-1280 {
+					&:last-of-type {
+						margin: 0 10px 0 3px;
 
-						margin-right: 2px;
+						@include desktop-1280 {
+
+							margin-right: 2px;
+						}
 					}
 				}
 			}
@@ -312,6 +326,13 @@ footer {
 				text-transform: uppercase;
 				position: absolute;
 				right: 15px;
+
+				@include phone {
+					position: relative;
+					text-align: center;
+					right: auto;
+					margin-top: 30px;
+				}
 			}
 		}
 		.framed-box {
@@ -476,6 +497,9 @@ footer {
 		.meta-content {
 			padding-top: 30px;
 
+			@include phone {
+				padding-top: 0;
+			}
 			.section-subtitle {
 				margin-bottom: 10px;;
 				text-transform: uppercase;
@@ -527,6 +551,7 @@ footer {
 
 		@include phone {
 			text-align: center;
+			font-size: 4.0rem;
 		}
 	}
 	p {
@@ -770,7 +795,7 @@ footer {
 		img {
 			height: 40px;
 		}
-		p {
+		p, a {
 			margin-bottom: 0;
 			margin-left: 10px;
 			color: $chica-lightblu;
@@ -856,7 +881,7 @@ footer {
 			flex-direction: row-reverse;
 
 			@include phone {
-				flex-direction: column-reverse;
+				flex-direction: column;
 			}
 		}
 		p {
@@ -904,8 +929,7 @@ footer {
 				padding: 45px;
 
 				@include phone {
-					padding-top: 20px;
-					padding-bottom: 20px;
+					padding: 20px 25px;
 				}
 			}
 		}
@@ -1005,12 +1029,22 @@ footer {
 
 				@include phone {
 					height: auto;
+					padding: 0 8px;
 				}
 				&.destaque {
 					height: 870px;
 
+					@include phone {
+						height: auto;
+					}
 					img {
 						height: 850px;
+
+						@include phone {
+							height: 300px;
+							width: 100%;
+							object-fit: cover;
+						}
 					}
 				}
 				img {
@@ -1018,7 +1052,9 @@ footer {
 					object-fit: cover;
 
 					@include phone {
-						height: auto;
+						height: 175px;
+						width: 100%;
+						object-fit: cover;
 					}
 				}
 				.img-wrapper {
@@ -1037,6 +1073,12 @@ footer {
 				}
 				.item-title {
 					padding: 10px 0;
+
+					@include phone {
+						margin-bottom: 0;
+						padding-bottom: 0;
+						height: 45px;
+					}
 				}
 			}
 		}

@@ -19,7 +19,7 @@ $enable_wishlist_mobile              = ciloe_get_option( 'enable_wishlist_mobile
                         <div class="box-mibile-overlay"></div>
                         <div class="box-mobile-menu-inner">
                             <a href="#" class="close-menu"><span
-                                        class=""><?php esc_html_e( 'Close', 'ciloe' ); ?></span></a>
+                                        class=""><?php esc_html_e( 'Fechar', 'ciloe' ); ?></span></a>
 
                             <div id="mobile-menu-content-tab"
                                  class="box-inner mn-mobile-content-tab box-tab-content active">
@@ -105,6 +105,7 @@ $enable_wishlist_mobile              = ciloe_get_option( 'enable_wishlist_mobile
             <div class="logo"><?php ciloe_get_logo(); ?></div>
             <div class="header-right">
 				<?php
+				/*
 				if ( $enable_header_product_search_mobile ) {
 					?>
                     <div class="header-search-box">
@@ -113,6 +114,7 @@ $enable_wishlist_mobile              = ciloe_get_option( 'enable_wishlist_mobile
                     </div>
 					<?php
 				}
+				*/
 				// if ( $enable_header_mini_cart_mobile && class_exists( 'WooCommerce' ) ) {
 				// 	get_template_part( 'template-parts/header', 'minicart' );
 				// }
