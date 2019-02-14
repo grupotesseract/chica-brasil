@@ -36,7 +36,7 @@ get_header();
                 <option value="biquinis">Biquinis</option>
                 <option value="maios-bodies">Maiôs - Bodies</option>
                 <option value="saidas">Saídas</option>
-                <option value="casual">Casual</option>
+                <option value="roupas">Roupas</option>
             </select>
         </div>
 
@@ -51,6 +51,24 @@ get_header();
                         'product_cat'       => $category_type,
                         'status'            => 'publish'
                     );
+
+                    if ( isset($_GET['cat']) && !empty($_GET['cat']) ) {
+                        $args['tax_query'] = array(
+                            'relation' => 'AND',
+                            array(
+                                'taxonomy'  => 'product_cat',
+                                'field'     => 'slug',
+                                'terms'     => $category_type
+                            ),
+                            array(
+                                'taxonomy'  => 'product_cat',
+                                'field'     => 'slug',
+                                'terms'     => trim($_GET['cat'])
+                            )
+                        );
+
+                        unset($args['product_cat']);
+                    }
 
                     $loop = new WP_Query( $args );
 
