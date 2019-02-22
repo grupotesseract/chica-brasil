@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Chica - Produtos Coleção
+ * Template Name: Chica - Produtos
  *
  * @package WordPress
  * @subpackage ciloe
@@ -29,7 +29,7 @@ get_header();
                 <li class="filtros-item" data-cat="biquinis">Biquinis</li>
                 <li class="filtros-item" data-cat="maios-bodies">Maiôs - Bodies</li>
                 <li class="filtros-item" data-cat="saidas">Saídas</li>
-                <li class="filtros-item" data-cat="casual">Casual</li>
+                <li class="filtros-item" data-cat="roupas">Roupas</li>
             </ul>
             <select class="filtros-mobile mobile-only">
                 <option value="all">Todos</option>
@@ -43,11 +43,11 @@ get_header();
         <div id="products">
             <div class="produtos-wrapper items-wrapper container">
                 <?php
-                    $number_of_posts = 10;
+                    $number_of_posts = -1;
 
                     $args = array(
                         'post_type'         => 'product',
-                        'posts_per_page'    => 10,
+                        'posts_per_page'    => $number_of_posts,
                         'product_cat'       => $category_type,
                         'status'            => 'publish'
                     );

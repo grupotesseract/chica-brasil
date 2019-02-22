@@ -29,7 +29,7 @@ get_header();
                 <li class="filtros-item" data-cat="biquinis">Biquinis</li>
                 <li class="filtros-item" data-cat="maios-bodies">Maiôs - Bodies</li>
                 <li class="filtros-item" data-cat="saidas">Saídas</li>
-                <li class="filtros-item" data-cat="casual">Casual</li>
+                <li class="filtros-item" data-cat="roupas">Roupas</li>
             </ul>
             <select class="filtros-mobile mobile-only">
                 <option value="all">Todos</option>

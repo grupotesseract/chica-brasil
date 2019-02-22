@@ -1025,20 +1025,20 @@ footer {
 		&.items-wrapper {
 			.item {
 				margin: 15px 0;
-				height: 420px;
+				height: 460px;
 
 				@include phone {
 					height: auto;
 					padding: 0 8px;
 				}
 				&.destaque {
-					height: 870px;
+					height: 950px;
 
 					@include phone {
 						height: auto;
 					}
 					img {
-						height: 850px;
+						height: 890px;
 
 						@include phone {
 							height: 300px;
