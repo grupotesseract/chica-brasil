@@ -4,7 +4,7 @@
  *  @param {Object} alm
  *  @since 4.1
  */
-let almResultsText = function(alm){
+export function almResultsText(alm){
 	if(!alm.resultsText) return false;
 	
 	let resultsType = 'standard';
@@ -36,7 +36,7 @@ let almRenderResultsText = function(el, current, total){
    text = text.replace('{num}', current);
    text = text.replace('{total}', total);
    el.innerHTML = text;  
-};
+}
 
 
 
@@ -47,7 +47,7 @@ let almRenderResultsText = function(el, current, total){
  *  @param {String} type
  *  @since 4.1
  */
-let almGetResultsText = function( alm, type = 'standard' ){
+export function almGetResultsText( alm, type = 'standard' ){
 	
 	if(!alm.resultsText) return false;
 	
@@ -93,7 +93,7 @@ let almGetResultsText = function( alm, type = 'standard' ){
          almRenderResultsText(alm.resultsText, current, total);
    	
    }
-};
+}
 
 
 
@@ -104,7 +104,7 @@ let almGetResultsText = function( alm, type = 'standard' ){
  *  @param {String} type
  *  @since 4.1
  */
-let almInitResultsText = function( alm, type = 'standard'){
+export function almInitResultsText( alm, type = 'standard'){
    
 	if(!alm.resultsText) return false;
 	
@@ -141,7 +141,7 @@ let almInitResultsText = function( alm, type = 'standard'){
    	
 			let start = (parseInt(alm.page) * parseInt(alm.posts_per_page) + 1)
          current = start + ' - ' + (parseInt(start) - 1 + parseInt(alm.posts_per_page));
-         totalEl = alm.container.get(0).querySelector('.alm-preloaded');
+         totalEl = alm.listing.querySelector('.alm-preloaded');
          if(totalEl){
             almRenderResultsText(alm.resultsText, current, totalEl.dataset.totalPosts);
          }
@@ -154,4 +154,4 @@ let almInitResultsText = function( alm, type = 'standard'){
    	   
 	}
 	
-};
+}

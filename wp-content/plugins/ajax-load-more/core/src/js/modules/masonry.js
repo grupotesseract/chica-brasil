@@ -1,24 +1,32 @@
+import almFadeIn from './fadeIn';
+import almAppendChildren from '../helpers/almAppendChildren';
+import almDomParser from '../helpers/almDomParser';
+let imagesLoaded = require('imagesloaded');
+
 /*
 	almMasonry
 	Function to trigger built-in Ajax Load More Masonry
 
-   @param container        object
-   @param items            object
-   @param selector         string
-   @param columnWidth      string
-   @param animation        string
-   @param horizontalOrder  string
-   @param speed            int
-   @param masonry_init     boolean
-   @param init             boolean
-   @param filtering        boolean   
+   @param {object} alm
+   @param {boolean} init
+   @param {boolean} filtering 
    
    @since 3.1
-   @updated 3.3.2
+   @updated 4.3
 */
-
-let almMasonry = (container, items, selector, columnWidth, animation, horizontalOrder, speed, masonry_init, init, filtering) => {	
-   
+let msnry = '';
+let almMasonry = (alm, init, filtering) => {	
+	
+	let container = alm.listing;
+	let html = alm.html;
+	
+	let selector = alm.masonry_selector;
+	let columnWidth = alm.masonry_columnwidth;
+	let animation = alm.masonry_animation;
+	let horizontalOrder = alm.masonry_horizontalorder;
+	let speed = alm.speed;	
+	let masonry_init = alm.masonry_init;
+      
    let duration = (speed+100)/1000 +'s'; // Add 100 for some delay
    let hidden = 'scale(0.5)';
    let visible = 'scale(1)';
@@ -54,12 +62,13 @@ let almMasonry = (container, items, selector, columnWidth, animation, horizontal
    
    // horizontalOrder
    horizontalOrder = (horizontalOrder === 'true') ? true : false;
-   
+      
 	if(!filtering){
    	
 		// First Run
 		if(masonry_init && init){
-			container.imagesLoaded( () => {
+			
+			imagesLoaded( container, function() {
 				
 				let defaults = {
 					itemSelector: selector,
@@ -84,43 +93,45 @@ let almMasonry = (container, items, selector, columnWidth, animation, horizontal
 					});
 				}				
             
-            // Trigger Masonry()		
-				container.masonry(defaults);
+            // Init Masonry, delay to allow time for items to be added to the page
+            setTimeout(function(){
+            	msnry = new Masonry( container, defaults );
+            	// Fade In
+					almFadeIn(container.parentNode, speed); 
+            }, 100 );				
 				
-				// Fade in
-				almMasonryFadeIn(container[0].parentNode, speed); 
 				
 			});
 		}
 		
-		// Standard
-		else{
-			items.imagesLoaded( () => {
-				container.append(items).masonry( 'appended', items );
-			});
+		// Standard / Append content
+		else{						
+						
+			// Loop all items and create array of node elements
+			let data = almDomParser(html, 'text/html');
+			
+			if(data){   	
+				
+   			// Append elements listing
+   			almAppendChildren(alm.listing, data, 'masonry');
+   			
+   			// Confirm imagesLoaded & append
+   			imagesLoaded( container, function() {
+					msnry.appended( data );				
+				});
+				
+			}
 		}
 
 	} else{
-		// Filtering Reset
-		container.masonry('destroy'); // destroy masonry
-		container[0].parentNode.style.opacity = 0;
-		container.append( items );
-		almMasonry(container, items, selector, columnWidth, animation, horizontalOrder, speed, true, true, false);
+   	
+		// Reset
+		msnry.destroy(); // destroy masonry
+		container.parentNode.style.opacity = 0;
+		almMasonry(alm, true, false);
+		
 	}
 
 };
 
-
-// Fade in masonry on initial page load
-let almMasonryFadeIn = (element, speed) => {
-	speed = speed/10;
-	let op = parseInt(element.style.opacity);  // initial opacity
-	let timer = setInterval(function () { 
-		if (op > 0.9){
-			element.style.opacity = 1;
-			clearInterval(timer);
-		}
-		element.style.opacity = op;
-		op += 0.1;
-	}, speed);
-}
+export default almMasonry;

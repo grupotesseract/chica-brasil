@@ -116,7 +116,7 @@
          <div class="clear"></div>
          <hr>
          <p class="warning-callout">
-            <?php _e('You must add the Previous Post shortcode directly to your single template file using the <a href="https://developer.wordpress.org/reference/functions/do_shortcode/" target="_blank">do_shortcode</a> method.', 'ajax-load-more'); ?> <a class="button-small" href="https://connekthq.com/plugins/ajax-load-more/add-ons/previous-post/" target="_blank"><?php _e('View Docs', 'ajax-load-more'); ?></a>
+            <?php _e('You must add the Single Post shortcode directly to your single template file using the <a href="https://developer.wordpress.org/reference/functions/do_shortcode/" target="_blank">do_shortcode</a> method.', 'ajax-load-more'); ?> <a class="button-small" href="https://connekthq.com/plugins/ajax-load-more/add-ons/single-post/" target="_blank"><?php _e('View Docs', 'ajax-load-more'); ?></a>
          </p>
       </div>
    </div>

@@ -327,6 +327,26 @@ jQuery(document).ready(function($) {
 
          output += ' filters="'+filters+'"';
 
+			var filters_paging = $('#alm-filters input[name=filters-paging]:checked').val().trim();
+         if(filters_paging !== '' && filters_paging !== 'true')
+            output += ' filters_paging="'+filters_paging+'"';
+
+			var filters_scroll = $('#alm-filters input[name=filters-scroll]:checked').val().trim();
+         if(filters_scroll !== '' && filters_scroll !== 'false')
+            output += ' filters_scroll="'+filters_paging+'"';
+         
+         if(filters_paging === 'true' || filters_scroll === 'true'){
+				
+				$('#filter-scrollTopOptions').slideDown(250, 'alm_easeInOutQuad');
+				
+				var filters_scrolltop = $('#alm-filters input[name=filters-scrolltop]').val();
+	         if(filters_scrolltop !== '30')
+	            output += ' filters_scrolltop="'+filters_scrolltop+'"';
+            
+         } else {
+				$('#filter-scrollTopOptions').slideUp(250, 'alm_easeInOutQuad');
+         }
+
 			var filters_analytics = $('#alm-filters input[name=filters-analytics]:checked').val().trim();
          if(filters_analytics !== '' && filters_analytics !== 'true')
             output += ' filters_analytics="'+filters_analytics+'"';
@@ -353,7 +373,7 @@ jQuery(document).ready(function($) {
          var nextpage_post_id = $('#next-page_post_id').val(),
              nextpage_url = $('input#next-page-url:checked').val(),
              nextpage_pageviews = $('input#next-page-pageviews:checked').val(),
-             nextpage_scrollspeed = $('input#next-page-scroll-speed').val(),
+             nextpage_scroll = $('select#next-page-scroll').val(),
              nextpage_scrolltop = $('input#next-page-scroll-top').val();
 
          $('.next-page-content').slideDown(250, 'alm_easeInOutQuad');
@@ -368,10 +388,7 @@ jQuery(document).ready(function($) {
             output += ' nextpage_pageviews="false"';
          }
 
-         if(!nextpage_scrollspeed.length) nextpage_scrollspeed = 250;
-         if(!nextpage_scrolltop.length) nextpage_scrollspeed = 30;
-
-         output += ' nextpage_scroll="'+ nextpage_scrollspeed +':'+ nextpage_scrolltop +'"';
+         output += ' nextpage_scroll="'+ nextpage_scroll +':'+ nextpage_scrolltop +'"';
 
 
       }else{

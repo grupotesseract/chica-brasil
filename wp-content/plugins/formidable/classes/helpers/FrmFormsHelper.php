@@ -176,7 +176,12 @@ class FrmFormsHelper {
 	 * @return string
 	 */
 	public static function get_invalid_error_message( $args ) {
-		$frm_settings = FrmAppHelper::get_settings();
+		$settings_args = $args;
+		if ( isset( $args['form'] ) ) {
+			$settings_args['current_form'] = $args['form']->id;
+		}
+
+		$frm_settings = FrmAppHelper::get_settings( $settings_args );
 		$invalid_msg = do_shortcode( $frm_settings->invalid_msg );
 		return apply_filters( 'frm_invalid_error_message', $invalid_msg, $args );
 	}
@@ -684,9 +689,8 @@ BEFORE_HTML;
 				continue;
 			}
 
-			if ( $line_break_first ) {
-				echo '<br/>';
-			}
+			$id = str_replace( 'field', 'field_', $error_key );
+			echo '<div id="' . esc_attr( $id ) . '_error">';
 
 			if ( $args['show_img'] && ! empty( $args['img'] ) ) {
 				echo '<img src="' . esc_attr( $args['img'] ) . '" alt="" />';
@@ -696,9 +700,7 @@ BEFORE_HTML;
 
 			echo wp_kses_post( $error );
 
-			if ( ! $line_break_first ) {
-				echo '<br/>';
-			}
+			echo '</div>';
 		}
 	}
 
@@ -891,7 +893,7 @@ BEFORE_HTML;
 			),
 			'frm_scroll_box' => array(
 				'label'      => __( 'Scroll Box', 'formidable' ),
-				'title'      => __( 'If you have many checkbox or radio button options, you may add this class to allow your user to easily scroll through the options.', 'formidable' ),
+				'title'      => __( 'If you have many checkbox or radio button options, you may add this class to allow your user to easily scroll through the options. Or add a scrolling area around content in an HTML field.', 'formidable' ),
 			),
 			'frm_capitalize' => array(
 				'label'      => __( 'Capitalize', 'formidable' ),

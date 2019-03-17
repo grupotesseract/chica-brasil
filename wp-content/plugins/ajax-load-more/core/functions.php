@@ -355,7 +355,7 @@ function alm_do_inline_css($setting) {
 */
 function alm_loop($repeater, $type, $theme_repeater, $alm_found_posts = '', $alm_page = '', $alm_item = '', $alm_current = ''){
    ob_start();
-
+   
    // Theme Repeater
 	if($theme_repeater !== 'null' && has_filter('alm_get_theme_repeater')){
 		do_action('alm_get_theme_repeater', $theme_repeater, $alm_found_posts, $alm_page, $alm_item, $alm_current); // Returns an include file

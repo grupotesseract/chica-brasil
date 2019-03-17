@@ -1242,6 +1242,14 @@ function alm_admin_init(){
 		'alm_general_settings'
 	);
 
+	add_settings_field(  // Scroll to top on load
+		'_alm_legacy_callbacks',
+		__('Legacy Callbacks', 'ajax-load-more' ),
+		'_alm_legacy_callbacks_callback',
+		'ajax-load-more',
+		'alm_general_settings'
+	);
+
 	add_settings_field(  // Uninstall
 		'_alm_uninstall',
 		__('Delete on Uninstall', 'ajax-load-more' ),
@@ -1623,7 +1631,7 @@ function alm_btn_class_callback(){
     if(!isset($options['_alm_btn_classname']))
 	   $options['_alm_btn_classname'] = '';
 
-	$html = '<label for="alm_settings[_alm_btn_classname]">'.__('Add classes to your <strong>Load More</strong> button', 'ajax-load-more').'.</label>';
+	$html = '<label for="alm_settings[_alm_btn_classname]">'.__('Add classes to your <strong>Load More</strong> button.', 'ajax-load-more').'</label>';
 	$html .= '<input type="text" class="btn-classes" id="alm_settings[_alm_btn_classname]" name="alm_settings[_alm_btn_classname]" value="'.$options['_alm_btn_classname'].'" placeholder="button rounded listing etc..." /> ';
 
 	echo $html;
@@ -1668,7 +1676,34 @@ function _alm_scroll_top_callback(){
 
 	$html =  '<input type="hidden" name="alm_settings[_alm_scroll_top]" value="0" />';
 	$html .= '<input type="checkbox" name="alm_settings[_alm_scroll_top]" id="_alm_scroll_top" value="1"'. (($options['_alm_scroll_top']) ? ' checked="checked"' : '') .' />';
-	$html .= '<label for="_alm_scroll_top">'.__('On initial page load, move the user\'s browser window to the top of the screen.<span style="display:block">This <u>may</u> help prevent the loading of unnecessary posts.</span>', 'ajax-load-more').'</label>';
+	$html .= '<label for="_alm_scroll_top">';
+	   $html .= __('On initial page load, move the user\'s browser window to the top of the screen.', 'ajax-load-more');
+	   $html .= '<span style="display:block">'. __('This may help prevent the loading of unnecessary posts.', 'ajax-load-more') .'</span>';
+	$html .= '</label>';
+
+	echo $html;
+}
+
+
+
+/*
+*  _alm_legacy_callbacks_callback
+*  Load legacy callback actions
+*
+*  @since 5.0.0
+*/
+
+function _alm_legacy_callbacks_callback(){
+	$options = get_option( 'alm_settings' );
+	if(!isset($options['_alm_legacy_callbacks']))
+	   $options['_alm_legacy_callbacks'] = '0';
+
+	$html =  '<input type="hidden" name="alm_settings[_alm_legacy_callbacks]" value="0" />';
+	$html .= '<input type="checkbox" name="alm_settings[_alm_legacy_callbacks]" id="_alm_legacy_callbacks" value="1"'. (($options['_alm_legacy_callbacks']) ? ' checked="checked"' : '') .' />';
+	$html .= '<label for="_alm_legacy_callbacks">';
+	   $html .= __('Load legacy JavaScript callback functions.', 'ajax-load-more');
+	   $html .= '<span style="display:block">'. __('Ajax Load More <a href="https://connekthq.com/plugins/ajax-load-more/docs/callback-functions/" target="_blank">callback functions</a> were updated in 5.0. Users who were using callbacks prior to ALM 5.0 can load this helper library to maintain compatibility.', 'ajax-load-more') .'</span>';
+	$html .= '</label>';
 
 	echo $html;
 }

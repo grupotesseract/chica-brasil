@@ -10,7 +10,7 @@ $preload_offset = $offset;
 
 
 // .alm-reveal default
-$alm_reveal= '<div class="alm-reveal alm-preloaded'. $transition_container_classes .'">';
+$alm_reveal = '<div class="alm-reveal alm-preloaded'. $transition_container_classes .'">';
 
 
 // If $seo or $filters, set $preloaded_amount to $posts_per_page
@@ -255,7 +255,7 @@ else {
 	   	// Call to Action [After]
 			if($cta && has_action('alm_cta_inc') && $cta_pos === 'after'){
 	         $output .= ($alm_current == $cta_val) ? apply_filters('alm_cta_inc', $cta_repeater, $cta_theme_repeater, $alm_found_posts, $alm_page, $alm_item, $alm_current, true) : '';
-		   }		      			   
+		   }
 
       endwhile; wp_reset_query();
       
@@ -272,13 +272,6 @@ else {
       
 
 	endif;
-	
-	
-	if($filters && class_exists('ALMFILTERS')){
-		// Maybe use this for Preloaded
-		//$pg = ALMFILTERS::alm_filters_get_page_num();
-		//$alm_total_posts = ($pg > 1 ) ? $alm_total_posts - ($preloaded_amount * $pg) + $preloaded_amount : $alm_total_posts;
-	}
 
 
 	// Add total_posts to localized ALM JS variables
@@ -288,16 +281,16 @@ else {
 	
 	if($seo === "true"){ // SEO, not Paging
 		
-		// Get querystring to append to URL (Maybe in the future)		
-		$querystring = ''; // $querystring = $_SERVER['QUERY_STRING'];
+		// Get querystring to append to URL		
+		$querystring = $_SERVER['QUERY_STRING'];
 		
 		// If search, append slug (?s=term) to data-url
 		$search_slug = (is_search()) ? $slug : '';
    				
 		// Append querystring to data-url
       $querystring = ($querystring) ? '?'.$querystring : '';
-      
-      $alm_reveal = '<div class="alm-reveal alm-seo alm-preloaded'. $transition_container_classes .'" data-page="1" data-url="'. $canonicalURL .''. $search_slug . $querystring .'" data-total-posts="'. $alm_preload_query->found_posts .'">';
+            
+      $alm_reveal = '<div class="alm-reveal alm-seo alm-preloaded'. $transition_container_classes .'" data-page="1" data-url="'. $canonicalURL .''. $querystring .'" data-total-posts="'. $alm_preload_query->found_posts .'">';
       
    } else {
 	   

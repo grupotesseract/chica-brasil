@@ -6,15 +6,15 @@ Description: The ultimate solution to add infinite scroll functionality to your 
 Text Domain: ajax-load-more
 Author: Darren Cooney
 Twitter: @KaptonKaos
-Author URI: https://connekthq.com
-Version: 4.2.0.1
+Author URI: https://connekthq.com 
+Version: 5.0.1
 License: GPL
 Copyright: Darren Cooney & Connekt Media
 */
 
 
-define('ALM_VERSION', '4.2.0.1');
-define('ALM_RELEASE', 'January 16, 2019');
+define('ALM_VERSION', '5.0.1');
+define('ALM_RELEASE', 'March 13, 2019');
 define('ALM_STORE_URL', 'https://connekthq.com');
 
 
@@ -335,7 +335,7 @@ if( !class_exists('AjaxLoadMore') ):
 
    	/*
    	*  alm_enqueue_scripts
-   	*  Enqueue our scripts and create our localize variables
+   	*  Enqueue scripts and create localized variables
    	*
    	*  @since 2.0.0
    	*/
@@ -353,7 +353,7 @@ if( !class_exists('AjaxLoadMore') ):
 	   	 *
 	   	 * @return Boolean
 	   	 */
-			$dependencies = apply_filters( 'alm_js_dependencies', array('jquery') );
+			$dependencies = apply_filters( 'alm_js_dependencies', '' );
 
 
    		// Core ALM JS
@@ -366,6 +366,9 @@ if( !class_exists('AjaxLoadMore') ):
    		// Masonry JS
    		wp_register_script( 'ajax-load-more-masonry', plugins_url( '/vendor/js/masonry/masonry.pkgd.min.js', __FILE__ ), 'ajax-load-more',  '4.2.1', true );
 
+   		// Callback Helpers
+   		wp_register_script( 'ajax-load-more-legacy-callbacks', plugins_url( '/vendor/js/alm/legacy-callbacks.js', __FILE__ ), 'jquery', '', false);
+   		
 
    		// Core CSS
    		if( !alm_do_inline_css('_alm_inline_css') && !alm_css_disabled('_alm_disable_css')){ // Not inline or disabled
@@ -374,13 +377,9 @@ if( !class_exists('AjaxLoadMore') ):
    		}
 
    		// Prevent loading of unnessasry posts - move user to top of page
-   		$scrolltop = 'false';
-   		if(!isset($options['_alm_scroll_top']) || $options['_alm_scroll_top'] != '1'){ // if unset or false
-   			$scrolltop = 'false';
-   		}else{ // if checked
-      		$scrolltop = 'true';
-   		}
-
+   		// if unset or false
+   		$scrolltop = (!isset($options['_alm_scroll_top']) || $options['_alm_scroll_top'] != '1') ? 'false' : 'true';
+   		
    		wp_localize_script(
    			'ajax-load-more',
    			'alm_localize',
@@ -449,10 +448,8 @@ if( !class_exists('AjaxLoadMore') ):
 			// Cache
    		$cache_id = (isset($_GET['cache_id'])) ? $_GET['cache_id'] : '';
    		$cache_logged_in = (isset($_GET['cache_logged_in'])) ? $_GET['cache_logged_in'] : false;
-   		$do_create_cache = true;
-   		if($cache_logged_in === 'true' && is_user_logged_in()){
-      		$do_create_cache = false;
-   		}
+   		$do_create_cache = ($cache_logged_in === 'true' && is_user_logged_in()) ? false : true;
+
 
    		// Offset
    		$offset = (isset($_GET['offset'])) ? $_GET['offset'] : 0;
@@ -636,7 +633,7 @@ if( !class_exists('AjaxLoadMore') ):
 	   				$alm_current++; // Current item in loop
 	   	         $alm_page = $alm_page_count; // Get page number
 	   	         $alm_item = ($alm_page_count * $posts_per_page) - $posts_per_page + $alm_loop_count; // Get current item
-
+                  
 
       			   // Call to Action [Before]
 	   				if($cta && has_action('alm_cta_inc') && $cta_pos === 'before' && in_array($alm_current, $cta_array)){

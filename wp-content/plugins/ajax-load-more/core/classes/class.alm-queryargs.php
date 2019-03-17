@@ -36,7 +36,7 @@ if(!class_exists('ALM_QUERY_ARGS')):
       	
       	// Post Type
       	if($is_ajax){
-      		$post_type = (isset($a['post_type'])) ? $a['post_type'] : 'post'; 
+      		$post_type = (isset($a['post_type'])) ? explode(",", $a['post_type']) : 'post'; 
       	} else {	      	
       		$post_type = explode(",", $a['post_type']);
       	} 

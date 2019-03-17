@@ -11,7 +11,7 @@ class FrmAppHelper {
 	/**
 	 * @since 2.0
 	 */
-	public static $plug_version = '3.06';
+	public static $plug_version = '3.06.02';
 
     /**
      * @since 1.07.02
@@ -73,19 +73,38 @@ class FrmAppHelper {
 
 	/**
 	 * @since 3.04.02
+	 * @param array|string $args
+	 * @param string       $page
 	 */
-	public static function admin_upgrade_link( $medium, $page = '' ) {
+	public static function admin_upgrade_link( $args, $page = '' ) {
 		if ( empty( $page ) ) {
-			$page = 'https://formidableforms.com/pricing-lite/';
+			$page = 'https://formidableforms.com/lite-upgrade/';
 		} else {
 			$page = 'https://formidableforms.com/' . $page;
 		}
+
+		$anchor = '';
+		if ( is_array( $args ) ) {
+			$medium  = $args['medium'];
+			$content = $args['content'];
+			if ( isset( $args['anchor'] ) ) {
+				$anchor = '#' . $args['anchor'];
+			}
+		} else {
+			$medium = $args;
+		}
+
 		$query_args = array(
 			'utm_source'   => 'WordPress',
 			'utm_medium'   => $medium,
 			'utm_campaign' => 'liteplugin',
 		);
-		return add_query_arg( $query_args, $page );
+
+		if ( isset( $content ) ) {
+			$query_args['utm_content'] = $content;
+		}
+
+		return add_query_arg( $query_args, $page ) . $anchor;
 	}
 
     /**
@@ -93,14 +112,18 @@ class FrmAppHelper {
      *
      * @since 2.0
      *
-     * @param None
+     * @param array $args - May include the form id when values need translation.
      * @return FrmSettings $frm_setings
      */
-	public static function get_settings() {
+	public static function get_settings( $args = array() ) {
 		global $frm_settings;
 		if ( empty( $frm_settings ) ) {
-			$frm_settings = new FrmSettings();
+			$frm_settings = new FrmSettings( $args );
+		} elseif ( isset( $args['current_form'] ) ) {
+			// If the global has already been set, allow strings to be filtered.
+			$frm_settings->maybe_filter_for_form( $args );
 		}
+
 		return $frm_settings;
 	}
 
@@ -1789,7 +1812,6 @@ class FrmAppHelper {
     public static function locales( $type = 'date' ) {
 		$locales = array(
 			'en' => __( 'English', 'formidable' ),
-			''   => __( 'English/Western', 'formidable' ),
 			'af' => __( 'Afrikaans', 'formidable' ),
 			'sq' => __( 'Albanian', 'formidable' ),
 			'ar' => __( 'Arabic', 'formidable' ),
@@ -1856,10 +1878,10 @@ class FrmAppHelper {
 
 		if ( $type === 'captcha' ) {
 			// remove the languages unavailable for the captcha
-			$unset = array( '', 'af', 'sq', 'hy', 'az', 'eu', 'bs', 'zh-HK', 'eo', 'et', 'fo', 'fr-CH', 'he', 'is', 'ms', 'sr-SR', 'ta', 'tu' );
+			$unset = array( 'af', 'sq', 'hy', 'az', 'eu', 'bs', 'zh-HK', 'eo', 'et', 'fo', 'fr-CH', 'he', 'is', 'ms', 'sr-SR', 'ta', 'tu' );
 		} else {
 			// remove the languages unavailable for the datepicker
-			$unset = array( 'en', 'fil', 'fr-CA', 'de-AT', 'de-AT', 'de-CH', 'iw', 'hi', 'pt', 'pt-PT', 'es-419', 'tr' );
+			$unset = array( 'fil', 'fr-CA', 'de-AT', 'de-CH', 'iw', 'hi', 'pt', 'pt-PT', 'es-419', 'tr' );
 		}
 
 		$locales = array_diff_key( $locales, array_flip( $unset ) );

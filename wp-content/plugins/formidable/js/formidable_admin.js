@@ -1252,28 +1252,6 @@ function frmAdminBuildJS(){
 			jQuery('.inplace_field').blur();
 		}
 	}
-	
-	function toggleRepeat(){
-		/*jshint validthis:true */
-		var field_id = jQuery(this).closest('li.frm_field_box').data('fid');
-		var main_form_id = jQuery('input[name="id"]').val();
-		var prev_form = jQuery('input[name="field_options[form_select_'+field_id+']"]').val();
-
-		if(this.checked){
-			jQuery('#frm_field_id_'+field_id+' .show_repeat_sec').fadeIn('slow');
-			jQuery(this).closest('li.frm_field_box').addClass('repeat_section').removeClass('no_repeat_section');
-
-			toggleFormid(field_id, prev_form, main_form_id, 1);
-		}else{
-			if(confirm(frm_admin_js.conf_no_repeat)){
-				jQuery('#frm_field_id_'+field_id+' .show_repeat_sec').fadeOut('slow');
-				jQuery(this).closest('li.frm_field_box').removeClass('repeat_section').addClass('no_repeat_section');
-				toggleFormid(field_id, prev_form, main_form_id, 0);
-			}else{
-				this.checked = true;
-			}
-		}
-	}
 
 	function toggleRepeatButtons(){
 		/*jshint validthis:true */
@@ -1300,27 +1278,6 @@ function frmAdminBuildJS(){
 	function updateRepeatText(obj, addRemove){
 		var $thisField = jQuery(obj).closest('.frm_field_box');
 		$thisField.find('.frm_'+ addRemove +'_form_row .frm_repeat_label').text(obj.value);
-	}
-	
-	function toggleFormid(field_id, form_id, main_form_id, checked){
-		// change form ids of all fields in section
-		var children = fieldsInSection(field_id);
-		var field_name = document.getElementById('field_label_' + field_id).innerHTML;
-		jQuery.ajax({type:'POST',url:ajaxurl,
-			data:{action:'frm_toggle_repeat', form_id:form_id, parent_form_id:main_form_id, checked:checked, field_id:field_id, field_name:field_name, children:children, nonce:frmGlobal.nonce},
-			success:function(id){
-				//return form id to hidden field
-				jQuery('input[name="field_options[form_select_'+field_id+']"]').val(id);
-
-				// Update data-formid on section field
-				var fieldListElement = document.getElementById( 'frm_field_id_' + field_id );
-				if ( id !== '' ) {
-					fieldListElement.setAttribute('data-formid', id);
-				} else {
-					fieldListElement.setAttribute('data-formid', main_form_id);
-				}
-			}
-		});
 	}
 
 	function fieldsInSection(id){
@@ -1742,12 +1699,17 @@ function frmAdminBuildJS(){
 
 		jQuery('.frm_show_upgrade').click( function( event ) {
 			event.preventDefault();
-			jQuery('.frm_feature_label').html( jQuery(this).data('upgrade') );
+			jQuery('.frm_feature_label').html( this.dataset.upgrade );
 			$info.dialog('open');
 
 			// set the utm medium
 			var button = $info.find('.button-primary');
-			var link = button.attr('href').replace( /(medium=)[a-z_-]+/ig, '$1' + jQuery(this).data('medium') );
+			var link = button.attr('href').replace( /(medium=)[a-z_-]+/ig, '$1' + this.dataset.medium );
+			var content = this.dataset.content;
+			if ( content === undefined ) {
+				content = '';
+			}
+			link = link.replace( /(content=)[a-z_-]+/ig, '$1' + content );
 			button.attr( 'href', link );
 		} );
 	}
@@ -2398,7 +2360,7 @@ function frmAdminBuildJS(){
 			type:'POST',url:ajaxurl,
 			data:{action:'frm_add_order_row',form_id:this_form_id,order_key:(parseInt(l)+1), nonce:frmGlobal.nonce},
 			success:function(html){
-				jQuery('#frm_order_options .frm_logic_rows').append(html).prev('.frm_add_order_row').hide();
+				jQuery('#frm_order_options .frm_logic_rows').append(html).show().prev('.frm_add_order_row').hide();
 			}
 		});
 	}
@@ -2768,37 +2730,6 @@ function frmAdminBuildJS(){
 				}
 			}
 		});
-	}
-
-	function fillLicenses(){
-		var emptyFields = jQuery('.frm_addon_license_key:visible');
-		if ( emptyFields.length < 1 ){
-			return false;
-		}
-
-		jQuery.ajax({
-			type:'POST',url:ajaxurl,dataType:'json',
-			data:{action:'frm_fill_licenses', nonce:frmGlobal.nonce},
-			success:function(json){
-				var i;
-				var licenses = json.licenses;
-				var filledSomething = false;
-				for ( i in licenses ) {
-				    if (licenses.hasOwnProperty(i)) {
-						var input = jQuery('#edd_'+ licenses[i].slug +'_license_key');
-						if ( typeof input !== null && input.is(':visible') ) {
-							input.val(licenses[i].key);
-							jQuery('input[name="edd_'+ licenses[i].slug +'_license_activate"]').click();
-							filledSomething = true;
-						}
-				    }
-				}
-				if ( ! filledSomething ) {
-					jQuery('.edd_frm_fill_license').replaceWith(frm_admin_js.no_licenses);
-				}
-			}
-		});
-		return false;
 	}
 
 	/* Import/Export page */
@@ -3523,7 +3454,6 @@ function frmAdminBuildJS(){
 			$newFields.on('click', '.frm_reload_icon', { iconType: 'clear_on_focus' }, toggleDefaultValueIcon);
 			$newFields.on('click', '.frm_error_icon', { iconType: 'default_blank' }, toggleDefaultValueIcon);
 
-			$newFields.on('click', '.frm_repeat_field', toggleRepeat);
 			$newFields.on('change', '.frm_repeat_format', toggleRepeatButtons);
 			$newFields.on('change', '.frm_repeat_limit', checkRepeatLimit);
 			$newFields.on('input', 'input[name^="field_options[add_label_"]', function(){
@@ -3917,7 +3847,6 @@ function frmAdminBuildJS(){
 			// activate addon licenses
 			var licenseTab = document.getElementById('licenses_settings');
 			jQuery(licenseTab).on('click', '.edd_frm_save_license', saveAddonLicense);
-			jQuery(licenseTab).on('click', '.edd_frm_fill_license', fillLicenses);
 
 			jQuery('.settings-lite-cta .dismiss').click( function( event ) {
 				event.preventDefault();

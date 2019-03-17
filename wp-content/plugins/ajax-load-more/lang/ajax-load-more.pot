@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ajax Load More\n"
-"POT-Creation-Date: 2019-01-15 12:45-0500\n"
+"POT-Creation-Date: 2019-03-05 08:50-0500\n"
 "PO-Revision-Date: 2018-06-20 13:05-0500\n"
 "Last-Translator: Darren Cooney <darren@connekthq.com>\n"
 "Language-Team: \n"
@@ -242,64 +242,68 @@ msgid "Top of Page"
 msgstr ""
 
 #: admin/admin.php:1247
-msgid "Delete on Uninstall"
+msgid "Legacy Callbacks"
 msgstr ""
 
 #: admin/admin.php:1255
-msgid "Dynamic Content"
+msgid "Delete on Uninstall"
 msgstr ""
 
 #: admin/admin.php:1263
-msgid "Editor Button"
+msgid "Dynamic Content"
 msgstr ""
 
 #: admin/admin.php:1271
+msgid "Editor Button"
+msgstr ""
+
+#: admin/admin.php:1279
 msgid "Error Notices"
 msgstr ""
 
-#: admin/admin.php:1348
+#: admin/admin.php:1356
 msgid ""
 "Customize the user experience of Ajax Load More by updating the fields below."
 msgstr ""
 
-#: admin/admin.php:1361
+#: admin/admin.php:1369
 msgid "The following settings affect the WordPress admin area only."
 msgstr ""
 
-#: admin/admin.php:1392
+#: admin/admin.php:1400
 msgid "I want to use my own CSS styles."
 msgstr ""
 
-#: admin/admin.php:1392
+#: admin/admin.php:1400
 msgid "View Ajax Load More CSS"
 msgstr ""
 
-#: admin/admin.php:1412
+#: admin/admin.php:1420
 msgid "Hide shortcode button in WYSIWYG editor."
 msgstr ""
 
-#: admin/admin.php:1433
+#: admin/admin.php:1441
 msgid ""
 "Display error messaging regarding repeater template updates in the browser "
 "console."
 msgstr ""
 
-#: admin/admin.php:1454
+#: admin/admin.php:1462
 msgid ""
 "Disable dynamic population of categories, tags and authors in the Shortcode "
 "Builder.<span style=\"display:block\">Recommended if you have a large number "
 "of categories, tags and/or authors."
 msgstr ""
 
-#: admin/admin.php:1475 admin/admin.php:1478
+#: admin/admin.php:1483 admin/admin.php:1486
 msgid "Ajax Posts Here"
 msgstr ""
 
-#: admin/admin.php:1480
+#: admin/admin.php:1488
 msgid "You can modify the container type when building a shortcode."
 msgstr ""
 
-#: admin/admin.php:1497
+#: admin/admin.php:1505
 msgid ""
 "Add custom classes to the <i>.alm-listing</i> container - classes are "
 "applied globally and will appear with every instance of Ajax Load More. "
@@ -307,55 +311,70 @@ msgid ""
 "shortcode.</span>"
 msgstr ""
 
-#: admin/admin.php:1559
+#: admin/admin.php:1567
 msgid ""
 "Select an Ajax loading style - you can choose between a <strong>Button</"
 "strong> or <strong>Infinite Scroll</strong>"
 msgstr ""
 
-#: admin/admin.php:1564
+#: admin/admin.php:1572
 msgid "Button"
 msgstr ""
 
-#: admin/admin.php:1572
+#: admin/admin.php:1580
 msgid "Infinite Scroll (No Button)"
 msgstr ""
 
-#: admin/admin.php:1585
+#: admin/admin.php:1593
 msgid "Preview"
 msgstr ""
 
-#: admin/admin.php:1585 admin/shortcode-builder/shortcode-builder.php:199
-#: core/classes/class.alm-shortcode.php:166
+#: admin/admin.php:1593 admin/shortcode-builder/shortcode-builder.php:199
+#: core/classes/class.alm-shortcode.php:169
 msgid "Older Posts"
 msgstr ""
 
-#: admin/admin.php:1606
+#: admin/admin.php:1614
 msgid "Improve site performance by loading Ajax Load More CSS inline"
 msgstr ""
 
-#: admin/admin.php:1626
-msgid "Add classes to your <strong>Load More</strong> button"
+#: admin/admin.php:1634
+msgid "Add classes to your <strong>Load More</strong> button."
 msgstr ""
 
-#: admin/admin.php:1671
+#: admin/admin.php:1680
 msgid ""
 "On initial page load, move the user's browser window to the top of the "
-"screen.<span style=\"display:block\">This <u>may</u> help prevent the "
-"loading of unnecessary posts.</span>"
+"screen."
 msgstr ""
 
-#: admin/admin.php:1693
+#: admin/admin.php:1681
+msgid "This may help prevent the loading of unnecessary posts."
+msgstr ""
+
+#: admin/admin.php:1704
+msgid "Load legacy JavaScript callback functions."
+msgstr ""
+
+#: admin/admin.php:1705
+msgid ""
+"Ajax Load More <a href=\"https://connekthq.com/plugins/ajax-load-more/docs/"
+"callback-functions/\" target=\"_blank\">callback functions</a> were updated "
+"in 5.0. Users who were using callbacks prior to ALM 5.0 can load this helper "
+"library to maintain compatibility."
+msgstr ""
+
+#: admin/admin.php:1728
 msgid ""
 "Check this box if Ajax Load More should remove all of its data* when the "
 "plugin is deleted."
 msgstr ""
 
-#: admin/admin.php:1694
+#: admin/admin.php:1729
 msgid "* Database Tables, Options and Repeater Templates"
 msgstr ""
 
-#: admin/admin.php:1716
+#: admin/admin.php:1751
 msgid ""
 "Enable <a href=\"https://codex.wordpress.org/WordPress_Nonces\" target="
 "\"_blank\">WP nonce</a> verification to help protect URLs against certain "
@@ -619,7 +638,10 @@ msgstr ""
 #: admin/shortcode-builder/components/filters.php:13
 #: admin/shortcode-builder/components/filters.php:78
 #: admin/shortcode-builder/components/filters.php:100
+#: admin/shortcode-builder/components/filters.php:141
+#: admin/shortcode-builder/components/filters.php:163
 #: admin/shortcode-builder/components/nextpage.php:13
+#: admin/shortcode-builder/components/nextpage.php:92
 #: admin/shortcode-builder/components/paging.php:12
 #: admin/shortcode-builder/components/paging.php:35
 #: admin/shortcode-builder/components/preloaded.php:13
@@ -645,7 +667,10 @@ msgstr ""
 #: admin/shortcode-builder/components/filters.php:17
 #: admin/shortcode-builder/components/filters.php:82
 #: admin/shortcode-builder/components/filters.php:104
+#: admin/shortcode-builder/components/filters.php:145
+#: admin/shortcode-builder/components/filters.php:167
 #: admin/shortcode-builder/components/nextpage.php:17
+#: admin/shortcode-builder/components/nextpage.php:93
 #: admin/shortcode-builder/components/paging.php:16
 #: admin/shortcode-builder/components/paging.php:39
 #: admin/shortcode-builder/components/preloaded.php:17
@@ -854,6 +879,7 @@ msgid ""
 msgstr ""
 
 #: admin/shortcode-builder/components/comments.php:144
+#: admin/shortcode-builder/components/nextpage.php:110
 #: admin/shortcode-builder/components/single-post.php:42
 #: admin/shortcode-builder/components/single-post.php:119
 msgid "View Docs"
@@ -929,13 +955,13 @@ msgstr ""
 #: admin/shortcode-builder/components/filters.php:31
 msgid ""
 "A target ID is not required but it is highly recommended to avoid issues "
-"with querystring parsing on page load"
+"with querystring parsing on page load."
 msgstr ""
 
 #: admin/shortcode-builder/components/filters.php:32
 msgid ""
 "Connect Ajax Load More to a specific <a href=\"admin.php?page=ajax-load-more-"
-"filters\">filter instance</a> by selecting the filter ID"
+"filters\">filter instance</a> by selecting the filter ID."
 msgstr ""
 
 #: admin/shortcode-builder/components/filters.php:52
@@ -947,26 +973,72 @@ msgid "You don't have any filters! The first step is to create one"
 msgstr ""
 
 #: admin/shortcode-builder/components/filters.php:70
-msgid "Analytics"
+msgid "Paging Parameters"
 msgstr ""
 
 #: admin/shortcode-builder/components/filters.php:70
-msgid ""
-"Each time the filter is updated a pageview will be sent to Google Analytics"
+msgid "Adding paging parameters will allow for deep linking to a paged filter."
 msgstr ""
 
 #: admin/shortcode-builder/components/filters.php:71
-msgid "Send pageviews to Google Analytics"
+msgid ""
+"Add <span>?pg=x</span> to the browser querystring as users load additional "
+"pages."
 msgstr ""
 
 #: admin/shortcode-builder/components/filters.php:92
+msgid "Scroll"
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:92
+msgid "When a user filters a list they will be auto scrolled back to the top."
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:93
+msgid "Automatically scroll users to the top of list after a filter update."
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:116
+#: admin/shortcode-builder/components/nextpage.php:98
+msgid "Scroll Top"
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:116
+msgid ""
+"The Scroll Top value is the pixel position the window will be scrolled to."
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:117
+msgid ""
+"The offset top position of the window used with `Paging Parameters` and "
+"`Scroll`."
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:122
+msgid "Scroll Top Value"
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:133
+msgid "Analytics"
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:133
+msgid ""
+"Each time the filter is updated a pageview will be sent to Google Analytics."
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:134
+msgid "Send pageviews to Google Analytics."
+msgstr ""
+
+#: admin/shortcode-builder/components/filters.php:155
 #: admin/shortcode-builder/components/rest-api.php:100
 msgid "Debug Mode"
 msgstr ""
 
-#: admin/shortcode-builder/components/filters.php:93
+#: admin/shortcode-builder/components/filters.php:156
 msgid ""
-"Enable debugging of the Ajax Load More filter object in the browser console"
+"Enable debugging of the Ajax Load More filter object in the browser console."
 msgstr ""
 
 #: admin/shortcode-builder/components/nextpage.php:3 core/functions.php:140
@@ -1011,43 +1083,30 @@ msgstr ""
 msgid "Yes, send pageviews to Google Analytics"
 msgstr ""
 
-#: admin/shortcode-builder/components/nextpage.php:84
+#: admin/shortcode-builder/components/nextpage.php:83
 msgid "Scroll to Page"
 msgstr ""
 
 #: admin/shortcode-builder/components/nextpage.php:85
-msgid "Set Scroll Speed to 0 to disable scrolling to page"
+msgid "Scroll users automatically to the next page on 'Load More' action"
 msgstr ""
 
-#: admin/shortcode-builder/components/nextpage.php:88
-msgid "Scroll users automatically to the next page on 'Load More' button click"
+#: admin/shortcode-builder/components/nextpage.php:90
+#: admin/shortcode-builder/shortcode-builder.php:225
+msgid "Enable Scrolling"
 msgstr ""
 
-#: admin/shortcode-builder/components/nextpage.php:94
-msgid "Scroll Speed"
-msgstr ""
-
-#: admin/shortcode-builder/components/nextpage.php:95
-msgid "Scrolling speed in milliseconds (e.g. 1 second = 1000)"
-msgstr ""
-
-#: admin/shortcode-builder/components/nextpage.php:101
-msgid "Scroll Top"
-msgstr ""
-
-#: admin/shortcode-builder/components/nextpage.php:102
+#: admin/shortcode-builder/components/nextpage.php:99
 msgid ""
 "The scrolltop position of the window (used with scrolling and fwd/back "
 "browser buttons)"
 msgstr ""
 
-#: admin/shortcode-builder/components/nextpage.php:112
+#: admin/shortcode-builder/components/nextpage.php:110
 msgid ""
 "You must add the Next Page shortcode directly to your single template file "
 "using the <a href=\"https://developer.wordpress.org/reference/functions/"
-"do_shortcode/\" target=\"_blank\">do_shortcode</a> method. &raquo; <a href="
-"\"https://connekthq.com/plugins/ajax-load-more/add-ons/next-page/\" target="
-"\"_blank\">View documentation</a>"
+"do_shortcode/\" target=\"_blank\">do_shortcode</a> method."
 msgstr ""
 
 #: admin/shortcode-builder/components/paging.php:3 admin/views/settings.php:41
@@ -1194,6 +1253,7 @@ msgid ""
 msgstr ""
 
 #: admin/shortcode-builder/components/single-post.php:3
+#: admin/views/settings.php:47 core/functions.php:200
 msgid "Single Posts"
 msgstr ""
 
@@ -1283,8 +1343,8 @@ msgstr ""
 
 #: admin/shortcode-builder/components/single-post.php:119
 msgid ""
-"You must add the Previous Post shortcode directly to your single template "
-"file using the <a href=\"https://developer.wordpress.org/reference/functions/"
+"You must add the Single Post shortcode directly to your single template file "
+"using the <a href=\"https://developer.wordpress.org/reference/functions/"
 "do_shortcode/\" target=\"_blank\">do_shortcode</a> method."
 msgstr ""
 
@@ -1524,10 +1584,6 @@ msgstr ""
 
 #: admin/shortcode-builder/shortcode-builder.php:222
 msgid "Scrolling"
-msgstr ""
-
-#: admin/shortcode-builder/shortcode-builder.php:225
-msgid "Enable Scrolling"
 msgstr ""
 
 #: admin/shortcode-builder/shortcode-builder.php:226
@@ -2294,10 +2350,6 @@ msgstr ""
 msgid "SEO"
 msgstr ""
 
-#: admin/views/settings.php:47 core/functions.php:200
-msgid "Single Post"
-msgstr ""
-
 #: admin/views/shortcode-builder.php:7
 msgid ""
 "Create your own Ajax Load More <a href=\"http://en.support.wordpress.com/"
@@ -2467,7 +2519,7 @@ msgstr ""
 
 #: core/functions.php:202
 msgid ""
-"The Single Post add-on will load full posts as you scroll and update the "
+"The Single Posts add-on will load full posts as you scroll and update the "
 "browser URL to the current post."
 msgstr ""
 
