@@ -9,7 +9,7 @@ function products_filter() {
     $search_term = $_POST['search_term'];
 
     $args = array(
-        'posts_per_page'	=>	10,
+        'posts_per_page'	=>	-1,
         'post_type'			=>	'product',
         'post_status'		=>	'publish'
     );
@@ -52,7 +52,7 @@ function products_filter() {
 
 function display_query( $args, $type ) {
     if ( $type == 'product' ) {
-        $number_of_posts = 6;
+        $number_of_posts = -1;
 
         $wp_query = new WP_Query( $args );
         // var_dump($wp_query);

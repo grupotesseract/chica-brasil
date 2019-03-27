@@ -94,15 +94,17 @@ get_header();
 
                         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
                         ?>
-                        <div class="item <?php echo $class_product; ?>">
-                            <div class="img-wrapper">
-                                <img src="<?php echo $image[0] ?>" alt="">
-                                <?php echo $destaque_tag ?>
+                        <a href="<?php the_permalink() ?>">
+                            <div class="item <?php echo $class_product; ?>">
+                                <div class="img-wrapper">
+                                    <img src="<?php echo $image[0] ?>" alt="">
+                                    <?php echo $destaque_tag ?>
+                                </div>
+                                <h4 class="item-title"><?php the_title(); ?></h4>
                             </div>
-                            <h4 class="item-title"><?php the_title(); ?></h4>
-                        </div>
+                        </a>
                         <?php
-                        // echo '<br /><a href="'.get_permalink().'">' . woocommerce_get_product_thumbnail().' '.get_the_title().'</a>';
+
                     endwhile;
 
                     wp_reset_query();

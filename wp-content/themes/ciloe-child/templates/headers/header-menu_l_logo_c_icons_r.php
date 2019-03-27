@@ -96,7 +96,6 @@ if ( $enable_info_product_single ) {
                                     </ul>
 								<?php } ?>
 
-								<?php /**
 								<div class="header-search-box">
 								<span class="flaticon-search-1 icons"></span>
 								<?php ciloe_search_form(); ?>
@@ -128,7 +127,6 @@ if ( $enable_info_product_single ) {
                                         <span style="color: <?php echo esc_attr( $header_color ); ?>;"></span>
                                     </span>
                                 </a>
-								*/ ?>
                             </div>
                         </div>
                     </div>

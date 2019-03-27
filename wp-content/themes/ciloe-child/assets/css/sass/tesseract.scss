@@ -118,6 +118,16 @@ $font-terciary: 'Caviar Dreams';
 	color: $chica-darkgray !important;
 }
 
+.mg-hz-15 {
+	&.negative {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
 .main-btn {
 	border-radius: 40px;
 	padding: 0 25px;
@@ -136,6 +146,12 @@ $font-terciary: 'Caviar Dreams';
 			right: 0;
 		}
 	}
+}
+
+.main-loja-btn {
+	border-radius: 0;
+
+	background-color: $chica-cyan;
 }
 
 .loading-gif {
@@ -763,6 +779,7 @@ footer {
 	}
 }
 
+// CONTATO
 .page-template-template-contato {
 	.container {
 		max-width: 500px;
@@ -936,6 +953,7 @@ footer {
 	}
 }
 
+// LISTAGEM DE PRODUTOS
 .produtos-page {
 	margin-top: 50px;
 
@@ -1079,6 +1097,242 @@ footer {
 						padding-bottom: 0;
 						height: 45px;
 					}
+				}
+			}
+		}
+	}
+}
+
+// INTERNA DE PRODUTOS
+.product-template-default {
+	&.single {
+		.tesseract-product-inner {
+			.detail-content {
+				.entry-title {
+					font-family: $font-secondary;
+					text-transform: uppercase;
+					font-weight: 500;
+					font-size: 32px;
+				}
+			}
+		}
+	}
+}
+
+// PÁGINA DE CHECKOUT
+.woocommerce-page {
+	.main-content {
+		padding: 0;
+	}
+	.content-banner {
+		.container {
+			text-align: right;
+			max-width: 100%;
+
+			.title-page {
+				&.page-title {
+					text-transform: uppercase;
+				    display: inline-flex;
+				    position: relative;
+				    font-weight: 300;
+				    letter-spacing: 2px;
+				    padding-bottom: 20px;
+					color: black !important;
+					top: 50px;
+					font-weight: 500;
+
+					&:before {
+						transform: none;
+					    right: 10px;
+						left: auto;
+					    width: 70px;
+					    border: 2px solid black;
+					}
+				}
+			}
+		}
+	}
+}
+
+.woocommerce {
+	.checkout-before-top {
+		.ciloe-checkout-login {
+			float: none;
+			width: 100%;
+
+			&~ .ciloe-checkout-coupon {
+				width: 100%;
+				float: none;
+			}
+			.login {
+				padding: 0;
+			}
+		}
+		.woocommerce-info {
+			font-family: $font-secondary;
+			font-weight: 700;
+		}
+	}
+	.login-form-container {
+		background-color: #F2F2F2;
+		margin: 30px 0;
+		padding-top: 35px;
+		padding-bottom: 20px;
+
+		.login-cta-wrapper {
+			display: flex;
+			width: 100%;
+			align-items: center;
+
+			.main-loja-btn {
+				background-color: $chica-cyan;
+				color: #fff;
+				margin-bottom: 0;
+				width: auto;
+				padding-left: 60px;
+				padding-right: 60px;
+			}
+			.lost_password {
+				margin-bottom: 0;
+				text-decoration: underline;
+				margin-left: 15px;
+				font-size: 13px;
+
+				&:before {
+					content: none;
+				}
+			}
+		}
+	}
+	.woocommerce-order {
+		h2 {
+			font-family: $font-secondary;
+			text-transform: uppercase;
+
+			&.section-title {
+				font-family: $font-primary;
+				font-size: 64px;
+				text-transform: capitalize;
+			}
+		}
+		.meta-content {
+			text-align: center;
+			padding: 15px 0 30px;
+			margin-bottom: 30px;
+
+			.section-title {
+				position: relative;
+				left: -7%;
+			}
+			p {
+				color: black;
+				text-transform: uppercase;
+				font-weight: 700;
+				position: relative;
+				top: -13px;
+				font-size: 18px;
+				margin-bottom: 0;
+			}
+			.main-loja-btn {
+				color: #fff;
+				text-transform: uppercase;
+				padding: 12px 70px;
+			}
+		}
+		.woocommerce-order-overview {
+			border: 2px solid #e3e3e3;
+			padding-top: 15px;
+			background-color: #fff;
+			margin-bottom: 20px;
+		}
+	}
+	.woocommerce-billing-fields, .woocommerce-shipping-fields {
+		h2, h3 {
+			font-family: $font-secondary;
+			font-weight: 700;
+			margin-bottom: 30px;
+		}
+		label {
+			font-family: $font-secondary;
+		}
+		#billing_phone_field {
+			width: calc(50% - 20px);
+		}
+		#billing_address_2_field {
+			height: 90px;
+		}
+	}
+	p.form-row:not(#order_comments_field) {
+		height: 90px;
+	}
+	.woocommerce-form__label-for-checkbox {
+		&:hover {
+			span {
+				&:before {
+					background-color: $chica-cyan;
+					border-color: $chica-cyan;
+				}
+			}
+		}
+		.woocommerce-form__input-checkbox {
+			&:checked {
+				&+ span {
+					&:before {
+						background-color: $chica-cyan;
+						border-color: $chica-cyan;
+					}
+				}
+			}
+		}
+	}
+	#place_order {
+		background-color: $chica-cyan;
+	}
+	.shipping, .wc_payment_methods {
+		input[type="radio"] {
+			&:checked {
+				&+ label {
+					&:before {
+						background: $chica-cyan;
+						border-color: $chica-cyan;
+					}
+				}
+			}
+		}
+	}
+	.woocommerce-cart-form {
+		.shop_table {
+			border: none;
+		}
+		.cupom-wrapper {
+			border: 1px solid #9E9E9E;
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-top: 10px;
+
+			.coupon {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				label {
+					text-transform: uppercase;
+					font-family: $font-secondary;
+					padding-left: 40px;
+					padding-right: 30px;
+					margin-bottom: 0;
+				}
+				input {
+					width: 65%;
+					font-family: $font-secondary;
+					text-transform: uppercase;
+					border-color: #9E9E9E;
+					font-weight: 500;
+				}
+				button {
+					background-color: $chica-cyan;
+					font-family: $font-secondary;
+					padding: 0 50px;
 				}
 			}
 		}

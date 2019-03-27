@@ -9,6 +9,7 @@ add_filter('show_admin_bar', '__return_false');
 
 // Including main ajax functions file
 include_once ( dirname( __FILE__ ) . '/includes/tesseract-ajax.php' );
+include_once ( dirname( __FILE__ ) . '/includes/woo-functions.php' );
 
 // registra novos scripts/css
 if ( !function_exists( 'tesseract_enqueue_styles') ) :
