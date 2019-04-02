@@ -1471,3 +1471,15 @@ footer {
 		}
 	}
 }
+
+body {
+	&.single-product {
+		.wrapper_menu-sticky {
+			&.sticky-info_single_wrap {
+				footer {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}

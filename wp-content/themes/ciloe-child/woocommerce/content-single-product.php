@@ -169,32 +169,3 @@ $product_class .= ' ' . esc_attr( $product_style );
     </div>
 </div>
 <?php do_action( 'woocommerce_after_single_product' ); ?>
-<?php if ( $enable_info_product_single ) { ?>
-<div class="sticky_info_single_product">
-    <div class="container">
-        <div class="sticky-thumb-left">
-			<?php
-			do_action( 'sticky_thumbnail_product_summary' );
-			?>
-        </div>
-        <div class="sticky-info-right">
-            <div class="sticky-title">
-				<?php
-				do_action( 'sticky_info_product_summary' );
-				?>
-            </div>
-			<?php if ( $product->is_purchasable() || $product->is_type( 'external' ) || $product->is_type( 'grouped' ) ) { ?>
-				<?php if ( $product->is_in_stock() ) { ?>
-                    <button type="button"
-                            class="ciloe-single-add-to-cart-fixed-top ciloe-single-add-to-cart-btn btn button"><?php echo esc_html( $product->single_add_to_cart_text() ); ?>
-                    </button>
-				<?php } else { ?>
-                    <button type="button"
-                            class="ciloe-single-add-to-cart-fixed-top ciloe-single-add-to-cart-btn add-to-cart-out-of-stock btn button"><?php esc_html_e( 'Out Of Stock', 'ciloe' ); ?>
-                    </button>
-				<?php } ?>
-			<?php } ?>
-        </div>
-    </div>
-</div>
-<?php } ?>
