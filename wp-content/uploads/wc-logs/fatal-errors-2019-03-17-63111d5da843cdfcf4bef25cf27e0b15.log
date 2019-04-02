@@ -1,0 +1,16 @@
+2019-03-17T01:11:33+00:00 CRITICAL Object of class WP_Error could not be converted to string, em D:\xampp\htdocs\chica-brasil\wp-includes\formatting.php, na linha 3796
+
+2019-03-17T01:22:37+00:00 CRITICAL Object of class WP_Error could not be converted to string, em D:\xampp\htdocs\chica-brasil\wp-includes\formatting.php, na linha 3796
+
+2019-03-17T01:26:55+00:00 CRITICAL Object of class WP_Error could not be converted to string, em D:\xampp\htdocs\chica-brasil\wp-includes\formatting.php, na linha 3796
+
+2019-03-17T05:18:47+00:00 CRITICAL Object of class WP_Error could not be converted to string, em D:\xampp\htdocs\chica-brasil\wp-includes\formatting.php, na linha 3796
+
+2019-03-17T15:52:09+00:00 CRITICAL Object of class WP_Error could not be converted to string, em D:\xampp\htdocs\chica-brasil\wp-includes\formatting.php, na linha 3796
+
+2019-03-17T16:35:58+00:00 CRITICAL Cannot redeclare checkout_login_open() (previously declared in D:\xampp\htdocs\chica-brasil\wp-content\themes\ciloe-child\includes\woo-functions.php:5), em D:\xampp\htdocs\chica-brasil\wp-content\themes\ciloe\framework\includes\woo-functions.php, na linha 128
+
+2019-03-17T16:36:14+00:00 CRITICAL Cannot redeclare checkout_login_open() (previously declared in D:\xampp\htdocs\chica-brasil\wp-content\themes\ciloe-child\includes\woo-functions.php:5), em D:\xampp\htdocs\chica-brasil\wp-content\themes\ciloe\framework\includes\woo-functions.php, na linha 128
+
+2019-03-17T23:18:36+00:00 CRITICAL Cannot redeclare checkout_coupon_open() (previously declared in D:\xampp\htdocs\chica-brasil\wp-content\themes\ciloe-child\includes\woo-functions.php:13), em D:\xampp\htdocs\chica-brasil\wp-content\themes\ciloe\framework\includes\woo-functions.php, na linha 138
+
