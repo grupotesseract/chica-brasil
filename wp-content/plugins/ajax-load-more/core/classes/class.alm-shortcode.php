@@ -30,12 +30,25 @@ if( !class_exists('ALM_SHORTCODE') ):
 
       public static function alm_render_shortcode($atts){
          
-
+         
 			// Get global $post obj
          global $post;
 
+
 			// Get ALM options
    		$options = get_option( 'alm_settings' );
+   		
+   		
+   		/*
+	   	 *	alm_settings
+	   	 * Override default ALM Settings
+	   	 *
+	   	 * ALM Core Filter Hook
+	   	 *
+	   	 * @return $options;
+	   	 */
+   		$options = (has_filter('alm_settings')) ? apply_filters('alm_settings', $options) : $options;
+   		
    		
    		// Add count
    		self::$counter++;
@@ -49,8 +62,26 @@ if( !class_exists('ALM_SHORTCODE') ):
    		// Custom CSS for Layouts - Only run this once.
    		if(has_action('alm_layouts_custom_css')){
       		do_action('alm_layouts_custom_css', self::$counter);
-         }
-
+         }   
+         
+         
+         
+         /*
+	   	 *	alm_shortcode_defaults
+	   	 * Set default shortcode values that can be over written via shortcode atts
+	   	 *
+	   	 * ALM Core Filter Hook
+	   	 *
+	   	 * @return $atts;
+	   	 */
+   		$default_atts = apply_filters('alm_shortcode_defaults', '');  
+   		
+   		// Merge arrays. Allows for defaults to be overwritten by the actual shortcode.
+   		$atts = ($default_atts) ? array_merge($default_atts, $atts) : $atts;
+   		
+   		
+         
+         // Extact shortcode arrtibutes
    		extract(shortcode_atts(array(
 	   		'nested' => false,
 	   		'filters' => false,
@@ -172,7 +203,8 @@ if( !class_exists('ALM_SHORTCODE') ):
    			'css_classes' => '',
    			'id' => '',
    			'primary' => false
-   		), $atts));  		
+   		), $atts));   		
+   			
    		
    		
    		// Backwards compat

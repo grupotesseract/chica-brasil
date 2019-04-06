@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: https://smashballoon.com/instagram-feed
 Description: Display beautifully clean, customizable, and responsive Instagram feeds
-Version: 1.11.3
+Version: 1.12
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 License: GPLv2 or later
@@ -23,7 +23,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'SBIVER', '1.11.3' );
+define( 'SBIVER', '1.12' );
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -292,6 +292,11 @@ function display_instagram($atts, $content = null) {
 	$feed_expires = get_option( '_transient_timeout_'.$sbi_transient_name );
 	$sbi_cache_exists = $feed_expires !== false && ($feed_expires - time()) > 60 ? 'true' : 'false';
 
+	if ( $sbi_cache_exists === 'false'  && isset( $access_token ) ) {
+		$sbi_cache_exists = 'true';
+		sbi_pre_cache_photos( $sbi_transient_name, trim($atts['num']), $the_token_array );
+	}
+
 	$sbiHeaderCache = 'false';
 	//If it's a user then add the header cache check to the feed
 	$sb_instagram_user_id_arr = explode(',', $sb_instagram_user_id);
@@ -302,6 +307,11 @@ function display_instagram($atts, $content = null) {
 	$header_expires = get_option( '_transient_timeout_'.$sbi_header_transient_name );
 	$sbi_header_cache_exists = $header_expires !== false && ($header_expires - time()) > 60 ? 'true' : 'false';
 	$sbiHeaderCache = $sbi_header_cache_exists;
+
+	if ( $sbi_header_cache_exists === 'false' && isset( $access_token ) ) {
+		sbi_pre_cache_photos( $sbi_header_transient_name, 1, array( $access_token ) );
+		$sbiHeaderCache = 'true';
+	}
 
 	if ( isset( $options['check_api'] ) && ( $options['check_api'] === 'on' || $options['check_api']) && ( !isset( $options['sb_instagram_cache_time'] ) || ( isset( $options['sb_instagram_cache_time'] ) && (int)$options['sb_instagram_cache_time'] > 0 ) ) ) {
 		if ( ! get_transient( '&'.$sbi_transient_name, false ) ) {
@@ -355,7 +365,6 @@ function display_instagram($atts, $content = null) {
     $sb_instagram_ajax_theme = $atts['ajaxtheme'];
     ( $sb_instagram_ajax_theme == 'on' || $sb_instagram_ajax_theme == 'true' || $sb_instagram_ajax_theme == true ) ? $sb_instagram_ajax_theme = true : $sb_instagram_ajax_theme = false;
     if( $atts[ 'disablemobile' ] === 'false' ) $sb_instagram_ajax_theme = false;
-
 
     /******************* CONTENT ********************/
 
@@ -456,7 +465,7 @@ function sbi_should_use_backup_cache( $token, $cache_name, $is_filtered, $always
 	return false;
 }
 
-function sbi_cache_photos() {
+function sbi_pre_cache_photos( $transient, $num_images, $tokens ) {
 	$sb_instagram_settings = get_option('sb_instagram_settings');
 
 	//If the caching time doesn't exist in the database then set it to be 1 hour
@@ -469,76 +478,136 @@ function sbi_cache_photos() {
 	if($sb_instagram_cache_time_unit == 'days') $sb_instagram_cache_time_unit = 60*60*24;
 	$cache_seconds = intval($sb_instagram_cache_time) * intval($sb_instagram_cache_time_unit);
 
-	$transient_name = $_POST['transientName'];
+	$transient_name = $transient;
 	if ( is_array( $transient_name ) ) {
 		$transient_name = isset( $transient_name['feed'] ) ? sanitize_text_field( $transient_name['feed'] ) : 'sbi_other';
 	}
 
 	$cache_type = strpos( $transient_name, 'sbi_header_' ) !== 0 ? 'feed' : 'header';
-	$num_images = isset( $_POST['num_images'] ) ? (int)$_POST['num_images'] : 33;
+	$num_images = isset( $num_images ) ? (int)$num_images : 33;
 
 	if ( $num_images > 0 ) {
-	    $feed_tokens = isset( $_POST['feed_tokens'] ) ? $_POST['feed_tokens'] : array();
-	    $new_cache = ! empty( $feed_tokens ) ? sbi_get_post_data_from_tokens( $feed_tokens, $cache_type, $num_images ) : '';
-        echo $new_cache;
-		set_transient( $transient_name, $new_cache, $cache_seconds );
+		$feed_tokens = $tokens ? $tokens : array();
+		$new_cache = ! empty( $feed_tokens ) ? sbi_get_post_data_from_tokens( $feed_tokens, $cache_type, $num_images ) : '{"meta": {"code": 400, "error_type": "OAuthAccessTokenException", "error_message": "The access_token provided is invalid."}}"';
 
-		$backups_enabled = isset( $sb_instagram_settings['sb_instagram_backup'] ) ? $sb_instagram_settings['sb_instagram_backup'] !== '' : true;
+		if ( ! is_wp_error( $new_cache ) ) {
+			set_transient( $transient_name, $new_cache, $cache_seconds );
 
-		if ( $backups_enabled ) {
-			if ( strlen( $new_cache ) > 1999 && strpos( $transient_name, 'sbi_header_' ) !== 0 ) {
-				update_option( '!'.$transient_name, $new_cache, false );
-			} elseif ( strpos( $transient_name, 'sbi_header_' ) === 0 ) {
-				update_option( '!'.$transient_name, $new_cache, false );
+			$backups_enabled = isset( $sb_instagram_settings['sb_instagram_backup'] ) ? $sb_instagram_settings['sb_instagram_backup'] !== '' : true;
+
+			if ( $backups_enabled ) {
+				if ( strlen( $new_cache ) > 1999 && strpos( $transient_name, 'sbi_header_' ) !== 0 ) {
+					update_option( '!'.$transient_name, $new_cache, false );
+				} elseif ( strpos( $transient_name, 'sbi_header_' ) === 0 ) {
+					update_option( '!'.$transient_name, $new_cache, false );
+				}
 			}
 		}
 
 	}
+}
 
-	if ( strlen( $new_cache ) < 2000 && strpos( $transient_name, 'sbi_header_' ) !== 0 && get_option( '!'.$transient_name ) ) {
-		echo 'too much filtering';
+function sbi_cache_photos() {
+	$sb_instagram_settings = get_option('sb_instagram_settings');
+	//If the caching time doesn't exist in the database then set it to be 1 hour
+	( !array_key_exists( 'sb_instagram_cache_time', $sb_instagram_settings ) ) ? $sb_instagram_cache_time = 1 : $sb_instagram_cache_time = $sb_instagram_settings['sb_instagram_cache_time'];
+	( !array_key_exists( 'sb_instagram_cache_time_unit', $sb_instagram_settings ) ) ? $sb_instagram_cache_time_unit = 'minutes' : $sb_instagram_cache_time_unit = $sb_instagram_settings['sb_instagram_cache_time_unit'];
+	//Calculate the cache time in seconds
+	if($sb_instagram_cache_time_unit == 'minutes') $sb_instagram_cache_time_unit = 60;
+	if($sb_instagram_cache_time_unit == 'hours') $sb_instagram_cache_time_unit = 60*60;
+	if($sb_instagram_cache_time_unit == 'days') $sb_instagram_cache_time_unit = 60*60*24;
+	$cache_seconds = intval($sb_instagram_cache_time) * intval($sb_instagram_cache_time_unit);
+
+	$transient_name = $_POST['transientName'];
+	if ( is_array( $transient_name ) ) {
+		$transient_name = isset( $transient_name['feed'] ) ? sanitize_text_field( $transient_name['feed'] ) : 'sbi_other';
+	}
+	$cache_type = strpos( $transient_name, 'sbi_header_' ) !== 0 ? 'feed' : 'header';
+
+	// no longer processing header cache here
+	if ( $cache_type === 'header' ) {
+		die();
+	}
+	$existing_cache = get_transient( $transient_name );
+
+	$existing_cache_decoded = $existing_cache ? json_decode( $existing_cache, true ) : array();
+	$existing_cache_as_expected = isset( $existing_cache_decoded['data'] ) && isset( $existing_cache_decoded['data'][0]['id'] ) ? true : false;
+
+	$num_images = isset( $_POST['num_images'] ) ? (int)$_POST['num_images'] : 33;
+	if ( $existing_cache && $existing_cache_as_expected && $num_images > 0 ) {
+		$feed_tokens = isset( $_POST['feed_tokens'] ) ? $_POST['feed_tokens'] : array();
+		$new_cache = ! empty( $feed_tokens ) ? sbi_get_post_data_from_tokens( $feed_tokens, $cache_type, $num_images, $existing_cache_decoded ) : '';
+
+		if ( ! is_wp_error( $new_cache ) ) {
+			set_transient( $transient_name, $new_cache, $cache_seconds );
+			$backups_enabled = isset( $sb_instagram_settings['sb_instagram_backup'] ) ? $sb_instagram_settings['sb_instagram_backup'] !== '' : true;
+			if ( $backups_enabled ) {
+				if ( strlen( $new_cache ) > 1999 && strpos( $transient_name, 'sbi_header_' ) !== 0 ) {
+					update_option( '!' . $transient_name, $new_cache, false );
+				} elseif ( strpos( $transient_name, 'sbi_header_' ) === 0 ) {
+					update_option( '!' . $transient_name, $new_cache, false );
+				}
+			}
+		}
 	}
 
+	die();
 }
 add_action('wp_ajax_cache_photos', 'sbi_cache_photos');
 add_action('wp_ajax_nopriv_cache_photos', 'sbi_cache_photos');
 
-function sbi_get_post_data_from_tokens( $access_tokens = array(), $cache_type = 'feed', $num_needed = 33 ) {
-    $images = array();
-    $num_images_overall = 0;
-    $pagination = array(
-        'next_url' => array()
-    );
-    foreach ( $access_tokens as $token ) {
-        $clean_token = preg_replace("/[^a-zA-Z0-9\.]+/", "", sbi_maybe_clean( $token ) );
-        $split_token = explode( '.', $clean_token );
-        $id = $split_token[0];
-        if ( $cache_type === 'header' ) {
-            $api_call = 'https://api.instagram.com/v1/users/' . $id . '?access_token=' . $clean_token;
-        } else {
-            $api_call = 'https://api.instagram.com/v1/users/' . $id . '/media/recent?access_token=' . $clean_token . '&count=33';
-        }
-        $args = array(
-            'timeout' => 60,
-            'sslverify' => false
-        );
-        $result = wp_remote_get( $api_call, $args );
-        if ( ! is_wp_error( $result ) ) {
-            $decoded_results = json_decode( $result['body'], true );
-            $num_images_returned = 0;
-            if ( is_array( $decoded_results['data'] ) ) {
-                $num_images_returned = count( $decoded_results['data'] );
-            }
-            $num_images_overall += $num_images_returned;
-            $images = array_merge( $images, $decoded_results['data'] );
-            if ( !empty( $decoded_results['pagination']['next_url'] ) ) {
-                $pagination['next_url'][] = $decoded_results['pagination']['next_url'];
-            }
-        } else {
-            // error
-            return json_encode( $result );
-        }
-    }
+function sbi_get_post_data_from_tokens( $access_tokens = array(), $cache_type = 'feed', $num_needed = 33, $existing_cache = array() ) {
+
+	$images = array();
+	$num_images_overall = 0;
+	$pagination = array(
+		'next_url' => array()
+	);
+
+	if ( ! empty( $existing_cache ) ) {
+		$num_images_overall = count( $existing_cache['data'] );
+		$pagination = array(
+			'next_url' => $existing_cache['pagination']['next_url']
+		);
+		$images = isset( $existing_cache['data'] ) ? $existing_cache['data'] : array();
+	}
+
+	if ( empty( $pagination['next_url'] ) ) {
+		foreach ( $access_tokens as $token ) {
+			$clean_token = preg_replace("/[^a-zA-Z0-9\.]+/", "", sbi_maybe_clean( $token ) );
+			$split_token = explode( '.', $clean_token );
+			$id = $split_token[0];
+			if ( $cache_type === 'header' ) {
+				$api_call = 'https://api.instagram.com/v1/users/' . $id . '?access_token=' . $clean_token;
+			} else {
+				$api_call = 'https://api.instagram.com/v1/users/' . $id . '/media/recent?access_token=' . $clean_token . '&count=33';
+			}
+			$args = array(
+				'timeout' => 60,
+				'sslverify' => false
+			);
+			$result = wp_remote_get( $api_call, $args );
+
+			if ( ! is_wp_error( $result ) ) {
+				$decoded_results = json_decode( str_replace( '%22', '&rdquo;', $result['body'] ), true );
+
+				if ( isset( $decoded_results['data'] ) && is_array( $decoded_results['data'] ) ) {
+					$num_images_returned = count( $decoded_results['data'] );
+					$num_images_overall += $num_images_returned;
+					$images = array_merge( $images, $decoded_results['data'] );
+					if ( !empty( $decoded_results['pagination']['next_url'] ) ) {
+						$pagination['next_url'][] = $decoded_results['pagination']['next_url'];
+					}
+				} else {
+					return $result['body'];
+				}
+
+			} else {
+				// error
+				return $result;
+			}
+		}
+	}
 
     if ( $cache_type === 'feed' ) {
         $secondary_requests = 0;
@@ -552,19 +621,22 @@ function sbi_get_post_data_from_tokens( $access_tokens = array(), $cache_type = 
             );
             $result = wp_remote_get( $api_call, $args );
             if ( ! is_wp_error( $result ) ) {
-                $decoded_results = json_decode( $result['body'], true );
+                $decoded_results = json_decode( str_replace( '%20', '&rdquo;', $result['body'] ), true );
                 $num_images_returned = 0;
-                if ( is_array( $decoded_results['data'] ) ) {
+	            if ( isset( $decoded_results['data'] ) && is_array( $decoded_results['data'] ) ) {
                     $num_images_returned = count( $decoded_results['data'] );
-                }
-                $num_images_overall += $num_images_returned;
-                $images = array_merge( $images, $decoded_results['data'] );
-                if ( !empty( $decoded_results['pagination']['next_url'] ) ) {
-                    $pagination['next_url'][] = $decoded_results['pagination']['next_url'];
-                }
+		            $num_images_overall += $num_images_returned;
+		            $images = array_merge( $images, $decoded_results['data'] );
+		            if ( !empty( $decoded_results['pagination']['next_url'] ) ) {
+			            $pagination['next_url'][] = $decoded_results['pagination']['next_url'];
+		            }
+                } else {
+		            return $result['body'];
+	            }
+
             } else {
                 // error
-                return json_encode( $result );
+                return $result;
             }
 
         }
@@ -656,10 +728,19 @@ function sbi_get_cache() {
 	$options = get_option( 'sb_instagram_settings' );
 
 	$transient_names = json_decode(str_replace( array( '\"', "\\'" ), array( '"', "'" ), sanitize_text_field( $_POST['transientName'] ) ), true);
-	$header_cache_data_transient_data = get_transient( $transient_names['header'] );
+	$header_cache_data_transient_data = strpos( $transient_names['header'], 'sbi_' ) !== false ? get_transient( $transient_names['header'] ) : false;
 	$should_use_backup_header = isset( $_POST['useBackupHeader'] ) && sanitize_text_field( $_POST['useBackupHeader'] ) == 'true' ? true : false;
 	$should_use_backup_feed = isset( $_POST['useBackupFeed'] ) && sanitize_text_field( $_POST['useBackupFeed'] ) == 'true' ? true : false;
-	$feed_cache_transient_data = get_transient( $transient_names['feed'] );
+	$feed_cache_transient_data = strpos( $transient_names['feed'], 'sbi_' ) !== false ? get_transient( $transient_names['feed'] ) : false;
+
+	// verify contents of cache {"pagination":
+	if ( strpos( $feed_cache_transient_data, '{"pagination":' ) !== 0 ) {
+		$feed_cache_transient_data = false;
+	}
+	if ( strpos( $header_cache_data_transient_data, '{"pagination":' ) !== 0 ) {
+		$header_cache_data_transient_data = false;
+	}
+
 	$warning_message_data = '';
 	$backups_enabled = isset( $options['sb_instagram_backup'] ) ? $options['sb_instagram_backup'] !== '' : true;
 
@@ -675,16 +756,12 @@ function sbi_get_cache() {
 		$feed_cache_data = '{"error":"nocache"}';
 	}
 
-	if ( $transient_names['comments'] === 'need' ) {
-		$comment_cache_data = get_transient( 'sbinst_comment_cache' );
-		$comment_cache_data = ! empty( $comment_cache_data ) ? sbi_encode_uri( $comment_cache_data ) : '{"error":"nocache"}';
-	} else {
-		$comment_cache_data = '{"error":"nocache"}';
-	}
+	$comment_cache_data = '{"error":"nocache"}';
 
 	// maybe use backup cache
 	$still_using_backup = get_transient( '&'.$transient_names['feed'], false );
 	$doing_tryfetch = (isset( $options['check_api'] ) && $options['check_api'] === 'on' || $options['check_api']);
+	$header_cache_data = '{"error":"nocache"}';
 	if ( ! empty( $header_cache_data_transient_data ) ) {
 		$header_cache_data = $header_cache_data_transient_data;
 	} elseif ( $doing_tryfetch ) {
@@ -696,6 +773,9 @@ function sbi_get_cache() {
 	} elseif ( empty( $header_cache_data_transient_data ) || $still_using_backup ) {
 		$backup_header_cache = get_option( '!' . $transient_names['header'] );
 		$header_cache_data = ! empty( $backup_header_cache ) ? $backup_header_cache : '{"error":"nocache"}';
+		if ( strpos( $header_cache_data, '{"pagination":' ) !== 0 ) {
+			$header_cache_data = '{"error":"nocache"}';
+		}
 		if ( $still_using_backup === 'falsecache' ) {
 			$warning_message_data = ',"warning":{"warning":"falsecache"}';
 		}
@@ -707,6 +787,9 @@ function sbi_get_cache() {
 	if ( (empty( $feed_cache_transient_data ) && $should_use_backup_feed) || $still_using_backup ) {
 		$backup_feed_cache = get_option( '!' . $transient_names['feed'] );
 		$feed_cache_data = ! empty( $backup_feed_cache ) ? $backup_feed_cache : $feed_cache_data;
+		if ( strpos( $feed_cache_data, '{"pagination":' ) !== 0 ) {
+			$feed_cache_data = '{"error":"nocache"}';
+		}
 		if ( $still_using_backup === 'falsecache' ) {
 			$warning_message_data = ',"warning":{"warning":"falsecache"}';
 		}
@@ -720,32 +803,6 @@ function sbi_get_cache() {
 }
 add_action('wp_ajax_get_cache', 'sbi_get_cache');
 add_action('wp_ajax_nopriv_get_cache', 'sbi_get_cache');
-
-//sbi_clear_backups
-function sbi_clear_backups() {
-	if ( current_user_can( 'edit_posts' ) ) {
-		//Delete all transients
-		global $wpdb;
-		$table_name = $wpdb->prefix . "options";
-		$wpdb->query( "
-        DELETE
-        FROM $table_name
-        WHERE `option_name` LIKE ('%!sbi\_%')
-        " );
-		$wpdb->query( "
-        DELETE
-        FROM $table_name
-        WHERE `option_name` LIKE ('%\_transient\_&sbi\_%')
-        " );
-		$wpdb->query( "
-        DELETE
-        FROM $table_name
-        WHERE `option_name` LIKE ('%\_transient\_timeout\_&sbi\_%')
-        " );
-	}
-	die();
-}
-add_action( 'wp_ajax_sbi_clear_backups', 'sbi_clear_backups' );
 
 function sbi_maybe_clean( $maybe_dirty ) {
 	if ( substr_count ( $maybe_dirty , '.' ) < 3 ) {

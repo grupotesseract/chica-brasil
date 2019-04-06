@@ -243,8 +243,9 @@ var alm_is_filtering = false;
       alm.init = true;
       alm.loading = true;
       alm.finished = false;
+      alm.ua = window.navigator.userAgent ? window.navigator.userAgent : ''; // User agent
       alm.main = el;
-      alm.master_id = el.id; // the div#id of the instance 
+      alm.master_id = el.id; // The div#id of the ALM instance 
       el.classList.add('alm-' + e); // Add unique classname
       el.setAttribute('data-alm-id', e); // Add unique data id
 
@@ -2165,7 +2166,7 @@ Object.defineProperty(exports, "__esModule", {
  * @since 5.0
  */
 
-var nodeNameArray = ['#text'];
+var nodeNameArray = ['#text', '#comment'];
 
 var almAppendChild = function almAppendChild() {
 	var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -2807,6 +2808,7 @@ exports.almGetRestParams = almGetRestParams;
 */
 
 function almGetAjaxParams(alm, action, queryType) {
+
    // Defaults
    var data = {
       action: action,
@@ -2815,7 +2817,7 @@ function almGetAjaxParams(alm, action, queryType) {
       id: alm.id,
       post_id: alm.post_id,
       slug: alm.slug,
-      canonical_url: alm.canonical_url,
+      canonical_url: encodeURIComponent(alm.canonical_url),
       posts_per_page: alm.posts_per_page,
       page: alm.page,
       offset: alm.offset,
@@ -2972,7 +2974,7 @@ function almGetRestParams(alm) {
       page: alm.page,
       offset: alm.offset,
       slug: alm.slug,
-      canonical_url: alm.canonical_url,
+      canonical_url: encodeURIComponent(alm.canonical_url),
       post_type: alm.post_type,
       post_format: alm.listing.dataset.postFormat,
       category: alm.listing.dataset.category,
@@ -3008,6 +3010,55 @@ function almGetRestParams(alm) {
 
    return data;
 }
+
+/***/ }),
+
+/***/ "./core/src/js/helpers/srcsetPolyfill.js":
+/*!***********************************************!*\
+  !*** ./core/src/js/helpers/srcsetPolyfill.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+/**
+ * reloadSrcsetImgs
+ * A Safari srcset polyfill to get Masonry and ImagesLoaded working
+ *
+ * @param {*} container Element
+ * @param {*} ua String
+ * @since 5.0.2
+ */
+var srcsetPolyfill = function srcsetPolyfill() {
+	var container = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+	var ua = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+	// Exit if no container
+	if (!container) {
+		return false;
+	}
+
+	// Exit if useragent is Chrome, Safari or Windows
+	if (ua.indexOf('Safari') > -1 && ua.indexOf('Chrome') != -1 || ua.indexOf('Firefox') > -1 || ua.indexOf('Windows') > -1) {
+		return false;
+	}
+
+	// Get the images
+	var imgs = container.querySelectorAll('img[srcset]:not(.alm-loaded)');
+
+	// Loop images
+	for (var i = 0; i < imgs.length; i++) {
+		var img = imgs[i];
+		img.classList.add('alm-loaded');
+		img.outerHTML = img.outerHTML;
+	}
+};
+exports.default = srcsetPolyfill;
 
 /***/ }),
 
@@ -3423,23 +3474,27 @@ var _almDomParser = __webpack_require__(/*! ../helpers/almDomParser */ "./core/s
 
 var _almDomParser2 = _interopRequireDefault(_almDomParser);
 
+var _srcsetPolyfill = __webpack_require__(/*! ../helpers/srcsetPolyfill */ "./core/src/js/helpers/srcsetPolyfill.js");
+
+var _srcsetPolyfill2 = _interopRequireDefault(_srcsetPolyfill);
+
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
 var imagesLoaded = __webpack_require__(/*! imagesloaded */ "./node_modules/imagesloaded/imagesloaded.js");
 
-/*
-	almMasonry
-	Function to trigger built-in Ajax Load More Masonry
-
-   @param {object} alm
-   @param {boolean} init
-   @param {boolean} filtering 
-   
-   @since 3.1
-   @updated 4.3
+/**
+ * almMasonry
+ * Function to trigger built-in Ajax Load More Masonry
+ * 
+ * @param {object} alm
+ * @param {boolean} init
+ * @param {boolean} filtering 
+ * @since 3.1
+ * @updated 5.0.2
 */
+
 var msnry = '';
 var almMasonry = function almMasonry(alm, init, filtering) {
 
@@ -3496,6 +3551,8 @@ var almMasonry = function almMasonry(alm, init, filtering) {
     // First Run
     if (masonry_init && init) {
 
+      (0, _srcsetPolyfill2.default)(container, alm.ua); // Run srcSet polyfill			
+
       imagesLoaded(container, function () {
 
         var defaults = {
@@ -3539,6 +3596,8 @@ var almMasonry = function almMasonry(alm, init, filtering) {
 
           // Append elements listing
           (0, _almAppendChildren2.default)(alm.listing, data, 'masonry');
+
+          (0, _srcsetPolyfill2.default)(container, alm.ua); // Run srcSet polyfill
 
           // Confirm imagesLoaded & append
           imagesLoaded(container, function () {

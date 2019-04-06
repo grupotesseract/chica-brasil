@@ -339,6 +339,7 @@ jQuery(document).ready(function($) {
             data: {
                 action: 'sbi_clear_backups',
                 access_token: token,
+                sbi_nonce : sbiA.sbi_nonce,
                 just_tokens: true
             },
             success: function (data) {

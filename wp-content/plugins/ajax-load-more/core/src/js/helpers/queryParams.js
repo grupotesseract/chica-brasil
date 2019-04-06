@@ -10,6 +10,7 @@
 */
 
 export function almGetAjaxParams(alm, action, queryType){
+	
 	// Defaults
 	let data = {
       action               : action,
@@ -18,7 +19,7 @@ export function almGetAjaxParams(alm, action, queryType){
       id							: alm.id,
       post_id					: alm.post_id,
       slug                 : alm.slug,
-      canonical_url        : alm.canonical_url,
+      canonical_url        : encodeURIComponent(alm.canonical_url),
       posts_per_page       : alm.posts_per_page,
       page           		: alm.page,
       offset               : alm.offset,
@@ -180,7 +181,7 @@ export function almGetRestParams(alm){
 	   page              : alm.page,
 	   offset            : alm.offset,
 	   slug              : alm.slug,
-	   canonical_url     : alm.canonical_url,
+	   canonical_url     : encodeURIComponent(alm.canonical_url),
 	   post_type         : alm.post_type,
 	   post_format       : alm.listing.dataset.postFormat,
 	   category          : alm.listing.dataset.category,

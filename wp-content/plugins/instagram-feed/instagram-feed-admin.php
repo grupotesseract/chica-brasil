@@ -371,8 +371,8 @@ function sb_instagram_settings_page() {
 
                     <div id="sbi_config">
                         <!-- <a href="https://instagram.com/oauth/authorize/?client_id=1654d0c81ad04754a898d89315bec227&redirect_uri=https://smashballoon.com/instagram-feed/instagram-token-plugin/?return_uri=<?php echo admin_url('admin.php?page=sb-instagram-feed'); ?>&response_type=token" class="sbi_admin_btn"><?php _e( 'Log in and get my Access Token and User ID', 'instagram-feed' ); ?></a> -->
-                        <a href="https://instagram.com/oauth/authorize/?client_id=3a81a9fa2a064751b8c31385b91cc25c&scope=basic+public_content&redirect_uri=https://api.smashballoon.com/instagram-plugin-token.php?return_uri=<?php echo admin_url('admin.php?page=sb-instagram-feed'); ?>&response_type=token&state=<?php echo admin_url('admin.php?page-sb-instagram-feed'); ?>" class="sbi_admin_btn"><i class="fa fa-user-plus" aria-hidden="true" style="font-size: 20px;"></i>&nbsp; <?php _e( 'Connect an Instagram Account', 'instagram-feed' ); ?></a>
-                        <a href="https://smashballoon.com/instagram-feed/token/?utm_source=plugin-free&utm_campaign=sbi" target="_blank" style="position: relative; top: 14px; left: 15px;"><?php _e( 'Button not working?', 'instagram-feed' ); ?></a>
+                        <a href="https://instagram.com/oauth/authorize/?client_id=3a81a9fa2a064751b8c31385b91cc25c&scope=basic+public_content&redirect_uri=https://api.smashballoon.com/instagram-plugin-token.php?return_uri=<?php echo admin_url('admin.php?page=sb-instagram-feed'); ?>&response_type=token&state=<?php echo admin_url('admin.php?page-sb-instagram-feed'); ?>&hl=en" class="sbi_admin_btn"><i class="fa fa-user-plus" aria-hidden="true" style="font-size: 20px;"></i>&nbsp; <?php _e( 'Connect an Instagram Account', 'instagram-feed' ); ?></a>
+                        <a href="https://smashballoon.com/instagram-feed/token/" target="_blank" style="position: relative; top: 14px; left: 15px;"><?php _e( 'Button not working?', 'instagram-feed' ); ?></a>
                     </div>
 
                     <!-- Old Access Token -->
@@ -2345,6 +2345,37 @@ function sbi_test_token() {
 }
 add_action( 'wp_ajax_sbi_test_token', 'sbi_test_token' );
 
+//sbi_clear_backups
+function sbi_clear_backups() {
+    $nonce = isset( $_POST['sbi_nonce'] ) ? sanitize_text_field( $_POST['sbi_nonce'] ) : '';
+    
+	if ( ! wp_verify_nonce( $nonce, 'sbi-smash-balloon' ) ) {
+		die ( 'You did not do this the right way!' );
+	}
+
+    //Delete all transients
+    global $wpdb;
+    $table_name = $wpdb->prefix . "options";
+    $wpdb->query( "
+    DELETE
+    FROM $table_name
+    WHERE `option_name` LIKE ('%!sbi\_%')
+    " );
+    $wpdb->query( "
+    DELETE
+    FROM $table_name
+    WHERE `option_name` LIKE ('%\_transient\_&sbi\_%')
+    " );
+    $wpdb->query( "
+    DELETE
+    FROM $table_name
+    WHERE `option_name` LIKE ('%\_transient\_timeout\_&sbi\_%')
+    " );
+
+	die();
+}
+add_action( 'wp_ajax_sbi_clear_backups', 'sbi_clear_backups' );
+
 function sbi_delete_account() {
 	$access_token = isset( $_POST['access_token'] ) ? sanitize_text_field( $_POST['access_token'] ) : false;
 	$options = get_option( 'sb_instagram_settings', array() );
@@ -2455,16 +2486,20 @@ function sbi_after_connection() {
 }
 add_action( 'wp_ajax_sbi_after_connection', 'sbi_after_connection' );
 
-// variables to define certain terms
-$transient = 'instagram_feed_rating_notice_waiting';
-$option = 'sbi_rating_notice';
-$nag = 'sbi_ignore_rating_notice_nag';
+function sbi_process_admin_notices() {
+	// variables to define certain terms
+	$transient = 'instagram_feed_rating_notice_waiting';
+	$option = 'sbi_rating_notice';
+	$nag = 'sbi_ignore_rating_notice_nag';
 
-sbi_check_nag_get( $_GET, $nag, $option, $transient );
-sbi_maybe_set_transient( $transient, $option );
-$notice_status = get_option( $option, false );
+	sbi_check_nag_get( $_GET, $nag, $option, $transient );
+	sbi_maybe_set_transient( $transient, $option );
+	$notice_status = get_option( $option, false );
 
 // only display the notice if the time offset has passed and the user hasn't already dismissed it
-if ( get_transient( $transient ) !== 'waiting' && $notice_status !== 'dismissed' ) {
-    add_action( 'admin_notices', 'sbi_rating_notice_html' );
+	if ( get_transient( $transient ) !== 'waiting' && $notice_status !== 'dismissed' ) {
+		add_action( 'admin_notices', 'sbi_rating_notice_html' );
+	}
 }
+add_action( 'admin_init', 'sbi_process_admin_notices' );
+

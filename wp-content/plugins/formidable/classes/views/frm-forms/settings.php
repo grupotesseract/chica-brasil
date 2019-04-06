@@ -264,7 +264,7 @@
                 <?php
 
                 //For each add-on, add an li, class, and javascript function. If active, add an additional class.
-				$included = false;
+				$included    = false;
 				foreach ( $action_controls as $action_control ) {
 					$classes = ( isset( $action_control->action_options['active'] ) && $action_control->action_options['active'] ) ? 'frm_active_action ' : 'frm_inactive_action ';
 					$classes .= $action_control->action_options['classes'];
@@ -274,9 +274,17 @@
 						FrmAppController::include_upgrade_overlay();
 					}
 					$upgrade_label = sprintf( esc_html__( '%s form actions', 'formidable' ), $action_control->action_options['tooltip'] );
+
+					$install_data = '';
+					if ( strpos( $classes, 'frm_inactive_action' ) !== false ) {
+						$upgrading = FrmAddonsController::install_link( $action_control->action_options['plugin'] );
+						if ( isset( $upgrading['url'] ) ) {
+							$install_data = json_encode( $upgrading );
+						}
+					}
                     ?>
 					<li>
-						<a href="javascript:void(0)" class="frm_<?php echo esc_attr( $action_control->id_base ) ?>_action frm_bstooltip <?php echo esc_attr( $classes ); ?>" title="<?php echo esc_attr( $action_control->action_options['tooltip'] ) ?>" data-limit="<?php echo esc_attr( isset( $action_control->action_options['limit'] ) ? $action_control->action_options['limit'] : '99' ); ?>" data-actiontype="<?php echo esc_attr( $action_control->id_base ) ?>" data-upgrade="<?php echo esc_attr( $upgrade_label ); ?>" data-medium="settings-<?php echo esc_attr( $action_control->id_base ); ?>"></a>
+						<a href="javascript:void(0)" class="frm_<?php echo esc_attr( $action_control->id_base ) ?>_action frm_bstooltip <?php echo esc_attr( $classes ); ?>" title="<?php echo esc_attr( $action_control->action_options['tooltip'] ) ?>" data-limit="<?php echo esc_attr( isset( $action_control->action_options['limit'] ) ? $action_control->action_options['limit'] : '99' ); ?>" data-actiontype="<?php echo esc_attr( $action_control->id_base ) ?>" data-upgrade="<?php echo esc_attr( $upgrade_label ); ?>" data-oneclick="<?php echo esc_attr( $install_data ); ?>" data-medium="settings-<?php echo esc_attr( $action_control->id_base ); ?>"></a>
 					</li>
 <?php
 					unset( $actions_icon, $classes );
@@ -292,6 +300,7 @@
                 </div>
             </div>
 			<?php FrmFormActionsController::list_actions( $form, $values ); ?>
+
         </div>
 
         <div id="html_settings" class="tabs-panel <?php echo esc_attr( $a === 'html_settings' ) ? ' frm_block' : ' frm_hidden'; ?>">

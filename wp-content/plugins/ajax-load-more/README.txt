@@ -4,7 +4,7 @@ Donate link: https://connekthq.com/donate/
 Tags: infinite scroll, infinite scrolling, scroll, infinite, lazy load, lazy loading, endless scroll, pagination, ajax pagination, ajax, ajax posts, woocommerce, ajax load more, masonry
 Requires at least: 4.0
 Tested up to: 5.1.1
-Stable tag: 5.0.1
+Stable tag: 5.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -377,9 +377,18 @@ How to install Ajax Load More.
 
 == Changelog ==
 
+= 5.0.2 - April 4, 2019 =
+* NEW - `alm_shortcode_defaults` filter (docs coming soon).
+* NEW - `Added alm_settings` filter (docs coming soon).
+* FIX - Added custom Safari polyfill for srcset img height issue with Masonry and ImagesLoaded.
+* FIX - Fixed issue with encoding URLs in HTTP Ajax request.
+* FIX - Fix for undefined labels in Shortcode Builder.
+* FIX - Fixed issue with HTML comments in repeater templates causing issues with Masonry.
+
+
 = 5.0.1 - March 13, 2019 =
-- FIX - Fixed issue with Masonry not working when empty whitespace was present in a Repeater Template.
-- FIX - Fixed issue with innerHTML and appendChild not trigger JavaScript present in Repeater Templates.
+* FIX - Fixed issue with Masonry not working when empty whitespace was present in a Repeater Template.
+* FIX - Fixed issue with innerHTML and appendChild not trigger JavaScript present in Repeater Templates.
 
 
 = 5.0.0 - March 8, 2019 =
@@ -404,7 +413,7 @@ What's New in 5.0.0
 * UPDATE - Updated build process from Gulp to Webpack.
 * UPDATE - Added JS polyfills for various IE 11, 10 and 9 issues.
 * UPDATE - Added ALM ID to `alm_nextpage_query` for Next page users.
-- Fix - Fixed issue with `querySelector` on button element when using nested ALM instances.
+* Fix - Fixed issue with `querySelector` on button element when using nested ALM instances.
 * FIX - Removed duplicate `transition_container_classes` when using Paging add-on.
 * FIX - Fixed issue with `alm-listing` container causing an error with the Comments addon.
 * FIX - Added fix for `destroy_after` not triggered button `.done` class.

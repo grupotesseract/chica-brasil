@@ -74,8 +74,9 @@ let alm_is_filtering = false;
       alm.init = true;
       alm.loading = true;
       alm.finished = false;
+      alm.ua = (window.navigator.userAgent) ? window.navigator.userAgent : ''; // User agent
       alm.main = el;
-      alm.master_id = el.id; // the div#id of the instance 
+      alm.master_id = el.id; // The div#id of the ALM instance 
       el.classList.add('alm-' + e); // Add unique classname
       el.setAttribute('data-alm-id', e); // Add unique data id
 

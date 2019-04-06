@@ -346,7 +346,7 @@ function alm_admin_vars() { ?>
 
 /*
 *  alm_set_admin_nonce
-*  Create admin nonce on Repeater Template page only
+*  Create admin nonce on ALM pages only
 *
 *  @since 2.8.2
 */

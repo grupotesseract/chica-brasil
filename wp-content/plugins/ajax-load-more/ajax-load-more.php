@@ -7,14 +7,14 @@ Text Domain: ajax-load-more
 Author: Darren Cooney
 Twitter: @KaptonKaos
 Author URI: https://connekthq.com 
-Version: 5.0.1
+Version: 5.0.2
 License: GPL
 Copyright: Darren Cooney & Connekt Media
 */
 
 
-define('ALM_VERSION', '5.0.1');
-define('ALM_RELEASE', 'March 13, 2019');
+define('ALM_VERSION', '5.0.2');
+define('ALM_RELEASE', 'April 4, 2019');
 define('ALM_STORE_URL', 'https://connekthq.com');
 
 

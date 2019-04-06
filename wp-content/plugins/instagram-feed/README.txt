@@ -3,7 +3,7 @@ Contributors: smashballoon, craig-at-smash-balloon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram widget, Instagram gallery
 Requires at least: 3.0
 Tested up to: 5.1
-Stable tag: 1.11.3
+Stable tag: 1.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -324,9 +324,15 @@ We understand that sometimes you need help, have issues or just have questions. 
 * Plus more customization options added all the time!
 
 == Changelog ==
+= 1.12 =
+* Fix: Includes fixes for some security vulnerabilities. Thanks to Julio Potier of [SecuPress](https://secupress.me/) for reporting the issues.
+* Fix: Fixed an issue caused by a bug in the Instagram API which was preventing some Instagram accounts from being able to be connected. If you experienced an issue connecting an Instagram account then please try again after updating.
+* Fix: Quotes represented by "%20" in Instagram data were causing a JSON parsing error.
+* Tweak: Data for the feed is now cached outside of the admin-ajax.php calls.
+
 = 1.11.3 =
-* Fix: Escaped single quotes causing a JSON parse error under certain circumstances
-* Fix: Translatable code errors in the admin area causing some text to not be translatable
+* Fix: Escaped single quotes causing a JSON parse error under certain circumstances.
+* Fix: Translatable code errors in the admin area causing some text to not be translatable.
 
 = 1.11.2 =
 * Fix: Unable to connect new accounts due to changes with Instagram's API. Remote requests to connect accounts are now made server-side.
