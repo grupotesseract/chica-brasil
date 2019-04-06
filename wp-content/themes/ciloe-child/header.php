@@ -63,8 +63,3 @@ if ( $enable_info_product_single ) {
 	<?php if ( is_search() && class_exists( 'WooCommerce' ) ) {
 		get_template_part( 'template_parts/search', 'heading' );
 	} ?>
-	<?php
-	if ( is_singular( 'product' ) ):
-		do_action( 'ciloe_product_toolbar' );
-	endif;
-	?>

@@ -31,4 +31,5 @@ remove_action( 'woocommerce_before_lost_password_form', 'woocommerce_output_all_
 remove_action( 'before_woocommerce_pay', 'woocommerce_output_all_notices' );
 remove_action( 'woocommerce_before_reset_password_form', 'woocommerce_output_all_notices' );
 
+
 ?>
