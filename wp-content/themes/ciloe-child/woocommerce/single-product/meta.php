@@ -26,18 +26,16 @@ global $product;
 <div class="product_meta">
 
 	<?php do_action( 'woocommerce_product_meta_start' ); ?>
-	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() && $product->is_type( 'variable' ) ) ) : ?>
         <span class="sku_wrapper"><span class="meta-title"><?php esc_html_e( 'Código de identificação:', 'ciloe' ); ?></span>
             <span class="sku">
                 <?php if ( $sku = $product->get_sku() ) {
 	                echo esc_html( $sku );
-                } else {
-	                esc_html_e( 'N/A', 'ciloe' );
                 } ?>
             </span>
         </span>
 	<?php endif; ?>
-	<?php echo wc_get_product_category_list(
+	<?php /* echo wc_get_product_category_list(
 		$product->get_id(), ', ',
 		'<span class="posted_in"><span class="meta-title">' . _n( 'Categoria:', 'Categorias:', count( $product->get_category_ids() ), 'ciloe' ) . '</span> ',
 		'</span>' ); ?>
@@ -45,7 +43,7 @@ global $product;
 	echo wc_get_product_tag_list(
 		$product->get_id(), ', ',
 		'<span class="tagged_as"><span class="meta-title">' . _n( 'Tag:', 'Tags:', 'ciloe' ) . '</span> ',
-		'</span>' ); ?>
+		'</span>' ); */ ?>
 	<?php do_action( 'woocommerce_product_meta_end' ); ?>
 
 </div>
