@@ -32,6 +32,103 @@ get_header();
                 <option value="lancamentos">Lançamentos</option>
                 <option value="sales">Sales</option>
             </select>
+
+            <div class="filtros-container">
+                <div class="container">
+                    <div class="categorias col-md-4">
+                        <h4 class="filtro-title">Categorias</h4>
+                        <div class="cat-opt-wrapper">
+                            <div class="cat-opt col-md-6">
+                                <input id="cat-opt-biquinis" type="checkbox" value="biquinis">
+                                <label for="cat-opt-biquinis">Biquinis</label>
+                            </div>
+                            <div class="cat-opt col-md-6">
+                                <input id="cat-opt-roupas" type="checkbox" value="roupas">
+                                <label for="cat-opt-roupas">Roupas</label>
+                            </div>
+                            <div class="cat-opt col-md-6">
+                                <input id="cat-opt-maios-bodies" type="checkbox" value="maios-bodies">
+                                <label for="cat-opt-maios-bodies">Maiôs/Bodies</label>
+                            </div>
+                            <div class="cat-opt col-md-6">
+                                <input id="cat-opt-hits" type="checkbox" value="hits">
+                                <label for="cat-opt-hits">ChicaHits</label>
+                            </div>
+                            <div class="cat-opt col-md-6">
+                                <input id="cat-opt-croppeds" type="checkbox" value="croppeds">
+                                <label for="cat-opt-croppeds">Croppeds</label>
+                            </div>
+                            <div class="cat-opt col-md-6">
+                                <input id="cat-opt-lancamentos" type="checkbox" value="lancamentos">
+                                <label for="cat-opt-lancamentos">Lançamentos</label>
+                            </div>
+                            <div class="cat-opt col-md-6">
+                                <input id="cat-opt-saidas" type="checkbox" value="saidas">
+                                <label for="cat-opt-saidas">Saídas</label>
+                            </div>
+                            <div class="cat-opt col-md-6">
+                                <input id="cat-opt-sales" type="checkbox" value="sales">
+                                <label for="cat-opt-sales">Sale</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="estampas col-md-4">
+                        <h4 class="filtro-title">Estampas</h4>
+
+                        <div class="estampas-opt-wrapper">
+                            <ul class="estampas-list opt-list">
+                                <?php
+
+                                    $terms = get_terms( array(
+                                        'taxonomy' => 'pa_estampa',
+                                        'hide_empty' => false,
+                                    ) );
+
+                                    foreach ($terms as $term) {
+
+                                        $term_meta = get_term_meta( $term->term_id );
+                                        $thumb = wp_get_attachment_image_src( $term_meta['pa_estampa_attribute_swatch_photo'][0], 'single-post-thumbnail' );
+                                        echo '<li class="estampa-opt" data-value="'. $term->slug .'"><img src="'. $thumb[0] .'"></li>';
+
+                                    }
+
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tamanho col-md-4">
+                        <h4 class="filtro-title">Tamanho</h4>
+
+                        <div class="tamanho-opt-wrapper">
+                            <ul class="tamanho-list opt-list">
+                                <?php
+
+                                    $terms = get_terms( array(
+                                        'taxonomy' => 'pa_tamanho',
+                                        'hide_empty' => false,
+                                        'orderby' => 'id',
+                                        'order' => 'ASC'
+                                    ) );
+
+                                    foreach ($terms as $term) {
+
+                                        $term_meta = get_term_meta( $term->term_id );
+                                        $thumb = wp_get_attachment_image_src( $term_meta['pa_estampa_attribute_swatch_photo'][0], 'single-post-thumbnail' );
+                                        echo '<li class="estampa-opt" data-value="'. $term->slug .'">'. $term->name .'</li>';
+
+                                    }
+
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <?php /*
+                    <div class="ordernar col-md-3">
+                        <h4 class="filtro-title">Ordernar</h4>
+                    </div>
+                    */ ?>
+                </div>
+            </div>
         </div>
 
         <div id="products">
@@ -135,10 +232,10 @@ get_header();
             $('.filtros-item').click(function() {
                 $('.filtros-item').removeClass('active');
                 $(this).addClass('active');
-                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).attr('data-cat')], '');
+                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).attr('data-cat')], '', 'products');
             });
             $('.filtros-mobile').change(function() {
-                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).val()], '');
+                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).val()], '', 'products');
             });
         });
 
