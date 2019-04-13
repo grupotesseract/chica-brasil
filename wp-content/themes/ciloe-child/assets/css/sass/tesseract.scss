@@ -204,6 +204,8 @@ body {
 		display: none !important;
 	}
 	.totop-holder {
+		bottom: 130px;
+
 		.backtotop {
 			color: $chica-darkred;
 		    border-radius: 0;
@@ -269,45 +271,45 @@ header {
 // FOOTER
 footer {
 	position: relative;
-	padding: 20px 0;
 
-	&:after, &:before {
-		@extend %bfaf;
-		top: 0;
-		width: 50%;
-		height: 100%;
-		z-index: -1;
-
-		@include phone {
-			width: 100%;
-		}
-	}
-	&:before {
-		background-color: $chica-red;
-		left: 0;
-
-		@include phone {
-			top: 0;
-			height: 100%;
-		}
-	}
-	&:after {
-		background-color: $chica-lightblu;
-		right: 0;
-
-		@include phone {
-			top: 65%;
-			height: 40%;
-		}
-	}
 	.footer-wrapper {
 		display: flex;
 		align-items: center;
-		padding: 25px 0;
+		padding: 80px 0;
 		max-width: 100%;
 		padding-left: 35px;
 		padding-right: 35px;
 		justify-content: center;
+
+		&:after, &:before {
+			@extend %bfaf;
+			top: 0;
+			width: 50%;
+			height: 100%;
+			z-index: -1;
+
+			@include phone {
+				width: 100%;
+			}
+		}
+		&:before {
+			background-color: $chica-red;
+			left: 0;
+
+			@include phone {
+				top: 0;
+				height: 100%;
+			}
+		}
+		&:after {
+			background-color: $chica-lightblu;
+			right: 0;
+
+			@include phone {
+				top: 65%;
+				height: 40%;
+			}
+		}
 
 		@include phone {
 			flex-direction: column;
@@ -318,6 +320,21 @@ footer {
 		p {
 			color: white;
 			margin-bottom: 0;
+		}
+		h3 {
+			font-family: $font-secondary;
+			text-transform: uppercase;
+			color: $chica-red;
+			font-size: 1rem;
+			font-weight: 700;
+			margin-bottom: 30px;
+
+			&:after {
+				@extend %bfaf;
+				height: 2px;
+				width: 30px;
+				background-color: $chica-red;
+			}
 		}
 		// .textwidget {
 		// 	&.custom-html-widget {
@@ -375,7 +392,7 @@ footer {
 			justify-content: center;
 			flex-direction: column;
 			padding: 10px;
-			margin-top: 40px;
+			margin-top: 70px;
 
 			img {
 				width: 36px;
@@ -423,7 +440,30 @@ footer {
 
 			.menu-item {
 				font-family: $font-secondary;
+				margin: 5px 0;
 
+				&.current-menu-item {
+					padding-left: 10px;
+					position: relative;
+
+					&:before {
+						@extend %bfaf;
+						width: 1px;
+						height: 100%;
+						top: 0;
+						left: 0;
+						background-color: $chica-red;
+						opacity: 1;
+					}
+					a {
+						&:before {
+							content: none;
+						}
+						&:hover, &.active {
+							padding-left: 0;
+						}
+					}
+				}
 				a {
 					color: $chica-red;
 					position: relative;
@@ -450,6 +490,49 @@ footer {
 						transition: all ease 0.3s;
 					}
 				}
+			}
+		}
+	}
+	.copyright-wrapper {
+		background-color: #9D9D9B;
+		padding-top: 40px;
+		padding-bottom: 40px;
+
+		p {
+			color: white;
+			margin-bottom: 0;
+			font-family: $font-secondary;
+			text-transform: uppercase;
+			font-size: 16px;
+		}
+		.chica-infos {
+			h1 {
+				font-family: $font-secondary;
+				text-transform: uppercase;
+				color: white;
+				font-size: 22px;
+				margin-bottom: 0;
+			}
+		}
+		.development-infos {
+			display: flex;
+			flex-direction: row;
+			align-items: flex-end;
+			justify-content: flex-end;
+			padding-top: 35px;
+
+			p {
+				margin-right: 10px;
+				position: relative;
+				top: 8px;
+			}
+			a {
+				&:first-of-type {
+					margin: 0 60px;
+				}
+			}
+			img {
+				height: 80px;
 			}
 		}
 	}
@@ -1090,6 +1173,39 @@ footer {
 						height: 175px;
 						width: 100%;
 						object-fit: cover;
+					}
+				}
+				.product-meta {
+					margin-bottom: 20px;
+					position: relative;
+					margin-top: 10px;
+
+					.item-title {
+						padding: 0;
+						margin-bottom: 0;
+
+						a {
+							font-size: 22px;
+							color: $chica-gray;
+						}
+					}
+					.item-price {
+						font-size: 18px;
+						color: $chica-darkgray;
+						font-weight: 500;
+						font-family: $font-secondary;
+
+						del {
+							font-size: 15px;
+							color: $chica-gray;
+						}
+					}
+					.info-link {
+						position: absolute;
+						top: 0;
+						width: 15px;
+						right: 0;
+						color: $chica-gray;
 					}
 				}
 				.img-wrapper {

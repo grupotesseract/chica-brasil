@@ -94,15 +94,23 @@ get_header();
 
                         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
                         ?>
-                        <a href="<?php the_permalink() ?>">
-                            <div class="item <?php echo $class_product; ?>">
-                                <div class="img-wrapper">
+                        <div class="item <?php echo $class_product; ?>">
+                            <div class="img-wrapper">
+                                <a href="<?php the_permalink() ?>">
                                     <img src="<?php echo $image[0] ?>" alt="">
                                     <?php echo $destaque_tag ?>
-                                </div>
-                                <h4 class="item-title"><?php the_title(); ?></h4>
+                                </a>
                             </div>
-                        </a>
+                            <div class="product-meta">
+                                <div class="meta-infos">
+                                    <h4 class="item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                                    <p class="item-price"><?php echo $product->get_price_html(); ?></p>
+                                </div>
+                                <a href="<?php the_permalink(); ?>" class="info-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.11 36.83"><defs><style>.cls-1{fill:none;stroke:currentColor;stroke-miterlimit:10;stroke-width:2.83px;}</style></defs><g data-name="Layer 2"><g data-name="Camada 1"><path class="cls-1" d="M26.08,35.42H2a.61.61,0,0,1-.61-.66L3.28,10.61A.61.61,0,0,1,3.89,10H24.22a.61.61,0,0,1,.61.57l1.86,24.15A.61.61,0,0,1,26.08,35.42Z"/><path class="cls-1" d="M9,6.49a5.07,5.07,0,1,1,10.15,0"/></g></g></svg>
+                                </a>
+                            </div>
+                        </div>
                         <?php
 
                     endwhile;
