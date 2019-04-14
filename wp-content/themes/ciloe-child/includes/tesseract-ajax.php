@@ -8,6 +8,7 @@ function products_filter() {
     $order = $_POST['order'];
     $search_term = $_POST['search_term'];
     $page_type = $_POST['page_type'];
+    $attributes = $_POST['attributes'];
 
     $args = array(
         'posts_per_page'	=>	-1,
@@ -50,6 +51,50 @@ function products_filter() {
         } else {
             $args['product_cat'] = $category[0];
         }
+    }
+
+    if ( !empty($attributes['estampas']) ) {
+        $_estampas = array();
+
+        foreach ( $attributes['estampas'] as $estampa ) {
+
+            array_push($_estampas, $estampa);
+
+        }
+
+        if ( is_null($args['tax_query']) ) {
+            $args['tax_query'] = array();
+        }
+
+        array_push($args['tax_query'], array(
+            'taxonomy'  => 'pa_estampa',
+            'field'     => 'slug',
+            'terms'     => $_estampas,
+            'operator'  => 'IN'
+        ));
+
+    }
+
+    if ( !empty($attributes['tamanho']) ) {
+        $_tamanho = array();
+
+        foreach ( $attributes['tamanho'] as $tamanho ) {
+
+            array_push($_tamanho, $tamanho);
+
+        }
+
+        if ( is_null($args['tax_query']) ) {
+            $args['tax_query'] = array();
+        }
+
+        array_push($args['tax_query'], array(
+            'taxonomy'  => 'pa_tamanho',
+            'field'     => 'slug',
+            'terms'     => $_tamanho,
+            'operator'  => 'IN'
+        ));
+
     }
 
     if ( $page_type == 'featured' ) {
@@ -147,6 +192,7 @@ function display_main_product_page( $args, $type ) {
             $old_class = 'box-normal';
             echo '<div class="produtos-wrapper items-wrapper container">';
             // The 2nd Loop
+
             while ( $wp_query->have_posts() ) {
                 $wp_query->the_post();
                 global $product;
@@ -184,6 +230,14 @@ function display_main_product_page( $args, $type ) {
             echo '</div>';
 
             // wp_reset_postdata();
+        } else {
+            ?>
+            <div class="nothing-found container">
+                <h2>
+                    Nenhum produto encontrado
+                </h2>
+            </div>
+            <?php
         }
 
         $_SESSION['blog_class'] = $blog_class;

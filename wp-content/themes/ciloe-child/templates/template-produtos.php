@@ -244,7 +244,10 @@ get_header();
     <script>
         jQuery(document).ready(function($) {
             var _categorieFilters = ['<?php echo $category_type ?>'];
-            var _attributes = [];
+            var _attributes = {
+                estampas: [],
+                tamanho: []
+            };
 
             $('.filtros-open').click(function() {
                 $('.filtros-container').slideToggle('400');
@@ -257,12 +260,16 @@ get_header();
 
                 if ( ! _ajaxBlocked ) {
 
-                    $('.filtros-item').removeClass('active');
+                    $('.filtros-item, .estampas-list li, .tamanho-list li').removeClass('active');
                     $(this).addClass('active');
                     $('.cat-opt input').removeAttr('checked');
                     $('#cat-opt-'+ $(this).attr('data-cat')).attr('checked', 'checked');
 
                     _categorieFilters = ['<?php echo $category_type ?>', $(this).attr('data-cat')];
+                    _attributes = {
+                        estampas: [],
+                        tamanho: []
+                    };
 
                     FilterProducts('desc', _categorieFilters, _attributes, '', 'products');
 
@@ -279,6 +286,10 @@ get_header();
                     $('#cat-opt-'+ $(this).attr('data-cat')).attr('checked', 'checked');
 
                     _categorieFilters = ['<?php echo $category_type ?>', $(this).attr('data-cat')];
+                    _attributes = {
+                        estampas: [],
+                        tamanho: []
+                    };
 
                     FilterProducts('desc', _categorieFilters, _attributes, '', 'products');
 
@@ -331,6 +342,53 @@ get_header();
 
             });
 
+            $('.estampas-list li').click(function() {
+                $(this).toggleClass('active');
+                _notFound = true;
+
+                for ( var i = 0; i < _attributes.estampas.length; i++ ) {
+
+                   if ( _attributes.estampas[i] === $(this).attr('data-value') ) {
+
+                       _attributes.estampas.splice(i, 1);
+                       _notFound = false;
+
+                    }
+
+                }
+
+                if ( _notFound ) {
+
+                    _attributes.estampas.push($(this).attr('data-value'));
+
+                }
+
+                FilterProducts('desc', _categorieFilters, _attributes, '', 'products');
+            });
+
+            $('.tamanho-list li').click(function() {
+                $(this).toggleClass('active');
+                _notFound = true;
+
+                for ( var i = 0; i < _attributes.tamanho.length; i++ ) {
+
+                   if ( _attributes.tamanho[i] === $(this).attr('data-value') ) {
+
+                       _attributes.tamanho.splice(i, 1);
+                       _notFound = false;
+
+                    }
+
+                }
+
+                if ( _notFound ) {
+
+                    _attributes.tamanho.push($(this).attr('data-value'));
+
+                }
+
+                FilterProducts('desc', _categorieFilters, _attributes, '', 'products');
+            });
         });
 
     </script>
