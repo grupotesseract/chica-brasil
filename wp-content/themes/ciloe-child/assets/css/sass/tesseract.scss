@@ -132,7 +132,9 @@ $font-terciary: 'Caviar Dreams';
 
 .main-btn {
 	border-radius: 40px;
-	padding: 0 25px;
+	padding: 10px 25px 7px;
+	font-family: $font-secondary;
+	letter-spacing: 1px;
 
 	&:hover {
 		color: white;
@@ -219,6 +221,29 @@ body {
 				}
 			}
 		}
+	}
+}
+
+.page-404 {
+	.text-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 40px;
+
+		.section-title {
+			font-size: 8rem;
+		}
+		.title {
+			font-family: $font-secondary;
+			color: $chica-gray;
+			max-width: 30%;
+			text-align: left;
+			font-size: 2.4rem;
+		}
+	}
+	.main-btn {
+		font-size: 1.1rem;
 	}
 }
 
@@ -1285,6 +1310,11 @@ footer {
 			}
 		}
 	}
+	.woocommerce-order-details, .woocommerce-customer-details {
+		.woocommerce-order-details__title, .woocommerce-column__title {
+			font-family: $font-secondary;
+		}
+	}
 }
 
 .woocommerce {
@@ -1694,8 +1724,20 @@ footer {
 								font-family: $font-secondary;
 								padding-top: 5px;
 
+								&.color {
+									width: 40px;
+									height: 40px;
+									border-radius: 4px;
+									margin: 0 11px 0 1px;
+									border: 2px solid transparent;
+
+									&:before {
+										content: none;
+									}
+								}
 								&.active {
 									border-width: 2px;
+									border-color: $chica-red
 								}
 							}
 						}
@@ -1816,6 +1858,8 @@ footer {
 						background-color: transparent;
 						width: 50px;
 						position: relative;
+						cursor: pointer;
+						transition: all ease 0.3s;
 
 						&:before {
 							@extend %bfaf;
@@ -1826,12 +1870,16 @@ footer {
 							border-top: 10px solid $chica-gray;
 							top: calc(50% - 5px);
 							left: calc(50% - 10px);
+							transition: all ease .3s;
 						}
 						&.active {
 							background-color: $chica-cyan;
 
 							&:before {
-								border-top-color: white;
+								border-left: -10px solid transparent;
+								border-right: -10px solid transparent;
+								border-top: none;
+								border-bottom: 10px solid white;
 							}
 						}
 					}
@@ -1886,6 +1934,17 @@ footer {
 							align-items: center;
 							font-family: $font-secondary;
 							font-size: 16px;
+							cursor: pointer;
+
+							span {
+								width: 100%;
+								height: 100%;
+							}
+							p {
+								margin-bottom: 0;
+								font-weight: 700;
+								margin-top: 4px;
+							}
 						}
 					}
 				}

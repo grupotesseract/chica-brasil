@@ -33,7 +33,7 @@ get_header();
                 <option value="sales">Sales</option>
             </select>
 
-            <div class="filtros-container">
+            <div class="filtros-container" style="display: none;">
                 <div class="container">
                     <div class="categorias col-md-4">
                         <h4 class="filtro-title">Categorias</h4>
@@ -87,8 +87,22 @@ get_header();
                                     foreach ($terms as $term) {
 
                                         $term_meta = get_term_meta( $term->term_id );
-                                        $thumb = wp_get_attachment_image_src( $term_meta['pa_estampa_attribute_swatch_photo'][0], 'single-post-thumbnail' );
-                                        echo '<li class="estampa-opt" data-value="'. $term->slug .'"><img src="'. $thumb[0] .'"></li>';
+
+                                        $elemento = '<li class="estampa-opt '. $term_meta['pa_estampa_attribute_swatch_type'][0] .'" data-value="'. $term->slug .'">';
+                                        if ( $term_meta['pa_estampa_attribute_swatch_type'][0] == 'photo' ) {
+
+                                            $thumb = wp_get_attachment_image_src( $term_meta['pa_estampa_attribute_swatch_photo'][0], 'single-post-thumbnail' );
+
+                                            $elemento .= '<img src="'. $thumb[0] .'">';
+
+                                        } else {
+
+                                            $elemento .= '<span style="background-color:'. $term_meta['pa_estampa_attribute_swatch_color'][0] .'"></span>';
+
+                                        }
+                                        $elemento .= '</li>';
+
+                                        echo $elemento;
 
                                     }
 
@@ -114,7 +128,7 @@ get_header();
 
                                         $term_meta = get_term_meta( $term->term_id );
                                         $thumb = wp_get_attachment_image_src( $term_meta['pa_estampa_attribute_swatch_photo'][0], 'single-post-thumbnail' );
-                                        echo '<li class="estampa-opt" data-value="'. $term->slug .'">'. $term->name .'</li>';
+                                        echo '<li class="estampa-opt" data-value="'. $term->slug .'"><p>'. $term->name .'</p></li>';
 
                                     }
 
@@ -229,13 +243,57 @@ get_header();
 
     <script>
         jQuery(document).ready(function($) {
+            var _categorieFilters = ['<?php echo $category_type ?>'];
+
+            $('.filtros-open').click(function() {
+                $('.filtros-container').slideToggle('400');
+
+                $(this).toggleClass('active');
+            });
+
+            // filtros mestre: barra superior, eles levam prioridade
             $('.filtros-item').click(function() {
-                $('.filtros-item').removeClass('active');
-                $(this).addClass('active');
-                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).attr('data-cat')], '', 'products');
+
+                if ( ! _ajaxBlocked ) {
+
+                    $('.filtros-item').removeClass('active');
+                    $(this).addClass('active');
+                    $('.cat-opt input').removeAttr('checked');
+                    $('#cat-opt-'+ $(this).attr('data-cat')).attr('checked', 'checked');
+
+                    _categorieFilters = ['<?php echo $category_type ?>', $(this).attr('data-cat')];
+
+                    FilterProducts('desc', _categorieFilters, '', 'products');
+
+                }
+
             });
             $('.filtros-mobile').change(function() {
+
                 FilterProducts('desc', ['<?php echo $category_type ?>', $(this).val()], '', 'products');
+
+            });
+
+            // filtros secundarios:
+            $('.cat-opt input').change(function() {
+                if ( $(this).is(':checked') ) {
+
+                    console.log($(this).val());
+                    _categorieFilters.push($(this).val());
+
+                } else {
+
+                    for ( var i = 0; i < _categorieFilters.length; i++ ) {
+
+                       if ( _categorieFilters[i] === $(this).val() ) {
+
+                           _categorieFilters.splice(i, 1);
+
+                        }
+
+                    }
+
+                }
             });
         });
 
