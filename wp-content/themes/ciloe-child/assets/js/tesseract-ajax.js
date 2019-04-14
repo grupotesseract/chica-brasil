@@ -1,7 +1,7 @@
 var $ = jQuery;
 var _ajaxBlocked = false;
 
-function FilterProducts( $order, $category, $search_term, $page_type ) {
+function FilterProducts( $order, $category, $attributes, $search_term, $page_type ) {
 
     if ( ! _ajaxBlocked ) {
 
@@ -13,6 +13,7 @@ function FilterProducts( $order, $category, $search_term, $page_type ) {
                 action: 'products_filter',
                 order: $order,
                 category: $category,
+                attributes: $attributes,
                 search_term: $search_term,
                 page_type: $page_type
             },
@@ -23,7 +24,7 @@ function FilterProducts( $order, $category, $search_term, $page_type ) {
             },
             success: function( data ) {
                 _ajaxBlocked = false;
-                
+
                 $('#products').empty().append( data );
 
                 $('.produtos-wrapper').isotope({

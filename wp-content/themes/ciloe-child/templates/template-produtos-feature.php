@@ -150,10 +150,10 @@ get_header();
             $('.filtros-item').click(function() {
                 $('.filtros-item').removeClass('active');
                 $(this).addClass('active');
-                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).attr('data-cat')], '', 'featured');
+                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).attr('data-cat')], '', '', 'featured');
             });
             $('.filtros-mobile').change(function() {
-                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).val()], '', 'featured');
+                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).val()], '', '', 'featured');
             });
         });
 

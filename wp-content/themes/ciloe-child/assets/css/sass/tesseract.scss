@@ -1914,6 +1914,49 @@ footer {
 					}
 					.cat-opt-wrapper {
 						margin: 0 -15px;
+
+						.cat-opt {
+							label {
+								font-family: $font-secondary;
+								font-weight: 300;
+								font-size: 18px;
+							}
+							input {
+								position: relative;
+								visibility: hidden;
+								width: 15px;
+								height: 15px;
+
+								&:before {
+									@extend %bfaf;
+									background-color: transparent;
+									border: 2px solid $chica-gray;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									border-radius: 50%;
+									visibility: visible;
+								}
+								&:after {
+									@extend %bfaf;
+									width: calc(100% - 8px);
+									height: calc(100% - 8px);
+									border-radius: 50%;
+									top: 4px;
+									left: 4px;
+								}
+								&:checked {
+									&:before {
+										background-color: white;
+									}
+									&:after {
+										background-color: $chica-red;
+										visibility: visible;
+									}
+								}
+							}
+						}
 					}
 					.opt-list {
 						list-style: none;

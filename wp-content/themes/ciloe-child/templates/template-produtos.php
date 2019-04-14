@@ -244,6 +244,7 @@ get_header();
     <script>
         jQuery(document).ready(function($) {
             var _categorieFilters = ['<?php echo $category_type ?>'];
+            var _attributes = [];
 
             $('.filtros-open').click(function() {
                 $('.filtros-container').slideToggle('400');
@@ -263,38 +264,73 @@ get_header();
 
                     _categorieFilters = ['<?php echo $category_type ?>', $(this).attr('data-cat')];
 
-                    FilterProducts('desc', _categorieFilters, '', 'products');
+                    FilterProducts('desc', _categorieFilters, _attributes, '', 'products');
 
                 }
 
             });
             $('.filtros-mobile').change(function() {
 
-                FilterProducts('desc', ['<?php echo $category_type ?>', $(this).val()], '', 'products');
+                if ( ! _ajaxBlocked ) {
+
+                    $('.filtros-item').removeClass('active');
+                    $(this).addClass('active');
+                    $('.cat-opt input').removeAttr('checked');
+                    $('#cat-opt-'+ $(this).attr('data-cat')).attr('checked', 'checked');
+
+                    _categorieFilters = ['<?php echo $category_type ?>', $(this).attr('data-cat')];
+
+                    FilterProducts('desc', _categorieFilters, _attributes, '', 'products');
+
+                }
 
             });
 
             // filtros secundarios:
             $('.cat-opt input').change(function() {
-                if ( $(this).is(':checked') ) {
 
-                    console.log($(this).val());
-                    _categorieFilters.push($(this).val());
+                if ( ! _ajaxBlocked ) {
+
+                    if ( $(this).is(':checked') ) {
+
+                        _categorieFilters.push($(this).val());
+
+                        FilterProducts('desc', _categorieFilters, _attributes, '', 'products');
+
+
+                    } else {
+
+                        for ( var i = 0; i < _categorieFilters.length; i++ ) {
+
+                           if ( _categorieFilters[i] === $(this).val() ) {
+
+                               _categorieFilters.splice(i, 1);
+
+                            }
+
+                        }
+
+                        FilterProducts('desc', _categorieFilters, _attributes, '', 'products');
+
+                    }
 
                 } else {
 
-                    for ( var i = 0; i < _categorieFilters.length; i++ ) {
+                    if ( $(this).is(':checked') ) {
 
-                       if ( _categorieFilters[i] === $(this).val() ) {
+                        $(this).removeAttr('checked');
 
-                           _categorieFilters.splice(i, 1);
+                    } else {
 
-                        }
+                        $(this).attr('checked', 'checked');
+
 
                     }
 
                 }
+
             });
+
         });
 
     </script>
