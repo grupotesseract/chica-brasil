@@ -80,7 +80,7 @@ $enable_wishlist_mobile              = ciloe_get_option( 'enable_wishlist_mobile
                                         <div class="nav-text account-text">
     										<?php
     										if ( is_user_logged_in() ) {
-    											esc_html_e( 'My Account', 'ciloe' );
+    											esc_html_e( 'Minha Conta', 'ciloe' );
     										} else {
     											esc_html_e( 'Login', 'ciloe' );
     										}
@@ -115,9 +115,9 @@ $enable_wishlist_mobile              = ciloe_get_option( 'enable_wishlist_mobile
 					<?php
 				}
 				*/
-				// if ( $enable_header_mini_cart_mobile && class_exists( 'WooCommerce' ) ) {
-				// 	get_template_part( 'template-parts/header', 'minicart' );
-				// }
+				if ( $enable_header_mini_cart_mobile && class_exists( 'WooCommerce' ) ) {
+					get_template_part( 'template-parts/header', 'minicart' );
+				}
 				?>
             </div><!--End .header-right-->
 			<?php // ciloe_search_from_mobile(); ?>
