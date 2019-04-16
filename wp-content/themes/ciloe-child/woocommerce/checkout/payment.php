@@ -47,8 +47,8 @@ if ( ! is_ajax() ) {
 		<?php wc_get_template( 'checkout/terms.php' ); ?>
 
 		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
-        <?php var_dump($order_button_text); ?>
-		<?php echo '<button type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">$order_button_text</button>' ?>
+		
+		<?php echo '<button type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">'. $order_button_text .'</button>' ?>
 
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 

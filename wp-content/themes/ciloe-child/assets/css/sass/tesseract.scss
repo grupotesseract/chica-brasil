@@ -247,6 +247,8 @@ body {
 header {
 	.header-wrap {
 		.sticky-wrapper {
+			height: auto !important;
+			
 			&.is-sticky {
 				.header-position {
 					width: 100% !important;
@@ -317,9 +319,41 @@ header {
 				.button {
 					&.button-checkout {
 						background-color: $chica-darkred !important;
+
+						&:hover {
+							background-color: rgba($chica-darkred, 0.7) !important;
+						}
 					}
 					&.button-viewcart {
 						background-color: $chica-cyan !important;
+
+						&:hover {
+							background-color: rgba($chica-cyan, 0.7) !important;
+						}
+					}
+					&:hover {
+						color: white !important;
+					}
+				}
+			}
+		}
+		.to-cart {
+			background-color: $chica-cyan;
+		}
+	}
+	.box-tabs-nav-wrap {
+		.box-tabs-nav {
+			.box-tab-nav {
+				&:first-of-type {
+					&.active {
+						background-color: $chica-darkred;
+						border-bottom-color: $chica-darkred
+					}
+				}
+				&:last-of-type {
+					&.active {
+						background-color: $chica-cyan;
+						border-bottom-color: $chica-cyan;
 					}
 				}
 			}
@@ -1358,6 +1392,14 @@ footer {
 			}
 		}
 	}
+	#order_review {
+		.product-name {
+			width: 50%;
+		}
+	}
+	.woocommerce-NoticeGroup-updateOrderReview {
+		display: none;
+	}
 	.woocommerce-order-details, .woocommerce-customer-details {
 		.woocommerce-order-details__title, .woocommerce-column__title {
 			font-family: $font-secondary;
@@ -1455,6 +1497,12 @@ footer {
 			padding-top: 15px;
 			background-color: #fff;
 			margin-bottom: 20px;
+		}
+		.woocommerce-customer-details {
+			address {
+				border: 2px solid #e3e3e3;
+				padding: 20px 15px 10px;
+			}
 		}
 	}
 	.woocommerce-billing-fields, .woocommerce-shipping-fields {
@@ -1679,6 +1727,12 @@ footer {
 				letter-spacing: 2px;
 				font-size: 14px;
 			}
+		}
+	}
+	.payment_box {
+		&.payment_method_pagseguro {
+			background-color: rgba($chica-gray, 0.1);
+			padding: 15px;
 		}
 	}
 }

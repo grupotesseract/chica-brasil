@@ -30,6 +30,8 @@ remove_action( 'woocommerce_before_customer_login_form', 'woocommerce_output_all
 remove_action( 'woocommerce_before_lost_password_form', 'woocommerce_output_all_notices' );
 remove_action( 'before_woocommerce_pay', 'woocommerce_output_all_notices' );
 remove_action( 'woocommerce_before_reset_password_form', 'woocommerce_output_all_notices' );
+remove_action( 'woocommerce_single_product_summary', 'ciloe_close_product_mobile_more_detail_wrap' );
+
 
 
 ?>
