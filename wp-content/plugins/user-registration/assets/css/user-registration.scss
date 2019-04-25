@@ -1,0 +1,608 @@
+/**
+* user-registration.scss
+* Governs the general look and feel of User Registration sections of stores using themes that do not
+* integrate with User Registration specifically.
+*/
+
+/**
+* Imports
+*/
+@import "colors";
+@import "button";
+@import "mixins";
+@import "variables";
+
+/**
+* Utility classes
+*/
+.clear {
+	clear: both;
+}
+
+/**
+* Main User Registration styles
+*/
+.user-registration-message,
+.user-registration-error,
+.user-registration-info {
+	padding: 1.5em 2em 1.5em 3.5em;
+	margin: 0 0 2em;
+	position: relative;
+	background-color: lighten($secondary, 5%);
+	color: $secondarytext;
+	border-top: 3px solid $primary;
+	list-style: none outside;
+	@include clearfix();
+	width: auto;
+	word-wrap: break-word;
+	line-height: 1.5;
+	text-transform: none;
+	font-size: 14px;
+
+	&::before {
+		font-family: 'Dashicons';
+		content: '\f348';
+		display: inline-block;
+		position: absolute;
+		top: 1em;
+		left: 0.9em;
+		font-size: 18px;
+		line-height: 1.5;
+	}
+
+	ul {
+		margin: 0 !important;
+		padding: 0 !important;
+		background-color: transparent !important;
+	}
+
+	.button {
+		float: right;
+	}
+
+	li {
+		list-style: none outside !important; // Required for default theme compatibility
+		padding-left: 0 !important; // Required for default theme compatibility
+		margin-left: 0 !important; // Required for default theme compatibility
+	}
+	.message{
+		margin:0;padding:0;
+	}
+}
+
+.user-registration-message {
+	border-top-color: #8fae1b;
+	background: rgba( #8fae1b, 0.1 );
+	color: darken( #8fae1b, 15%);
+
+	&::before {
+		color: #8fae1b;
+	}
+}
+
+.user-registration-info {
+	border-top-color: #1e85be;
+
+	&::before {
+		color: #1e85be;
+	}
+}
+
+.user-registration-error {
+	border-top-color: $color_danger;
+	background: rgba( $color_danger, 0.1 );
+	color: darken( $color_danger, 15%);
+
+	&::before {
+		content: '\f534';
+		color: $color_danger;
+	}
+}
+
+.ur-frontend-form {
+	margin-bottom: 30px;
+	border: 1px solid $color_gray_six;
+	padding: 20px;
+	box-sizing: border-box;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	&.login {
+		margin: 0;
+		padding: 10px;
+		box-shadow: none;
+		background: none;
+		input[name="rememberme"]#rememberme{
+
+			vertical-align:middle;
+		}
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	form {
+		.ur-form-row {
+			display: flex;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.ur-form-grid {
+				flex: 1;
+				padding: 0 10px;
+
+				&:nth-child(1n+2) {
+					border-left: 0 none;
+				}
+
+				.ur-field-item {
+					margin-bottom: 20px;
+					font-size: 13px;
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+
+				input[type="text"],
+				input[type="email"],
+				input[type="url"],
+				input[type="password"],
+				input[type="date"],
+				input[type="number"],
+				input[type="timepicker"],
+				input[type="phone"],
+				textarea,
+				select {
+					display: block;
+					width: 100%;
+					border-radius: 0;
+					height: 40px;
+					margin-bottom: 10px;
+
+					&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+						color: #ddd;
+						font-size:13px;
+					}
+					&::-moz-placeholder { /* Firefox 19+ */
+						color: #ddd;
+						font-size:13px;
+
+					}
+					&:-ms-input-placeholder { /* IE 10+ */
+						color: #ddd;
+						font-size:13px;
+
+					}
+					&:-moz-placeholder { /* Firefox 18- */
+						color: #ddd;
+						font-size:13px;
+
+					}
+				}
+
+				input[type="checkbox"],
+				input[type="radio"]{
+					font-size: 12px;
+					display: inline-block;
+					vertical-align: middle;
+					margin-right: 5px;
+					margin-left: 20px;
+
+					&:first-child {
+						margin-left: 0;
+					}
+				}
+
+				input[type="radio"]:focus,
+				input[type="text"]:focus,
+				input[type="email"]:focus,
+				input[type="url"]:focus,
+				input[type="password"]:focus,
+				textarea:focus,
+				select:focus,
+				button:focus {
+					outline: 0;
+				}
+
+				legend,
+				label {
+					display: block;
+					width: 100%;
+					margin-bottom: 10px;
+
+					.required {
+
+						text-decoration: none;
+						border: none;
+						color: #ff0000;
+					}
+				}
+
+				textarea {
+					padding: 10px;
+					height: 100px;
+					resize: none;
+					padding: 5px 20px;
+				}
+			}
+		}
+
+		input[type="submit"],
+		button[type="submit"] {
+			float: right;
+			padding: 10px 20px;
+			line-height: 1em;
+			text-align: center;
+			word-break: break-word;
+			white-space: normal;
+			border: none;
+			cursor: pointer;
+			-webkit-transition: 0.9s all ease-out;
+			-o-transition: 0.9s all ease-out;
+			transition: 0.9s all ease-out;
+		}
+
+		.ur-submit-button {
+			margin-right: 10px;
+			margin-bottom: 0;
+		}
+	}
+
+	label {
+		abbr.required {
+
+			text-decoration: none;
+			border: none;
+			color: #ff0000;
+		}
+	}
+
+	&.ur-frontend-form--bordered {
+		form {
+			.ur-form-row {
+				.ur-form-grid {
+					input[type="text"],
+					input[type="email"],
+					input[type="url"],
+					input[type="password"],
+					input[type="date"],
+					input[type="number"],
+					textarea,
+					select {
+						border: none;
+						border-bottom: 1px solid $label_color;
+						outline: none;
+						transition: all 0.35s;
+						padding: 10px  15px;
+						background: $input_background_color;
+						color: $label_color;
+						height: 45px;
+					}
+
+					legend,
+					label {
+						font-weight: 600;
+						line-height: 2.5;
+						margin-left: 5px;
+						color: $label_color;
+					}
+
+					textarea {
+						height: 100px;
+					}
+				}
+			}
+			input[type="submit"],
+			button[type="submit"] {
+				background: $input_background_color;
+				border: 1px solid $label_color;
+				color: $label_color;
+				border-radius: 0;
+
+				&:hover {
+					background: $primary_color;
+					color: $white;
+					border-color: $primary_color;
+				}
+			}
+		}
+	}
+
+	&.ur-frontend-form--flat {
+		background: $color_sortable_background;
+		border: none transparent;
+
+		form {
+			.ur-form-row {
+				.ur-form-grid {
+					.ur-field-item,
+					.form-row {
+						margin-bottom: 0;
+					}
+
+					input[type="text"],
+					input[type="email"],
+					input[type="url"],
+					input[type="password"],
+					input[type="date"],
+					input[type="number"],
+					textarea,
+					select {
+						border: none;
+						outline: none;
+						padding: 10px 15px;
+						background: $white;
+						color: $label_color;
+						margin-bottom: 10px;
+						height: 45px;
+						&:focus {
+							box-shadow: 0 0 10px 5px rgba(0,0,0,.05);
+						}
+					}
+
+					select {
+						margin-bottom: 10px;
+					}
+
+					legend,
+					label {
+						font-weight: 600;
+						line-height: 2.5;
+						color: $label_color;
+					}
+
+					textarea {
+						height: 100px;
+					}
+				}
+			}
+		}
+	}
+
+	&.ur-frontend-form--rounded {
+		form {
+			.ur-form-row {
+				.ur-form-grid {
+					input[type="text"],
+					input[type="email"],
+					input[type="url"],
+					input[type="password"],
+					input[type="date"],
+					input[type="number"],
+					textarea,
+					select {
+						border: 1px solid $rounded-color;
+						border-radius: 25px;
+						outline: none;
+						transition: all 0.35s;
+						padding: 10px  15px;
+						background: $white;
+						color: $label_color;
+						height: 45px;
+					}
+
+					button[type="button"]{
+						border-radius: 25px;
+					}
+					legend,
+					label {
+						font-weight: 600;
+						line-height: 2.5;
+						margin-left: 5px;
+						color: $label_color;
+					}
+
+					textarea {
+						height: 100px;
+					}
+				}
+			}
+			input[type="submit"],
+			button[type="submit"] {
+				background: $round-button;
+				border: 0 none;
+				color: $white;
+				border-radius:25px;
+				float: none;
+				width: calc(100% - 20px);
+				display: block;
+				margin: 0 auto;
+				padding: 15px 20px;
+			}
+		}
+		&.ur-frontend-form--rounded-edge{
+			form {
+				.ur-form-row {
+					.ur-form-grid {
+
+						input[type="text"],
+						input[type="email"],
+						input[type="url"],
+						input[type="password"],
+						input[type="date"],
+						input[type="number"],
+						textarea,
+						select {
+							border-radius: 2px;
+						}
+
+						button[type="button"]{
+							border-radius: 2px;
+						}
+					}
+				}
+				input[type="submit"],
+				button[type="submit"] {
+					border-radius:2px;
+				}
+			}
+		}
+	}
+	#ur-submit-message-node{
+
+		margin : 20px 0 0 0!important;
+		&.ur-error{
+			background: rgba(206, 0, 0, 0.1);
+		}
+
+		&.ur-message.message{
+			background: rgba(143, 174, 27,0.2);
+		}
+	}
+}
+
+#user-registration {
+	&.user-registration,
+	*{
+		box-sizing: border-box;
+	}
+
+	p {
+		color: #333333;
+	}
+
+	.user-registration-MyAccount-navigation {
+		overflow: visible;
+		margin: 0;
+
+		ul {
+			margin: 0;
+			padding: 0;
+			display: -webkit-flex;
+			display:flex;
+			flex-wrap: wrap;
+
+			.user-registration-MyAccount-navigation-link {
+				list-style: none;
+				padding: 0;
+				margin:0;
+				display: inline-block;
+				border-left: 1px solid $white;
+				border-top: 1px solid $white;
+				border-right: 1px solid $white;
+				position:relative;
+				box-shadow: 0 0 0 rgba(0,0,0,0);
+
+				a {
+					color: $color_gray_two;
+					padding: 10px 15px;
+					display: block;
+					font-weight: 600;
+					font-size: 15px;
+					font-family: 'sans-serif';
+					text-decoration: none;
+					box-shadow: 0 0 0 rgba(0,0,0,0);
+				}
+
+				&.is-active {
+					background-color: $color_gray_eleven;
+					border-left: 1px solid $color_gray_six;
+					border-top: 1px solid $color_gray_six;
+					border-right: 1px solid $color_gray_six;
+
+					&:before {
+						position: absolute;
+						bottom: -1px;
+						left: 0;
+						content: " ";
+						width: 100%;
+						height: 1px;
+						background-color: $color_gray_eleven;
+					}
+				}
+			}
+		}
+	}
+
+	.user-registration-MyAccount-content {
+		background: $color_gray_eleven;
+		padding: 15px 20px;
+		border: 1px solid $color_gray_six;
+
+		.ur-form-grid{
+			padding: 0;
+			border: 0 none;
+			background: transparent;
+		}
+
+		.ur-frontend-form {
+			border: none;
+		}
+	}
+}
+
+/**
+* Password strength meter
+*/
+.user-registration-password-strength {
+	text-align: center;
+	font-weight: 600;
+	padding: 3px 0.5em;
+	font-size: 1em;
+
+	&.strong {
+		background-color: #c1e1b9;
+		border-color: #83c373;
+	}
+
+	&.short {
+		background-color: #f1adad;
+		border-color: #e35b5b;
+	}
+
+	&.bad {
+		background-color: #fbc5a9;
+		border-color: #f78b53;
+	}
+
+	&.good {
+		background-color: #ffe399;
+		border-color: #ffc733;
+	}
+}
+
+.user-registration-password-hint {
+	margin: 0.5em 0 0;
+	display: block;
+}
+
+.ur-front-spinner {
+	background: url('../images/wpspin_light-2x.gif') no-repeat;
+	background-size: 16px 16px;
+	display: block;
+	opacity: .7;
+	filter: alpha(opacity=70);
+	width: 16px;
+	height: 16px;
+	margin-left: -40px;
+	float: left;
+}
+
+span.description {
+    font-size: 12px;
+}
+
+.edit-post-visual-editor {
+	.ur-gutenberg-form-selector-wrap,
+	.user-registration-gutenberg-form-selector-wrap {
+		h2 {
+			width: 100%;
+			margin-bottom: 0.5em;
+		}
+ 		.components-base-control {
+			width: 100%;
+		}
+	}
+}
+
+.ur-frontend-form.ur-gutenberg-editor form button[type=submit] {
+	cursor: not-allowed;
+}
+.ur-frontend-form.ur-gutenberg-editor form .ur-form-row .ur-form-grid input {
+	cursor: not-allowed;
+}

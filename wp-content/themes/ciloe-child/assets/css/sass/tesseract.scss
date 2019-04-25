@@ -11,6 +11,7 @@ $chica-lightblu: #CBE0F5;
 $chica-darkred: #A6223A;
 $chica-red: #D54E66;
 $chica-darkgray: #4B4B54;
+$chica-midgray: #e3e3e3;
 $chica-gray: #808080;
 $font-primary: 'Gloss Bloom', 'Arial';
 $font-secondary: 'Josefin Sans';
@@ -248,7 +249,7 @@ header {
 	.header-wrap {
 		.sticky-wrapper {
 			height: auto !important;
-			
+
 			&.is-sticky {
 				.header-position {
 					width: 100% !important;
@@ -589,22 +590,22 @@ footer {
 	}
 	.copyright-wrapper {
 		background-color: #9D9D9B;
-		padding-top: 40px;
-		padding-bottom: 40px;
+		padding-top: 30px;
+		padding-bottom: 30px;
 
 		p {
 			color: white;
 			margin-bottom: 0;
 			font-family: $font-secondary;
 			text-transform: uppercase;
-			font-size: 16px;
+			font-size: 13px;
 		}
 		.chica-infos {
 			h1 {
 				font-family: $font-secondary;
 				text-transform: uppercase;
 				color: white;
-				font-size: 22px;
+				font-size: 16px;
 				margin-bottom: 0;
 			}
 		}
@@ -613,7 +614,7 @@ footer {
 			flex-direction: row;
 			align-items: flex-end;
 			justify-content: flex-end;
-			padding-top: 35px;
+			padding-top: 20px;
 
 			p {
 				margin-right: 10px;
@@ -1426,24 +1427,74 @@ footer {
 			font-weight: 700;
 		}
 	}
+	.main-loja-btn {
+		background-color: $chica-cyan;
+		color: #fff;
+		margin-bottom: 0;
+		width: auto;
+		padding-left: 60px;
+		padding-right: 60px;
+		min-height: 40px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+	#open-login, #open-register {
+		opacity: .6;
+		transition: all ease 0.3s;
+
+		&:hover {
+			opacity: 1;
+		}
+		&.active {
+			background-color: $chica-darkred;
+			opacity: 1;
+		}
+	}
 	.login-form-container {
 		background-color: #F2F2F2;
 		margin: 30px 0;
 		padding-top: 35px;
 		padding-bottom: 20px;
+		transition: all ease 0.4s;
 
+		.container {
+			.row {
+				form.login {
+					padding: 0 15px;
+
+					label {
+						font-family: $font-secondary;
+						color: black;
+					}
+					.rememberme {
+						input {
+							&:checked, &:hover {
+								&+ span {
+									&:before {
+										background-color: $chica-cyan;
+									}
+								}
+							}
+							&+ span {
+								&:before {
+									border-color: $chica-cyan;
+									border-width: 2px;
+									background-color: white;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		.login-cta-wrapper {
 			display: flex;
 			width: 100%;
 			align-items: center;
 
 			.main-loja-btn {
-				background-color: $chica-cyan;
-				color: #fff;
-				margin-bottom: 0;
 				width: auto;
-				padding-left: 60px;
-				padding-right: 60px;
 			}
 			.lost_password {
 				margin-bottom: 0;
@@ -1456,6 +1507,37 @@ footer {
 				}
 			}
 		}
+	}
+	.register-form-container {
+		background-color: #F2F2F2;
+		margin: 30px 0;
+
+		.ur-frontend-form {
+			border: none;
+
+			.ur-form-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				padding: 0;
+				margin-left: -15px;
+				margin-right: -15px;
+
+				.form-row {
+					padding: 0 15px;
+
+					label {
+						font-family: $font-secondary;
+						font-weight: 400;
+						color: black;
+					}
+				}
+			}
+		}
+	}
+	.closed {
+		display: none;
+		// visibility: hidden;
+		// opacity: 0;
 	}
 	.woocommerce-order {
 		h2 {
@@ -1561,13 +1643,13 @@ footer {
 	}
 	.woocommerce-cart-form {
 		.cart-items-wrapper {
-			border: 2px solid $chica-gray;
+			border: 2px solid $chica-midgray;
 			margin-bottom: 15px;
 
 			.cart-header {
 				display: grid;
 				grid-template-columns: 4fr 2fr 2fr 2fr 1fr;
-				border-bottom: 1px solid $chica-gray;
+				border-bottom: 1px solid $chica-midgray;
 				padding: 10px 15px;
 				// justify-items: center;
 
@@ -1593,7 +1675,7 @@ footer {
 					align-items: center;
 					height: 150px;
 					padding: 10px 15px;
-					border-bottom: 1px solid $chica-gray;
+					border-bottom: 1px solid $chica-midgray;
 					font-family: $font-secondary;
 					font-weight: 500;
 
@@ -1680,7 +1762,7 @@ footer {
 			border: none;
 		}
 		.cupom-wrapper {
-			border: 2px solid $chica-gray;
+			border: 2px solid $chica-midgray;
 			padding: 30px 15px;
 			margin-bottom: 40px;
 			margin-top: 20px;
@@ -1733,6 +1815,11 @@ footer {
 		&.payment_method_pagseguro {
 			background-color: rgba($chica-gray, 0.1);
 			padding: 15px;
+		}
+	}
+	.woocommerce-MyAccount-content {
+		.woocommerce-error, .woocommerce-message {
+			display: none;
 		}
 	}
 }
@@ -2122,6 +2209,7 @@ footer {
 					.opt-list {
 						list-style: none;
 						display: flex;
+						flex-wrap: wrap;
 						padding: 0;
 						margin-left: -5px;
 						margin-right: -5px;
@@ -2129,7 +2217,7 @@ footer {
 						li {
 							border: 1px solid $chica-gray;
 							border-radius: 4px;
-							margin: 0 5px;
+							margin: 0 5px 5px;
 							padding: 2px;
 							width: 40px;
 							height: 40px;

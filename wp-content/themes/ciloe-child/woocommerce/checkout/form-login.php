@@ -49,10 +49,10 @@ $trap_id           = uniqid( 'trap_' );
 						<div class="row">
 							<div class="col-md-12 negative mg-hz-15">
 								<div class="col-md-6">
-									<button id="open-login" class="main-loja-btn">Já é cadastrado? <strong>Clique aqui</strong></button>
+									<button id="open-login" class="main-loja-btn active">Já é cadastrado? <strong>Clique aqui</strong></button>
 								</div>
 								<div class="col-md-6">
-									<button id="register" class="main-loja-btn pull-right">Cadastre-se</button>
+									<button id="open-register" class="main-loja-btn pull-right">Cadastre-se</button>
 								</div>
 							</div>
 						</div>
@@ -114,7 +114,15 @@ $trap_id           = uniqid( 'trap_' );
 							</div>
 						</div>
 	                </div>
-					
+
+					<div class="register-form-container closed">
+						<div class="container">
+							<div class="row">
+								<?php echo do_shortcode('[user_registration_form id="9165"]') ?>
+							</div>
+						</div>
+					</div>
+
 				<?php endif; ?>
 
 				<?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
@@ -213,5 +221,15 @@ $trap_id           = uniqid( 'trap_' );
 
 </div>
 <?php endif; ?>
+
+<script>
+	jQuery(document).ready(function($) {
+		$('#open-login, #open-register').click(function() {
+			$('#open-login, #open-register').toggleClass('active');
+
+			$('.login-form-container, .register-form-container').slideToggle('400').removeClass('closed');
+		});
+	});
+</script>
 
 <?php do_action( 'woocommerce_after_customer_login_form' ); ?>
