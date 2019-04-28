@@ -22,18 +22,29 @@ get_header();
                     <li class="filtros-item" data-cat="sales">Sales</li>
                 </div>
             </ul>
-            <select class="filtros-mobile mobile-only">
-                <option value="all">Todos</option>
-                <option value="all">Todos</option>
-                <option value="biquinis">Biquinis</option>
-                <option value="maios-bodies">Maiôs - Bodies</option>
-                <option value="saidas">Saídas</option>
-                <option value="roupas">Roupas</option>
-                <option value="lancamentos">Lançamentos</option>
-                <option value="sales">Sales</option>
-            </select>
+            <div class="filtros-mobile-wrapper mobile-only">
+                <p class="filtro-title mobile-label open-cat">Filtrar por categorias</p>
+
+                <div class="col-md-12 filtros-cat-wrapper">
+                    <select class="filtros-mobile">
+                        <option value="all">Todos</option>
+                        <option value="all">Todos</option>
+                        <option value="biquinis">Biquinis</option>
+                        <option value="maios-bodies">Maiôs - Bodies</option>
+                        <option value="saidas">Saídas</option>
+                        <option value="roupas">Roupas</option>
+                        <option value="lancamentos">Lançamentos</option>
+                        <option value="sales">Sales</option>
+                    </select>
+                </div>
+
+                <p class="filtro-title mobile-label open-filters">Filtros gerais</p>
+            </div>
 
             <div class="filtros-container" style="display: none;">
+                <span class="close-section mobile-only">
+                    Fechar
+                </span>
                 <div class="container">
                     <div class="categorias col-md-4">
                         <h4 class="filtro-title">Categorias</h4>
@@ -248,6 +259,18 @@ get_header();
                 estampas: [],
                 tamanho: []
             };
+
+            $('.mobile-label.open-cat').click(function() {
+                $('.filtros-cat-wrapper').slideToggle(400);
+            });
+
+            $('.mobile-label.open-filters').click(function() {
+                $('.filtros-container').addClass('opened');
+            });
+
+            $('.filtros-container .close-section').click(function() {
+                $('.filtros-container').removeClass('opened');
+            });
 
             $('.filtros-open').click(function() {
                 $('.filtros-container').slideToggle('400');

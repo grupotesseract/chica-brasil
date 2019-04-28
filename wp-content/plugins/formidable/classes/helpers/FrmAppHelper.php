@@ -11,7 +11,7 @@ class FrmAppHelper {
 	/**
 	 * @since 2.0
 	 */
-	public static $plug_version = '3.06.04';
+	public static $plug_version = '3.06.05';
 
     /**
      * @since 1.07.02
@@ -296,8 +296,19 @@ class FrmAppHelper {
      * @return string The IP address of the current user
      */
     public static function get_ip_address() {
+		$ip_options = array(
+			'HTTP_CLIENT_IP',
+			'HTTP_CF_CONNECTING_IP',
+			'HTTP_X_FORWARDED_FOR',
+			'HTTP_X_FORWARDED',
+			'HTTP_X_CLUSTER_CLIENT_IP',
+			'HTTP_X_REAL_IP',
+			'HTTP_FORWARDED_FOR',
+			'HTTP_FORWARDED',
+			'REMOTE_ADDR',
+		);
 		$ip = '';
-		foreach ( array( 'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR' ) as $key ) {
+		foreach ( $ip_options as $key ) {
             if ( ! isset( $_SERVER[ $key ] ) ) {
                 continue;
             }

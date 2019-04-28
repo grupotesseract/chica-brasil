@@ -23,7 +23,7 @@ class WC_PagSeguro_Gateway extends WC_Payment_Gateway {
 		$this->icon               = apply_filters( 'woocommerce_pagseguro_icon', plugins_url( 'assets/images/pagseguro.png', plugin_dir_path( __FILE__ ) ) );
 		$this->method_title       = __( 'PagSeguro', 'woocommerce-pagseguro' );
 		$this->method_description = __( 'Accept payments by credit card, bank debit or banking ticket using the PagSeguro.', 'woocommerce-pagseguro' );
-		$this->order_button_text  = __( 'Proceed to payment', 'woocommerce-pagseguro' );
+		$this->order_button_text  = __( 'Finalizar compra', 'woocommerce-pagseguro' );
 
 		// Load the form fields.
 		$this->init_form_fields();
