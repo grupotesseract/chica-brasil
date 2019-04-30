@@ -205,7 +205,7 @@ get_header();
                             <div class="img-wrapper">
                                 <a href="<?php the_permalink() ?>">
                                     <img src="<?php echo $image[0] ?>" alt="">
-                                    <?php echo $destaque_tag ?>
+                                    <?php //echo $destaque_tag ?>
                                 </a>
                             </div>
                             <div class="product-meta">
