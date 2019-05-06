@@ -98,8 +98,8 @@ $enable_wishlist_mobile              = ciloe_get_option( 'enable_wishlist_mobile
 						                        <span class="login-cta-wrapper">
 						                            <input type="submit" class="main-loja-btn" name="login"
 						                                    value="<?php esc_attr_e( 'Login', 'ciloe' ); ?>"/>
-						                            <a class="woocommerce-LostPassword lost_password"
-						                               href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Esqueceu sua senha?', 'ciloe' ); ?></a>
+						                            <a class="woocommerce-LostPassword lost_password" href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Esqueceu sua senha?', 'ciloe' ); ?></a>
+													<a class="woocommerce-LostPassword create_account" href="<?php the_permalink( get_page_by_path('cadastro') ); ?>" style="text-decoration: underline; width: 100%; clear: both; float: right; text-align: right;"><?php esc_html_e( 'Não possui uma conta? Cadastre-se', 'ciloe' ); ?></a>
 						                        </span>
 						                    </p>
 

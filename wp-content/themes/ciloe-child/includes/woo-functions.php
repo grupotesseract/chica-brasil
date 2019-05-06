@@ -106,10 +106,11 @@ if ( ! function_exists( 'tesseract_login_modal' ) ) {
                         </label>
 
                         <span class="login-cta-wrapper">
-                            <input type="submit" class="main-loja-btn" name="login"
+                            <input type="submit" class="main-chica-btn force" name="login"
                                     value="<?php esc_attr_e( 'Login', 'ciloe' ); ?>"/>
-                            <a class="woocommerce-LostPassword lost_password"
-                               href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Esqueceu sua senha?', 'ciloe' ); ?></a>
+                            <a class="woocommerce-LostPassword lost_password" href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Esqueceu sua senha?', 'ciloe' ); ?></a>
+                            <a class="woocommerce-LostPassword create_account" href="<?php the_permalink( get_page_by_path('cadastro') ); ?>" style="text-decoration: underline"><?php esc_html_e( 'Não possui uma conta? Cadastre-se', 'ciloe' ); ?></a>
+
                         </span>
                     </p>
 

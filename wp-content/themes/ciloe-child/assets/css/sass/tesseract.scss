@@ -159,6 +159,29 @@ $font-terciary: 'Caviar Dreams';
 	background-color: $chica-cyan;
 }
 
+input[type="submit"].main-chica-btn {
+	background-color: $chica-cyan;
+	color: #fff;
+	margin-bottom: 0;
+	width: auto;
+	padding-left: 60px;
+	padding-right: 60px;
+	min-height: 40px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	@include phone {
+		padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+
+		strong {
+			margin-left: 10px;
+		}
+	}
+}
+
 .loading-gif {
 	display: flex;
 	justify-content: center;
@@ -219,6 +242,29 @@ body {
 			}
 		}
 	}
+	&.single-product {
+		.content-product-inner {
+			.single-left {
+				width: 40%;
+				overflow: visible;
+			}
+		}
+	}
+}
+
+.tesseract-modal-content {
+	form {
+		background-color: white;
+		padding: 60px 15px;
+		border: 2px solid $chica-midgray;
+
+		a {
+			color: #000;
+		}
+	}
+}
+.mfp-bg {
+	background-color: rgba(black, .4) !important
 }
 
 .page-404 {
@@ -968,6 +1014,7 @@ footer {
 
 .page-template-template-contato,
 .page-template-template-lojas,
+.page-template-template-pages,
 .page-template-default {
 	.banner-page {
 		@include phone {
@@ -1728,6 +1775,9 @@ footer {
 				padding: 10px 15px;
 				// justify-items: center;
 
+				@include phone {
+					display: none;
+				}
 				div {
 					display: flex;
 					align-items: center;
@@ -1754,6 +1804,13 @@ footer {
 					font-family: $font-secondary;
 					font-weight: 500;
 
+					@include phone {
+						display: flex;
+						grid-template-columns: none;
+						flex-wrap: wrap;
+						flex-direction: inherit;
+						height: auto;
+					}
 					&:last-of-type {
 						border-bottom: none;
 					}
