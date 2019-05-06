@@ -193,6 +193,7 @@ get_header();
 
                         $terms = wp_get_post_terms( $post->ID, 'product_cat' );
                         $categories = array();
+                        
                         foreach ( $terms as $term ) {
                             $categories[] = $term->slug;
                         }
