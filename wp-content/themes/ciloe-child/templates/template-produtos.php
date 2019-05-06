@@ -28,7 +28,6 @@ get_header();
                 <div class="col-md-12 filtros-cat-wrapper">
                     <select class="filtros-mobile">
                         <option value="all">Todos</option>
-                        <option value="all">Todos</option>
                         <option value="biquinis">Biquinis</option>
                         <option value="maios-bodies">Maiôs - Bodies</option>
                         <option value="saidas">Saídas</option>
@@ -160,6 +159,7 @@ get_header();
             <div class="produtos-wrapper items-wrapper container">
                 <?php
                     $number_of_posts = -1;
+                    $category_type = '';
 
                     $args = array(
                         'post_type'         => 'product',
@@ -205,7 +205,6 @@ get_header();
                             <div class="img-wrapper">
                                 <a href="<?php the_permalink() ?>">
                                     <img src="<?php echo $image[0] ?>" alt="">
-                                    <?php echo $destaque_tag ?>
                                 </a>
                             </div>
                             <div class="product-meta">

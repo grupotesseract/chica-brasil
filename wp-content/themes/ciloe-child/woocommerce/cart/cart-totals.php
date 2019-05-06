@@ -98,7 +98,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</table>
 
 	<div class="wc-proceed-to-checkout">
-        <a href="<?php the_permalink( get_page_by_path('carrinho') ) ?>" class="checkout-button button alt wc-forward">Finalizar compra</a>
+        <a href="<?php the_permalink( get_page_by_path('checkout') ) ?>" class="checkout-button button alt wc-forward">Finalizar compra</a>
 	</div>
 
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
