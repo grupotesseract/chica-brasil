@@ -137,7 +137,7 @@ get_header();
                                     foreach ($terms as $term) {
 
                                         $term_meta = get_term_meta( $term->term_id );
-                                        $thumb = wp_get_attachment_image_src( $term_meta['pa_estampa_attribute_swatch_photo'][0], 'single-post-thumbnail' );
+
                                         echo '<li class="estampa-opt" data-value="'. $term->slug .'"><p>'. $term->name .'</p></li>';
 
                                     }
@@ -193,7 +193,7 @@ get_header();
 
                         $terms = wp_get_post_terms( $post->ID, 'product_cat' );
                         $categories = array();
-                        
+
                         foreach ( $terms as $term ) {
                             $categories[] = $term->slug;
                         }
