@@ -114,7 +114,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </div>
                 </div>
                 <div class="des-cart">
-					<a href="<?php the_permalink( get_page_by_path('politica-de-troca-e-devolucao') ) ?>">Política de Troca e Devolução</a>
+					<a href="<?php the_permalink( get_page_by_path('termos-e-condicoes-de-compra') ) ?>">Termos e condições de compra</a>
 				</div>
             </div>
         </div>
