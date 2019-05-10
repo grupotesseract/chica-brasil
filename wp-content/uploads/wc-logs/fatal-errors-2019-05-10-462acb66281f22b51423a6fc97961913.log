@@ -1,0 +1,11 @@
+2019-05-10T14:57:57+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on boolean in /home/bitnami/chica-brasil/wp-content/plugins/ciloe-toolkit/includes/classes/ciloe-mapper/includes/shortcode.php:92
+Stack trace:
+#0 /home/bitnami/chica-brasil/wp-includes/shortcodes.php(319): Ciloe_Mapper_Shortcode::render_shortcode(Array, '', 'ciloe_mapper')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 /home/bitnami/chica-brasil/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(ciloe_...', 'do_shortcode_ta...', '<p>[vc_row][vc_...')
+#3 /home/bitnami/chica-brasil/wp-includes/class-wp-hook.php(286): do_shortcode('<p>[vc_row][vc_...')
+#4 /home/bitnami/chica-brasil/wp-includes/plugin.php(203): WP_Hook->apply_filters('<p>[vc_row][vc_...', Array)
+#5 /home/bitnami/chica-brasil/wp-includes/feed.php(190): apply_filters('the_content', '[vc_row][vc_col...')
+#6 /home/bitnami/chica-brasil/wp-includes/feed-rss2.php(101): get_the_content_feed('rss2')
+#7 /home/bitnami/chica-brasil/wp-includes/template.php(688): require_once('/hom, em /home/bitnami/chica-brasil/wp-content/plugins/ciloe-toolkit/includes/classes/ciloe-mapper/includes/shortcode.php, na linha 92
+
