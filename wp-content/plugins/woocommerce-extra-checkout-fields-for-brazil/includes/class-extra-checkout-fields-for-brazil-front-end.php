@@ -47,7 +47,7 @@ class Extra_Checkout_Fields_For_Brazil_Front_End {
 	 */
 	public function enqueue_scripts() {
         $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-        
+
         wp_register_style( 'woocommerce-extra-checkout-fields-for-brazil-front', plugins_url( 'assets/css/frontend/frontend.css', plugin_dir_path( __FILE__ ) ), array(), Extra_Checkout_Fields_For_Brazil::VERSION, 'all' );
 
 		wp_register_script( 'jquery-mask', plugins_url( 'assets/js/jquery.mask/jquery.mask' . $suffix . '.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), '1.14.10', true );
@@ -474,12 +474,12 @@ class Extra_Checkout_Fields_For_Brazil_Front_End {
 	 *
 	 * @return array               New replacements.
 	 */
-	public function formatted_address_replacements( $replacements, $args ) {
-		$replacements['{number}']       = $args['number'];
-		$replacements['{neighborhood}'] = $args['neighborhood'];
+	 public function formatted_address_replacements( $replacements, $args ) {
+		 $replacements['{number}']       = isset( $args['number'] ) ? $args['number'] : '';
+		 $replacements['{neighborhood}'] = isset( $args['neighborhood'] ) ? $args['neighborhood'] : '';
 
-		return $replacements;
-	}
+		 return $replacements;
+	 }
 
 	/**
 	 * Custom order formatted billing address.
