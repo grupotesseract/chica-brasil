@@ -1,97 +1,127 @@
 <?php
 /**
- * As configurações básicas do WordPress
+ * The base configuration for WordPress
  *
- * O script de criação wp-config.php usa esse arquivo durante a instalação.
- * Você não precisa usar o site, você pode copiar este arquivo
- * para "wp-config.php" e preencher os valores.
+ * The wp-config.php creation script uses this file during the
+ * installation. You don't have to use the web site, you can
+ * copy this file to "wp-config.php" and fill in the values.
  *
- * Este arquivo contém as seguintes configurações:
+ * This file contains the following configurations:
  *
- * * Configurações do MySQL
- * * Chaves secretas
- * * Prefixo do banco de dados
+ * * MySQL settings
+ * * Secret keys
+ * * Database table prefix
  * * ABSPATH
  *
- * @link https://codex.wordpress.org/pt-br:Editando_wp-config.php
+ * @link https://codex.wordpress.org/Editing_wp-config.php
  *
  * @package WordPress
  */
 
- // admin - admin@grupotesseract.com
- // chica#brasil#1601
-
-// ** Configurações do MySQL - Você pode pegar estas informações com o serviço de hospedagem ** //
-/** O nome do banco de dados do WordPress */
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
 define('DB_NAME', 'chica_brasil');
 
-/** Usuário do banco de dados MySQL */
+/** MySQL database username */
 define('DB_USER', 'root');
 
-/** Senha do banco de dados MySQL */
-define('DB_PASSWORD', '');
+/** MySQL database password */
+define('DB_PASSWORD', 'W6L7lSw86SlH');
 
-/** Nome do host do MySQL */
-define('DB_HOST', 'localhost');
+/** MySQL hostname */
+define('DB_HOST', 'localhost:3306');
 
-/** Charset do banco de dados a ser usado na criação das tabelas. */
+/** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
-/** O tipo de Collate do banco de dados. Não altere isso se tiver dúvidas. */
+/** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
 /**#@+
- * Chaves únicas de autenticação e salts.
+ * Authentication Unique Keys and Salts.
  *
- * Altere cada chave para um frase única!
- * Você pode gerá-las
- * usando o {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org
- * secret-key service}
- * Você pode alterá-las a qualquer momento para invalidar quaisquer
- * cookies existentes. Isto irá forçar todos os
- * usuários a fazerem login novamente.
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'coloque a sua frase única aqui');
-define('SECURE_AUTH_KEY',  'coloque a sua frase única aqui');
-define('LOGGED_IN_KEY',    'coloque a sua frase única aqui');
-define('NONCE_KEY',        'coloque a sua frase única aqui');
-define('AUTH_SALT',        'coloque a sua frase única aqui');
-define('SECURE_AUTH_SALT', 'coloque a sua frase única aqui');
-define('LOGGED_IN_SALT',   'coloque a sua frase única aqui');
-define('NONCE_SALT',       'coloque a sua frase única aqui');
+define('AUTH_KEY', 'fd5fa4a7ecc315ec56f8ac98b93271bfd761c391c0737406cfc538232edb1098');
+define('SECURE_AUTH_KEY', '2a879b49e9dd942d32ad97924121f3d4ebce408c7bae2c1c7d3352d69f0375aa');
+define('LOGGED_IN_KEY', 'f2a61db29e54c975aba1edb6e3f77d924e83a345e4370239b3154ffc7b970f9b');
+define('NONCE_KEY', '73aa5f0a1887509be03a3aad29ff1afe41e8cf0f558a1d0f4a00981ff06642ca');
+define('AUTH_SALT', '89993eb68f5040a9512471e7adb5ee3f6be939ae6527e840266db3123f679d23');
+define('SECURE_AUTH_SALT', 'beed902bd1a5bd716ed4579862e31595cbdc4e466f6f3afe04cd211bd39b23eb');
+define('LOGGED_IN_SALT', '238806c815be231dbeb1ad62f2d4e21a2a5b3c98208bc54f7cc1c87486297fb2');
+define('NONCE_SALT', '448c64c578777eb39cca53a54506515e7621077a27265a0393d211ffdb60164d');
 
 /**#@-*/
 
 /**
- * Prefixo da tabela do banco de dados do WordPress.
+ * WordPress Database Table prefix.
  *
- * Você pode ter várias instalações em um único banco de dados se você der
- * um prefixo único para cada um. Somente números, letras e sublinhados!
+ * You can have multiple installations in one database if you give each
+ * a unique prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix  = 'wp_';
 
 /**
- * Para desenvolvedores: Modo de debug do WordPress.
+ * For developers: WordPress debugging mode.
  *
- * Altere isto para true para ativar a exibição de avisos
- * durante o desenvolvimento. É altamente recomendável que os
- * desenvolvedores de plugins e temas usem o WP_DEBUG
- * em seus ambientes de desenvolvimento.
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
  *
- * Para informações sobre outras constantes que podem ser utilizadas
- * para depuração, visite o Codex.
+ * For information on other constants that can be used for debugging,
+ * visit the Codex.
  *
- * @link https://codex.wordpress.org/pt-br:Depura%C3%A7%C3%A3o_no_WordPress
+ * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
-/* Isto é tudo, pode parar de editar! :) */
+/* That's all, stop editing! Happy blogging. */
 
-/** Caminho absoluto para o diretório WordPress. */
+define('FS_METHOD', 'direct');
+
+/**
+ * The WP_SITEURL and WP_HOME options are configured to access from any hostname or IP address.
+ * If you want to access only from an specific domain, you can modify them. For example:
+ *  define('WP_HOME','http://example.com');
+ *  define('WP_SITEURL','http://example.com');
+ *
+*/
+
+if ( defined( 'WP_CLI' ) ) {
+    $_SERVER['HTTP_HOST'] = 'localhost';
+}
+
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+
+
+/** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
-/** Configura as variáveis e arquivos do WordPress. */
+/** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+define('WP_TEMP_DIR', '/opt/bitnami/apps/wordpress/tmp');
+
+
+//  Disable pingback.ping xmlrpc method to prevent Wordpress from participating in DDoS attacks
+//  More info at: https://docs.bitnami.com/general/apps/wordpress/troubleshooting/xmlrpc-and-pingback/
+
+if ( !defined( 'WP_CLI' ) ) {
+    // remove x-pingback HTTP header
+    add_filter('wp_headers', function($headers) {
+        unset($headers['X-Pingback']);
+        return $headers;
+    });
+    // disable pingbacks
+    add_filter( 'xmlrpc_methods', function( $methods ) {
+            unset( $methods['pingback.ping'] );
+            return $methods;
+    });
+    add_filter( 'auto_update_translation', '__return_false' );
+}

@@ -1,0 +1,6 @@
+2019-05-07T14:54:59+00:00 CRITICAL Object of class WP_Error could not be converted to string, em /home/bitnami/chica-brasil/wp-includes/formatting.php, na linha 3796
+
+2019-05-07T16:13:31+00:00 CRITICAL Object of class WP_Error could not be converted to string, em /home/bitnami/chica-brasil/wp-includes/formatting.php, na linha 3796
+
+2019-05-07T16:13:54+00:00 CRITICAL Object of class WP_Error could not be converted to string, em /home/bitnami/chica-brasil/wp-includes/formatting.php, na linha 3796
+
