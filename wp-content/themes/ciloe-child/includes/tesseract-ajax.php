@@ -143,7 +143,7 @@ function display_featured_query( $args, $type ) {
                     $class_product = 'col-md-3';
                 }
 
-                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $wp_query->post->ID ), 'single-post-thumbnail' );
+                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $wp_query->post->ID ), 'medium_large' );
                 ?>
                 <div class="item <?php echo $class_product; ?>">
                     <div class="img-wrapper">

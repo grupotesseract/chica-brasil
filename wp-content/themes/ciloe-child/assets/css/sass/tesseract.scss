@@ -1726,7 +1726,38 @@ footer {
 		}
 	}
 	p.form-row:not(#order_comments_field) {
-		height: 90px;
+		height: 115px;
+		position: relative;
+		margin-bottom: 20px;
+
+		.user-registration-password-strength {
+			color: white;
+			text-transform: uppercase;
+			font-family: $font-secondary;
+			position: absolute;
+			bottom: 20px;
+			width: calc(100% - 30px);
+			font-size: 12px;
+			line-height: initial;
+		}
+		.user-registration-error {
+			bottom: 3px;
+		    padding: 0;
+			position: absolute;
+			padding-left: 24px;
+			width: calc(100% - 30px);
+
+			&:after {
+				position: absolute;
+			    left: 17px;
+			    top: 0;
+			}
+			&:before {
+				position: absolute;
+			    left: 0;
+			    top: -4px;
+			}
+		}
 	}
 	.woocommerce-form__label-for-checkbox {
 		&:hover {

@@ -346,14 +346,14 @@ class UR_Frontend_Scripts {
 					'home_url'            => home_url(),
 					'i18n_password_error' => esc_attr__( 'Please enter a stronger password.', 'user-registration' ),
 					'pwsL10n'             => array(
-						'shortpw'  => __( 'Very Weak', 'user-registration' ),
-						'bad'      => __( 'Weak', 'user-registration' ),
-						'good'     => __( 'Medium', 'user-registration' ),
-						'strong'   => __( 'Strong', 'user-registration' ),
-						'mismatch' => __( 'Password with confirm password not matched.', 'user-registration' ),
+						'shortpw'  => __( 'Muito fraca', 'user-registration' ),
+						'bad'      => __( 'Fraca', 'user-registration' ),
+						'good'     => __( 'Média', 'user-registration' ),
+						'strong'   => __( 'Forte', 'user-registration' ),
+						'mismatch' => __( 'Senhas não são iguais', 'user-registration' ),
 
 					),
-					'i18n_password_hint'  => apply_filters( 'user_registration_strong_password_message', __( 'Hint: To make password stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & ).', 'user-registration' ) ),
+					'i18n_password_hint'  => apply_filters( 'user_registration_strong_password_message', __( 'Dica: para deixar sua senha mais forte, utiliza maiúsculas, minúsculas, números e símbolos como ! " ? $ % ^& ).', 'user-registration' ) ),
 				);
 				break;
 		}
