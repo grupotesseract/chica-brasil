@@ -1,0 +1,69 @@
+Id,Sku,Product name,Manage stock,Stock status,Backorders,Stock,Type,Parent ID
+9377,top-helo,Top Helo,,instock,no,,variable,
+,top-helo-verde-neon-p,Verde Neon P,TRUE,instock,no,1,product-variant,9377
+,top-helo-laranja-neon-p,Laranja Neon P,TRUE,instock,no,1,product-variant,9377
+,top-helo-verde-neon-g,Verde Neon G,TRUE,instock,no,1,product-variant,9377
+,top-helo-verde-neon-m,Verde Neon M,TRUE,,no,0,product-variant,9377
+,top-helo-laranja-neon-g,Laranja Neon G,TRUE,,no,0,product-variant,9377
+,top-helo-laranja-neon-m,Laranja Neon M,TRUE,,no,0,product-variant,9377
+9330,vestido-ligia,Vestido Lígia,,instock,no,,variable,
+,vestido-ligia-dama-da-noite-p,Dama da Noite P,TRUE,instock,no,3,product-variant,9330
+,vestido-ligia-dama-da-noite-g,Dama da Noite G,TRUE,instock,no,3,product-variant,9330
+9032,tunica-giovana,Túnica Giovana,,instock,no,,variable,
+,tunica-giovana-gg-branco,GG Branco,TRUE,instock,no,1,product-variant,9032
+,tunica-giovana-m-branco,M Branco,TRUE,instock,no,2,product-variant,9032
+,tunica-giovana-g-branco,G Branco,TRUE,instock,no,2,product-variant,9032
+9030,vestido-natalia,Vestido Natália,,instock,no,,variable,
+,vestido-natalia-m-branco,M Branco,TRUE,instock,no,4,product-variant,9030
+,vestido-natalia-p-branco,P Branco,TRUE,instock,no,2,product-variant,9030
+,vestido-natalia-g-branco,G Branco,TRUE,instock,no,3,product-variant,9030
+,vestido-natalia-gg-branco,GG Branco,TRUE,instock,no,1,product-variant,9030
+9018,saida-bruna,Saída Bruna,,instock,no,,variable,
+8975,biquini-daisy,Biquíni Daisy,,instock,no,,variable,
+,biquini-daisy-agatha-p,Ágatha P,TRUE,instock,no,1,product-variant,8975
+,biquini-daisy-estrelitza-g,Estrelitza G,TRUE,instock,no,1,product-variant,8975
+,biquini-daisy-estrelitza-gg,Estrelitza GG,TRUE,instock,no,1,product-variant,8975
+,biquini-daisy-agatha-gg,Ágatha GG,TRUE,instock,no,1,product-variant,8975
+,biquini-daisy-agatha-m,Ágatha M,TRUE,instock,no,1,product-variant,8975
+,biquini-daisy-agatha-g,Ágatha G,TRUE,instock,no,1,product-variant,8975
+8876,biquini-gabriela,Biquíni Gabriela,,instock,no,,variable,
+,biquini-gabriela-tupi-guarani-m,Tupi Guarani M,TRUE,instock,no,1,product-variant,8876
+,biquini-gabriela-robi-rosa-m,Robi Rosa M,TRUE,instock,no,1,product-variant,8876
+8873,biquini-tati,Biquíni Tati,,instock,no,,variable,
+,biquini-tati-tupi-guarani-p,Tupi Guarani P,TRUE,instock,no,4,product-variant,8873
+,biquini-tati-robi-rosa-p,Robi Rosa P,TRUE,instock,no,1,product-variant,8873
+,biquini-tati-tupi-guarani-g,Tupi Guarani G,TRUE,instock,no,4,product-variant,8873
+,biquini-tati-tupi-guarani-m,Tupi Guarani M,TRUE,instock,no,9,product-variant,8873
+,biquini-tati-robi-rosa-g,Robi Rosa G,TRUE,instock,no,1,product-variant,8873
+,biquini-tati-beija-flor-g,Beija Flor G,TRUE,instock,no,2,product-variant,8873
+8872,maio-body-olga,Maiô/Body Olga,,instock,no,,variable,
+,maio-body-olga-robi-rosa-g,Robi Rosa G,TRUE,instock,no,1,product-variant,8872
+,maio-body-olga-robi-rosa-m,Robi Rosa M,TRUE,instock,no,1,product-variant,8872
+,maio-body-olga-robi-rosa-p,Robi Rosa P,TRUE,instock,no,2,product-variant,8872
+8868,vestido-ivete,Vestido Ivete,,instock,no,,variable,
+,vestido-ivete-gg-branco,GG Branco,TRUE,instock,no,3,product-variant,8868
+,vestido-ivete-m-branco,M Branco,TRUE,instock,no,3,product-variant,8868
+,vestido-ivete-p-branco,P Branco,TRUE,instock,no,1,product-variant,8868
+8864,vestido-selma,Vestido Selma,,instock,no,,variable,
+,vestido-selma-hibisco-p,Hibisco P,TRUE,instock,no,1,product-variant,8864
+8820,maio-body-ursula,Maiô/Body Ursula,,instock,no,,variable,
+,maio-body-ursula-tupi-guarani-p,Tupi Guarani P,,instock,no,,product-variant,8820
+,maio-body-ursula-sisal-m,Sisal M,TRUE,instock,no,1,product-variant,8820
+,maio-body-ursula-sisal-p,Sisal P,TRUE,instock,no,1,product-variant,8820
+,maio-body-ursula-preto-g,Preto G,TRUE,instock,no,1,product-variant,8820
+,maio-body-ursula-sisal-g,Sisal G,TRUE,instock,no,1,product-variant,8820
+,maio-body-ursula-robi-rosa-p,Robi Rosa P,TRUE,instock,no,4,product-variant,8820
+,maio-body-ursula-tupi-guarani-g,Tupi Guarani G,TRUE,instock,no,1,product-variant,8820
+,maio-body-ursula-tupi-guarani-m,Tupi Guarani M,TRUE,instock,no,2,product-variant,8820
+,maio-body-ursula-preto-p,Preto P,TRUE,instock,no,1,product-variant,8820
+,maio-body-ursula-robi-rosa-g,Robi Rosa G,TRUE,instock,no,3,product-variant,8820
+,maio-body-ursula-robi-rosa-m,Robi Rosa M,TRUE,instock,no,2,product-variant,8820
+,maio-body-ursula-preto-m,Preto M,TRUE,instock,no,1,product-variant,8820
+8815,camisao-rafaela,Camisão Rafaela,,instock,no,,variable,
+,camisao-rafaela-g-branco,G Branco,TRUE,instock,no,1,product-variant,8815
+,camisao-rafaela-gg-branco,GG Branco,TRUE,instock,no,2,product-variant,8815
+,camisao-rafaela-xg-branco,XG Branco,TRUE,instock,no,2,product-variant,8815
+8806,biquini-liana,Biquíni Liana,,instock,no,,variable,
+,biquini-liana-tupi-guarani-m,Tupi Guarani M,TRUE,instock,no,1,product-variant,8806
+,biquini-liana-sisal-gg,Sisal GG,TRUE,instock,no,1,product-variant,8806
+,biquini-liana-sisal-g,Sisal G,TRUE,instock,no,4,product-variant,8806

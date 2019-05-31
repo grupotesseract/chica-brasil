@@ -1,0 +1,389 @@
+05-30-2019 @ 09:27:42 - Requesting token for order 9565 with the following data: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<checkout>
+  <currency>BRL</currency>
+  <reference><![CDATA[WC-9565]]></reference>
+  <sender>
+    <email><![CDATA[ushaneegde@reactive-school.ru]]></email>
+    <name><![CDATA[Teste teste TEste teste]]></name>
+    <phone>
+      <areaCode>14</areaCode>
+      <number>991726968</number>
+    </phone>
+  </sender>
+  <shipping>
+    <type>3</type>
+    <address>
+      <street><![CDATA[Rua Monsenhor Braz Baffa]]></street>
+      <complement><![CDATA[692]]></complement>
+      <district><![CDATA[Jd. Nazareth]]></district>
+      <postalCode>15054210</postalCode>
+      <city><![CDATA[Sao Jose do Rio Preto]]></city>
+      <state>SP</state>
+      <country>BRA</country>
+    </address>
+    <cost>23.51</cost>
+  </shipping>
+  <items>
+    <item>
+      <id>1</id>
+      <description><![CDATA[Top Helo - Verde Neon, P]]></description>
+      <amount>49.90</amount>
+      <quantity>1</quantity>
+    </item>
+  </items>
+  <redirectURL><![CDATA[http://34.216.218.247/checkout/order-received/9565/?key=wc_order_hyDlSpjXTn6UL]]></redirectURL>
+  <notificationURL><![CDATA[http://34.216.218.247/wc-api/WC_PagSeguro_Gateway/]]></notificationURL>
+  <maxUses>1</maxUses>
+  <maxAge>120</maxAge>
+</checkout>
+
+05-30-2019 @ 09:27:44 - PagSeguro Payment Token created with success! The Token is: DAF9BF272C2C2367746ACF85BA3B192A
+05-30-2019 @ 09:29:08 - Checking IPN request...
+05-30-2019 @ 09:29:09 - PagSeguro IPN is valid! The return is: SimpleXMLElement Object
+(
+    [date] => 2019-05-30T09:27:46.000-03:00
+    [code] => DFF07C28-CA91-4BBE-A5E6-51E5EB3D1036
+    [reference] => WC-9565
+    [type] => 1
+    [status] => 3
+    [lastEventDate] => 2019-05-30T09:29:07.000-03:00
+    [paymentMethod] => SimpleXMLElement Object
+        (
+            [type] => 1
+            [code] => 101
+        )
+
+    [grossAmount] => 73.41
+    [discountAmount] => 0.00
+    [feeAmount] => 4.06
+    [netAmount] => 69.35
+    [extraAmount] => 0.00
+    [escrowEndDate] => 2019-06-13T09:29:07.000-03:00
+    [installmentCount] => 3
+    [itemCount] => 1
+    [items] => SimpleXMLElement Object
+        (
+            [item] => SimpleXMLElement Object
+                (
+                    [id] => 1
+                    [description] => Top Helo - Verde Neon, P
+                    [quantity] => 1
+                    [amount] => 49.90
+                )
+
+        )
+
+    [sender] => SimpleXMLElement Object
+        (
+            [email] => c38864181486091436900@sandbox.pagseguro.com.br
+            [phone] => SimpleXMLElement Object
+                (
+                    [areaCode] => 11
+                    [number] => 99999999
+                )
+
+            [documents] => SimpleXMLElement Object
+                (
+                    [document] => SimpleXMLElement Object
+                        (
+                            [type] => CPF
+                            [value] => 74454983038
+                        )
+
+                )
+
+        )
+
+    [shipping] => SimpleXMLElement Object
+        (
+            [address] => SimpleXMLElement Object
+                (
+                    [street] => RUA MONSENHOR BRAZ BAFFA
+                    [number] => 692
+                    [complement] => 692
+                    [district] => Jardim Nazareth
+                    [city] => SAO JOSE DO RIO PRETO
+                    [state] => SP
+                    [country] => BRA
+                    [postalCode] => 15054210
+                )
+
+            [type] => 3
+            [cost] => 23.51
+        )
+
+    [gatewaySystem] => SimpleXMLElement Object
+        (
+            [type] => cielo
+            [rawCode] => SimpleXMLElement Object
+                (
+                )
+
+            [rawMessage] => SimpleXMLElement Object
+                (
+                )
+
+            [normalizedCode] => SimpleXMLElement Object
+                (
+                )
+
+            [normalizedMessage] => SimpleXMLElement Object
+                (
+                )
+
+            [authorizationCode] => 0
+            [nsu] => 0
+            [tid] => 0
+            [establishmentCode] => 1056784170
+            [acquirerName] => CIELO
+        )
+
+)
+
+05-30-2019 @ 09:29:09 - PagSeguro payment status for order 9565 is: 3
+05-30-2019 @ 11:32:30 - Requesting token for order 9578 with the following data: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<checkout>
+  <currency>BRL</currency>
+  <reference><![CDATA[WC-9578]]></reference>
+  <sender>
+    <email><![CDATA[vabaseha@bizsearch.info]]></email>
+    <name><![CDATA[Teste teste teste teste]]></name>
+    <phone>
+      <areaCode>14</areaCode>
+      <number>991726968</number>
+    </phone>
+  </sender>
+  <shipping>
+    <type>3</type>
+    <address>
+      <street><![CDATA[Rua de Sabta Catraruba]]></street>
+      <complement><![CDATA[opicional]]></complement>
+      <district><![CDATA[Bairro X]]></district>
+      <postalCode>88512530</postalCode>
+      <city><![CDATA[Cidade de Santa Catarina]]></city>
+      <state>SP</state>
+      <country>BRA</country>
+    </address>
+    <cost>28.31</cost>
+  </shipping>
+  <items>
+    <item>
+      <id>1</id>
+      <description><![CDATA[Top Helo - Verde Neon, M]]></description>
+      <amount>49.90</amount>
+      <quantity>1</quantity>
+    </item>
+  </items>
+  <redirectURL><![CDATA[http://34.216.218.247/checkout/order-received/9578/?key=wc_order_7piOyY6MDQpAx]]></redirectURL>
+  <notificationURL><![CDATA[http://34.216.218.247/wc-api/WC_PagSeguro_Gateway/]]></notificationURL>
+  <maxUses>1</maxUses>
+  <maxAge>120</maxAge>
+</checkout>
+
+05-30-2019 @ 11:32:32 - PagSeguro Payment Token created with success! The Token is: 18E092C57373A39AA4901F9025BCFDE9
+05-30-2019 @ 11:39:20 - Checking IPN request...
+05-30-2019 @ 11:39:20 - Checking IPN request...
+05-30-2019 @ 11:39:21 - PagSeguro IPN is valid! The return is: SimpleXMLElement Object
+(
+    [date] => 2019-05-30T11:32:36.000-03:00
+    [code] => D556E09D-B80D-492E-B634-1E0B54C09A29
+    [reference] => WC-9578
+    [type] => 1
+    [status] => 3
+    [lastEventDate] => 2019-05-30T11:39:18.000-03:00
+    [paymentMethod] => SimpleXMLElement Object
+        (
+            [type] => 1
+            [code] => 101
+        )
+
+    [grossAmount] => 78.21
+    [discountAmount] => 0.00
+    [feeAmount] => 4.30
+    [netAmount] => 73.91
+    [extraAmount] => 0.00
+    [escrowEndDate] => 2019-06-13T11:39:18.000-03:00
+    [installmentCount] => 3
+    [itemCount] => 1
+    [items] => SimpleXMLElement Object
+        (
+            [item] => SimpleXMLElement Object
+                (
+                    [id] => 1
+                    [description] => Top Helo - Verde Neon, M
+                    [quantity] => 1
+                    [amount] => 49.90
+                )
+
+        )
+
+    [sender] => SimpleXMLElement Object
+        (
+            [email] => c38864181486091436900@sandbox.pagseguro.com.br
+            [phone] => SimpleXMLElement Object
+                (
+                    [areaCode] => 11
+                    [number] => 99999999
+                )
+
+            [documents] => SimpleXMLElement Object
+                (
+                    [document] => SimpleXMLElement Object
+                        (
+                            [type] => CPF
+                            [value] => 97433456040
+                        )
+
+                )
+
+        )
+
+    [shipping] => SimpleXMLElement Object
+        (
+            [address] => SimpleXMLElement Object
+                (
+                    [street] => RUA ANTONIO CALDAS
+                    [number] => 950
+                    [complement] => 960
+                    [district] => Santa Catarina
+                    [city] => LAGES
+                    [state] => SC
+                    [country] => BRA
+                    [postalCode] => 88512530
+                )
+
+            [type] => 3
+            [cost] => 28.31
+        )
+
+    [gatewaySystem] => SimpleXMLElement Object
+        (
+            [type] => cielo
+            [rawCode] => SimpleXMLElement Object
+                (
+                )
+
+            [rawMessage] => SimpleXMLElement Object
+                (
+                )
+
+            [normalizedCode] => SimpleXMLElement Object
+                (
+                )
+
+            [normalizedMessage] => SimpleXMLElement Object
+                (
+                )
+
+            [authorizationCode] => 0
+            [nsu] => 0
+            [tid] => 0
+            [establishmentCode] => 1056784170
+            [acquirerName] => CIELO
+        )
+
+)
+
+05-30-2019 @ 11:39:21 - PagSeguro payment status for order 9578 is: 3
+05-30-2019 @ 11:39:21 - PagSeguro IPN is valid! The return is: SimpleXMLElement Object
+(
+    [date] => 2019-05-30T11:32:36.000-03:00
+    [code] => D556E09D-B80D-492E-B634-1E0B54C09A29
+    [reference] => WC-9578
+    [type] => 1
+    [status] => 3
+    [lastEventDate] => 2019-05-30T11:39:18.000-03:00
+    [paymentMethod] => SimpleXMLElement Object
+        (
+            [type] => 1
+            [code] => 101
+        )
+
+    [grossAmount] => 78.21
+    [discountAmount] => 0.00
+    [feeAmount] => 4.30
+    [netAmount] => 73.91
+    [extraAmount] => 0.00
+    [escrowEndDate] => 2019-06-13T11:39:18.000-03:00
+    [installmentCount] => 3
+    [itemCount] => 1
+    [items] => SimpleXMLElement Object
+        (
+            [item] => SimpleXMLElement Object
+                (
+                    [id] => 1
+                    [description] => Top Helo - Verde Neon, M
+                    [quantity] => 1
+                    [amount] => 49.90
+                )
+
+        )
+
+    [sender] => SimpleXMLElement Object
+        (
+            [email] => c38864181486091436900@sandbox.pagseguro.com.br
+            [phone] => SimpleXMLElement Object
+                (
+                    [areaCode] => 11
+                    [number] => 99999999
+                )
+
+            [documents] => SimpleXMLElement Object
+                (
+                    [document] => SimpleXMLElement Object
+                        (
+                            [type] => CPF
+                            [value] => 97433456040
+                        )
+
+                )
+
+        )
+
+    [shipping] => SimpleXMLElement Object
+        (
+            [address] => SimpleXMLElement Object
+                (
+                    [street] => RUA ANTONIO CALDAS
+                    [number] => 950
+                    [complement] => 960
+                    [district] => Santa Catarina
+                    [city] => LAGES
+                    [state] => SC
+                    [country] => BRA
+                    [postalCode] => 88512530
+                )
+
+            [type] => 3
+            [cost] => 28.31
+        )
+
+    [gatewaySystem] => SimpleXMLElement Object
+        (
+            [type] => cielo
+            [rawCode] => SimpleXMLElement Object
+                (
+                )
+
+            [rawMessage] => SimpleXMLElement Object
+                (
+                )
+
+            [normalizedCode] => SimpleXMLElement Object
+                (
+                )
+
+            [normalizedMessage] => SimpleXMLElement Object
+                (
+                )
+
+            [authorizationCode] => 0
+            [nsu] => 0
+            [tid] => 0
+            [establishmentCode] => 1056784170
+            [acquirerName] => CIELO
+        )
+
+)
+
+05-30-2019 @ 11:39:21 - PagSeguro payment status for order 9578 is: 3

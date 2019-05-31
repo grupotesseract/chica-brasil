@@ -1,0 +1,40 @@
+05-28-2019 @ 16:34:27 - Requesting token for order 9535 with the following data: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<checkout>
+  <currency>BRL</currency>
+  <reference><![CDATA[WC-9535]]></reference>
+  <sender>
+    <email><![CDATA[renatoo.agomes@gmail.com]]></email>
+    <name><![CDATA[Antonio Renato Gomes]]></name>
+    <phone>
+      <areaCode>14</areaCode>
+      <number>30101836</number>
+    </phone>
+  </sender>
+  <shipping>
+    <type>3</type>
+    <address>
+      <street><![CDATA[Rua Capitao Gomes Duarte]]></street>
+      <complement><![CDATA[9-50]]></complement>
+      <district><![CDATA[Vila Santa Clara]]></district>
+      <postalCode>17014020</postalCode>
+      <city><![CDATA[Bauru]]></city>
+      <state>SP</state>
+      <country>BRA</country>
+    </address>
+    <cost>20.41</cost>
+  </shipping>
+  <items>
+    <item>
+      <id>1</id>
+      <description><![CDATA[Top Helo - Verde Neon, P]]></description>
+      <amount>49.90</amount>
+      <quantity>1</quantity>
+    </item>
+  </items>
+  <redirectURL><![CDATA[http://34.216.218.247/checkout/order-received/9535/?key=wc_order_TfjP8Mj15Pvw0]]></redirectURL>
+  <notificationURL><![CDATA[http://34.216.218.247/wc-api/WC_PagSeguro_Gateway/]]></notificationURL>
+  <maxUses>1</maxUses>
+  <maxAge>120</maxAge>
+</checkout>
+
+05-28-2019 @ 16:34:29 - PagSeguro Payment Token created with success! The Token is: D87D874C7F7F7E577486AFA17C7EAC8B

@@ -1,0 +1,11 @@
+Id,Sku,Product name,Manage stock,Stock status,Backorders,Stock,Type,Parent ID
+9377,top-helo,Top Helo,,instock,no,,variable,
+9378,top-helo-verde-neon-p,Verde Neon P,TRUE,outofstock,no,0,product-variant,9377
+9379,top-helo-laranja-neon-p,Laranja Neon P,TRUE,instock,no,2,product-variant,9377
+9380,top-helo-verde-neon-g,Verde Neon G,TRUE,outofstock,no,0,product-variant,9377
+9381,top-helo-verde-neon-m,Verde Neon M,TRUE,outofstock,no,0,product-variant,9377
+9382,top-helo-laranja-neon-g,Laranja Neon G,TRUE,instock,no,5,product-variant,9377
+9383,top-helo-laranja-neon-m,Laranja Neon M,TRUE,instock,no,6,product-variant,9377
+9330,vestido-ligia,Vestido Lígia,,instock,no,,variable,
+,vestido-ligia-dama-da-noite-p,Dama da Noite P,TRUE,instock,no,3,product-variant,9330
+,vestido-ligia-dama-da-noite-g,Dama da Noite G,TRUE,instock,no,3,product-variant,9330

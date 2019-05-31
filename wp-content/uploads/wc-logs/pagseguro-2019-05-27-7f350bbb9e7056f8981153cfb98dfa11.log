@@ -1,0 +1,207 @@
+05-27-2019 @ 20:36:01 - Requesting token for order 9472 with the following data: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<checkout>
+  <currency>BRL</currency>
+  <reference><![CDATA[WC-9472]]></reference>
+  <sender>
+    <email><![CDATA[alloza@mintadomaindong.gq]]></email>
+    <name><![CDATA[Treste TEsteae teste]]></name>
+    <phone>
+      <areaCode>12</areaCode>
+      <number>341123</number>
+    </phone>
+  </sender>
+  <shipping>
+    <type>3</type>
+    <address>
+      <street><![CDATA[Rua de SAnta Catarina]]></street>
+      <district><![CDATA[Xpto]]></district>
+      <postalCode>88512530</postalCode>
+      <city><![CDATA[Florianopolis]]></city>
+      <state>SC</state>
+      <country>BRA</country>
+    </address>
+    <cost>32.27</cost>
+  </shipping>
+  <items>
+    <item>
+      <id>1</id>
+      <description><![CDATA[Maiô/Body Ursula - Preto, P]]></description>
+      <amount>248.00</amount>
+      <quantity>1</quantity>
+    </item>
+  </items>
+  <redirectURL><![CDATA[http://34.216.218.247/checkout/order-received/9472/?key=wc_order_KpdDpAaO4610z]]></redirectURL>
+  <notificationURL><![CDATA[http://34.216.218.247/wc-api/WC_PagSeguro_Gateway/]]></notificationURL>
+  <maxUses>1</maxUses>
+  <maxAge>120</maxAge>
+</checkout>
+
+05-27-2019 @ 20:36:03 - Failed to generate the PagSeguro Payment Token: Array
+(
+    [headers] => Requests_Utility_CaseInsensitiveDictionary Object
+        (
+            [data:protected] => Array
+                (
+                    [date] => Mon, 27 May 2019 23:36:02 GMT
+                    [server] => Apache-Coyote/1.1
+                    [content-type] => application/xml;charset=ISO-8859-1
+                    [cache-control] => max-age=180
+                    [expires] => Mon, 27 May 2019 23:39:03 GMT
+                    [vary] => User-Agent
+                    [access-control-allow-origin] => https://dev.pagseguro.uol.com.br
+                    [access-control-allow-methods] => POST, GET, OPTIONS
+                    [access-control-allow-headers] => Content-Type, origin, accept
+                )
+
+        )
+
+    [body] => <?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?><errors><error><code>11014</code><message>senderPhone invalid value: 341123</message></error></errors>
+    [response] => Array
+        (
+            [code] => 400
+            [message] => Bad Request
+        )
+
+    [cookies] => Array
+        (
+        )
+
+    [filename] => 
+    [http_response] => WP_HTTP_Requests_Response Object
+        (
+            [response:protected] => Requests_Response Object
+                (
+                    [body] => <?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?><errors><error><code>11014</code><message>senderPhone invalid value: 341123</message></error></errors>
+                    [raw] => HTTP/1.1 400 Bad Request
+Date: Mon, 27 May 2019 23:36:02 GMT
+Server: Apache-Coyote/1.1
+Content-Type: application/xml;charset=ISO-8859-1
+Cache-Control: max-age=180
+Expires: Mon, 27 May 2019 23:39:03 GMT
+Vary: User-Agent
+Access-Control-Allow-Origin: https://dev.pagseguro.uol.com.br
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: Content-Type, origin, accept
+Connection: close
+Transfer-Encoding: chunked
+
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?><errors><error><code>11014</code><message>senderPhone invalid value: 341123</message></error></errors>
+                    [headers] => Requests_Response_Headers Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [date] => Array
+                                        (
+                                            [0] => Mon, 27 May 2019 23:36:02 GMT
+                                        )
+
+                                    [server] => Array
+                                        (
+                                            [0] => Apache-Coyote/1.1
+                                        )
+
+                                    [content-type] => Array
+                                        (
+                                            [0] => application/xml;charset=ISO-8859-1
+                                        )
+
+                                    [cache-control] => Array
+                                        (
+                                            [0] => max-age=180
+                                        )
+
+                                    [expires] => Array
+                                        (
+                                            [0] => Mon, 27 May 2019 23:39:03 GMT
+                                        )
+
+                                    [vary] => Array
+                                        (
+                                            [0] => User-Agent
+                                        )
+
+                                    [access-control-allow-origin] => Array
+                                        (
+                                            [0] => https://dev.pagseguro.uol.com.br
+                                        )
+
+                                    [access-control-allow-methods] => Array
+                                        (
+                                            [0] => POST, GET, OPTIONS
+                                        )
+
+                                    [access-control-allow-headers] => Array
+                                        (
+                                            [0] => Content-Type, origin, accept
+                                        )
+
+                                )
+
+                        )
+
+                    [status_code] => 400
+                    [protocol_version] => 1.1
+                    [success] => 
+                    [redirects] => 0
+                    [url] => https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?email=pagseguro@grupotesseract.com.br&token=F1A4CFE1B5E64172B40A7B62C1E27AEA
+                    [history] => Array
+                        (
+                        )
+
+                    [cookies] => Requests_Cookie_Jar Object
+                        (
+                            [cookies:protected] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [filename:protected] => 
+            [data] => 
+            [headers] => 
+            [status] => 
+        )
+
+)
+
+05-27-2019 @ 20:37:41 - Requesting token for order 9473 with the following data: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<checkout>
+  <currency>BRL</currency>
+  <reference><![CDATA[WC-9473]]></reference>
+  <sender>
+    <email><![CDATA[alloza@mintadomaindong.gq]]></email>
+    <name><![CDATA[Treste TEsteae teste]]></name>
+    <phone>
+      <areaCode>14</areaCode>
+      <number>991726968</number>
+    </phone>
+  </sender>
+  <shipping>
+    <type>3</type>
+    <address>
+      <street><![CDATA[Rua de SAnta Catarina]]></street>
+      <district><![CDATA[Xpto]]></district>
+      <postalCode>88512530</postalCode>
+      <city><![CDATA[Florianopolis]]></city>
+      <state>SC</state>
+      <country>BRA</country>
+    </address>
+    <cost>32.27</cost>
+  </shipping>
+  <items>
+    <item>
+      <id>1</id>
+      <description><![CDATA[Maiô/Body Ursula - Preto, P]]></description>
+      <amount>248.00</amount>
+      <quantity>1</quantity>
+    </item>
+  </items>
+  <redirectURL><![CDATA[http://34.216.218.247/checkout/order-received/9473/?key=wc_order_GiGd9HH2FZka1]]></redirectURL>
+  <notificationURL><![CDATA[http://34.216.218.247/wc-api/WC_PagSeguro_Gateway/]]></notificationURL>
+  <maxUses>1</maxUses>
+  <maxAge>120</maxAge>
+</checkout>
+
+05-27-2019 @ 20:37:42 - PagSeguro Payment Token created with success! The Token is: 28066D072121AE2CC4E6BF9DD5DABD87

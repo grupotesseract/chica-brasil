@@ -1,0 +1,21 @@
+//
+// Atum List Tables for Post Types
+//--------------------------------
+
+#posts-filter {
+	width: 100%;
+	overflow: hidden;
+	@include atum-panel();
+	padding: 0 0 10px;
+	
+	.tablenav-pages {
+		float: none;
+		flex-grow: 1;
+	}
+}
+
+.wp-heading-inline {
+	~ .subsubsub {
+		display: none;
+	}
+}

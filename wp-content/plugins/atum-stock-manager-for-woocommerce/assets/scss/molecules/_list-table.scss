@@ -1,0 +1,2623 @@
+//
+// Atum List Tables
+//------------------
+
+#wpbody-content {
+	padding-bottom: 100px;
+}
+
+.wrap {
+	
+	h1.wp-heading-inline {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		margin-right: 15px;
+		line-height: 1.5;
+		position: relative;
+		font-size: 36px;
+		font-weight: bold;
+		
+		&.extend-list-table {
+			line-height: 1;
+			margin-bottom: $grid-gutter-width/2;
+			position: relative;
+			font-size: 36px;
+			font-weight: bold;
+			width: 100%;
+			display: flex;
+			align-items: center;
+		}
+		
+		#atum-update-list {
+			margin-left: 5px;
+			border-radius: 0;
+			vertical-align: middle;
+			background-color: $blue;
+			border-radius: 5px;
+			text-shadow: none;
+			box-shadow: none;
+			display: inline-block;
+			top: 1px;
+			height: 30px;
+			
+			&:hover {
+				background-color: rgba($blue, 0.6);
+			}
+			
+			&:active {
+				color: $white;
+				padding: 0 10px 1px;
+			}
+		}
+		
+		// At 782px, WordPress changes the list table views to mobile version
+		@include tablet-max-wp {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			margin: 0 10px;
+			padding-bottom: 15px;
+		}
+		
+		@include mobile-max {
+			justify-content: center;
+			margin: 0;
+		}
+	}
+	
+	.subtitle {
+		display: none;
+	}
+	
+	.page-title-action, .page-title-action:active {
+		border-radius: 5px;
+		background-color: $green;
+		color: $white;
+		font-size: 14px;
+		font-weight: normal;
+		line-height: 30px;
+		text-transform: uppercase;
+		border: none;
+		margin-left: 14px;
+		top: 0;
+		display: none;
+		
+		&.extend-list-table {
+			font-size: 12px;
+			padding: 0 12px;
+			top: 1px;
+			margin-left: 14px;
+			display: inline-block;
+		}
+		
+		&:hover, &:focus {
+			background-color: rgba($green, .6);
+		}
+		
+		@include tablet-max-wp{
+			font-size: 14px;
+			height: 35px;
+			line-height: 35px;
+		}
+		
+		@include mobile-max{
+			margin: 0;
+		}
+		
+	}
+	
+	input[type=submit]:not(.save-atum-order):not(#publish):not(#save-post):not(#bulk_edit):not(#newmeta-submit) {
+		border-radius: 5px;
+		background-color: $orange;
+		font-size: 12px;
+		min-width: 70px;
+		letter-spacing: normal;
+		text-align: center;
+		color: $white;
+		text-transform: uppercase;
+		box-shadow: none;
+		border: none;
+		transition: .2s ease-in-out;
+		
+		@include tablet-max-wp{
+			height: 35px;
+		}
+		
+		&:hover, &.active {
+			background-color: rgba($orange, 0.7);
+			color: $white;
+			border: none;
+		}
+		
+	}
+	
+	@include tablet-max-wp{
+		margin-right: 20px;
+		margin-left: 10px;
+	}
+}
+
+.subsubsub {
+	&.extend-list-table {
+		width: inherit;
+		margin: 10px 0 !important;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		border-radius: 0;
+		border-bottom: 0;
+		
+		li {
+			padding: 0;
+			
+			span {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-left: 3px;
+				
+				&.active {
+					border-radius: 5px;
+					background-color: $blue;
+					font-size: 16px;
+					padding: 0 10px;
+					font-weight: bold;
+					letter-spacing: 0.4px;
+					color: $white;
+					
+					.text-blue {
+						color: $white;
+					}
+					
+					.extra-links-container {
+						font-size: 14px;
+						font-weight: normal;
+						color: $white;
+						
+						&.empty {
+							color: $white;
+						}
+						
+						a {
+							color: $white;
+							
+							&.empty {
+								color: $white;
+							}
+						}
+					}
+					
+					a {
+						color: $white;
+						padding: 0;
+						
+						&.empty, &.tips, &.empty {
+							color: $white;
+						}
+						
+						.active {
+							padding: 0;
+						}
+					}
+					
+					.count {
+						font-size: 16px;
+						font-weight: bold;
+						color: $white;
+						
+						&.empty {
+							color: $white;
+						}
+					}
+				}
+				
+				a {
+					color: $gray-500;
+					padding: 0;
+					
+					&.current {
+						pointer-events: none;
+						color: $white;
+						font-weight: bold;
+					}
+					
+					.text-blue {
+						color: $blue;
+					}
+					
+					&.tips {
+						color: $blue;
+						&:hover {
+							cursor: pointer;
+						}
+					}
+					
+					&.empty {
+						color: $gray-500;
+					}
+				}
+				
+				.extra-links-container {
+					font-size: 14px;
+					font-weight: normal;
+					color: $blue;
+					&.empty {
+						color: $gray-500;
+						a {
+							padding: 0;
+							color: $gray-500;
+						}
+					}
+					a {
+						padding: 0;
+						color: $blue;
+					}
+				}
+				
+				.count {
+					font-size: 16px;
+					font-weight: bold;
+					color: $blue;
+					
+					&.extra-links-container {
+						font-size: 14px;
+						font-weight: normal;
+					}
+					
+					&.empty {
+						color: $gray-500;
+					}
+				}
+			}
+		}
+	}
+	
+	background-color: $white;
+	width: 100%;
+	position: relative;
+	font-size: 16px;
+	letter-spacing: 0.4px;
+	font-weight: bold;
+	text-transform: capitalize;
+	display: flex;
+	align-items: center;
+	margin: 0;
+	
+	@include tablet-max-wp{
+		margin: 10px 10px;
+		flex-wrap: wrap;
+		justify-content: center;
+		border-bottom: none;
+	}
+	
+	@include mobile-max{
+		justify-content: flex-start;
+	}
+	
+	&:not(.extend-list-table) {
+		
+		li {
+			color: $white;
+			padding: 20px 0 20px 10px;
+			text-transform: uppercase;
+			
+			a {
+				color: $gray-500;
+				padding: 0;
+				
+				&.current:not(.extra-links-container a) {
+					border-radius: 5px;
+					background-color: $blue;
+					font-size: 16px;
+					padding: 6px 10px;
+					font-weight: bold;
+					letter-spacing: 0.4px;
+					color: $white;
+					
+					.count {
+						color: $white;
+					}
+				}
+				
+				.count {
+					font-size: 14px;
+					font-weight: normal;
+					color: $blue;
+				}
+				
+				&:active, &:focus {
+					border: none;
+					outline: none;
+					box-shadow: none;
+				}
+				
+				&.tips {
+					color: $blue;
+					
+					&:hover {
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+}
+
+.search-box, p.search-box {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	float: right;
+	padding: 1px;
+	z-index: 999;
+	margin: 20px 10px 20px auto;
+	border: 1px solid $gray-200;
+	border-radius: 5px;
+	
+	@include tablet-max-wp {
+		position: static;
+		height: auto;
+		margin: 0 0 15px 0;
+	}
+	
+	&.extend-list-table {
+		padding: 0;
+		display: flex;
+		justify-content: flex-end;
+		border-radius: 0;
+		border: 0;
+		margin: 0 0 3px auto !important;
+		
+		@include tablet-max-wp {
+			margin: 0 !important;
+			float: none;
+		}
+	}
+	
+	#post-search-input {
+		border: none;
+		box-shadow: none;
+		margin: 0;
+		height: 28px;
+		padding: 0 12px;
+		font-weight: normal;
+		
+		&::placeholder {
+			font-size: 12px;
+			font-style: italic;
+			color: $gray-500;
+		}
+		
+		@include tablet-max-wp{
+			width: 70%;
+		}
+	}
+	
+	input[type=submit] {
+		font-weight: normal;
+		height: 29px;
+		
+		@include tablet-max-wp{
+			margin-bottom: 0;
+		}
+	}
+	
+	&.inbound-stock-search {
+		border: 1px solid $gray-200;
+		width: 280px;
+		height: 30px;
+		border-radius: 5px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 10px 20px;
+		
+		.atum-post-search {
+			width: 100%;
+			border-radius: 5px;
+			
+			@include tablet-max-wp {
+				margin-bottom: 0;
+			}
+			
+			@include mobile-max{
+				width: 100%;
+			}
+			
+			&:focus, &:active {
+				border: none;
+				box-shadow: none;
+			}
+		}
+		
+		input[type=submit] {
+			width: 87px;
+			height: 30px;
+			
+			@include tablet-max-wp {
+				margin-bottom: 0;
+			}
+		}
+		
+		@include tablet-max-wp {
+			margin: 10px 10px;
+		}
+		
+		@include mobile-max {
+			margin: 10px 10px;
+			width: 95%;
+			flex-wrap: nowrap;
+		}
+		
+	}
+	
+	@include mobile-max {
+		float: none;
+		width: 95%;
+		justify-content: center;
+		margin: 0;
+		flex-wrap: nowrap;
+	}
+	
+	#search_column_btn{
+		@if $enable-rounded {
+			border-top-left-radius : $border-radius;
+			border-bottom-left-radius: $border-radius;
+		} @else {
+			border-radius: 0;
+		}
+	}
+	
+	.atum-post-search {
+		margin-right: 0;
+		border: none;
+		box-shadow: none;
+		width: 110px;
+		max-width: 110px;
+		font-size: 15px;
+		
+		@include tablet-max-wp {
+			width: 100%;
+		}
+		
+		@include mobile-max {
+			max-width: inherit;
+		}
+		
+		&::placeholder {
+			color: $gray-500;
+			font-style: italic;
+			letter-spacing: normal;
+			margin-left: 10px;
+		}
+		
+		&:focus, &:active {
+			border: none;
+			box-shadow: none;
+		}
+	}
+	
+	.atum-post-search-mc {
+		width: 130px;
+		max-width: 130px;
+	}
+	
+	.input-group {
+		border-radius: 5px;
+		border: solid 1px $gray-200;
+		background-color: $white;
+		margin-left: 10px;
+		padding-right: 1px;
+		flex-wrap: nowrap;
+		width: auto;
+		
+		@include mobile-max {
+			width: 100%;
+		}
+		
+		input[type=submit] {
+			height: 29px !important;
+		}
+	}
+	
+	.input-group-append {
+		border: none;
+		height: 31px;
+	}
+	
+	.dropdown-toggle {
+		width: 100px;
+		@include text-overflow();
+		text-align: left;
+		padding-left: 7px !important;
+		padding-right: 25px !important;
+		font-size: 15px !important;
+		line-height: 15px !important;
+		border: none;
+		background-color: $gray-100;
+		font-size: 15px;
+		color: $gray-600;
+		
+		&:after {
+			vertical-align: middle;
+			font-family: $atum-icon-font;
+			content: $atmi-chevron-down;
+			display: inline;
+			font-size: 10px;
+			position: absolute;
+			right: 10px;
+			top: 8px;
+		}
+		
+		&:focus, &:active, &:hover {
+			outline: 0;
+			box-shadow: none;
+			background-color: $gray-100;
+			color: $gray-600;
+		}
+	}
+	
+	.dropdown-toggle-mc {
+		width: 130px;
+	}
+	
+	.dropdown-menu{
+		margin-top: 0px;
+		right: 0px;
+		box-shadow: $dropdown-box-shadow;
+		background-color: $white;
+		border: none;
+		border-radius: 5px;
+		max-height: 300px;
+		overflow-y: auto;
+	}
+	
+	.dropdown-item{
+		width: auto;
+		&.active, &:focus, &:active {
+			background-color: $blue-light;
+			color: $blue;
+		}
+	}
+	
+}
+
+.tablenav {
+	height: auto;
+	display: flex;
+	align-items: center;
+	
+	.actions {
+		white-space: nowrap;
+		
+		@include mobile-max {
+			white-space: inherit;
+		}
+		
+		&.bulkactions {
+			@include tablet-max-wp {
+				display: inline-block;
+			}
+			
+			@include mobile-max {
+				width: 100%;
+				
+				.select2-container {
+					width: 100% !important;
+				}
+				
+				input[type=submit] {
+					width: 100%;
+					margin-top: 10px !important;
+				}
+			}
+		}
+		
+	}
+	
+	.tablenav-pages-container {
+		
+		.btn {
+			margin-left: 5px;
+			padding: 0.344rem 0.75rem;
+			line-height: 1.55;
+			
+			@include tablet-max-wp {
+				margin: 0;
+			}
+			
+			@include mobile-max {
+				width: 100%;
+				margin: 10px 0;
+			}
+		}
+		
+	}
+	
+	.tablenav-pages {
+		margin-top: 0;
+		margin-bottom: 0;
+		text-align: right;
+		
+		a:not(.extend-list-table) {
+			display: inline-block;
+			border: none;
+			padding: 0;
+			background: $gray-200;
+			font-size: 16px;
+			font-weight: 400;
+			text-align: center;
+			line-height: 30px;
+			
+			&:hover, &:active, &:focus {
+				background-color: $orange;
+				color: $white;
+			}
+		}
+		
+		.displaying-num {
+			@include mobile-max{
+				width: 100%;
+			}
+		}
+		
+		@include mobile-max{
+			width: 100%;
+			text-align: center;
+		}
+		
+	}
+	
+	#table-paging {
+		margin-left: 0;
+		
+		@include tablet-max-wp {
+			margin-left: 0;
+		}
+	}
+	
+	input[type=submit] {
+		font-size: 12px;
+	}
+	
+	&.top {
+		box-shadow: 0 1px 0 0 $gray-200, 0 -1px 0 0 $gray-200;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		padding: 10px 11px;
+		margin: 0;
+		
+		@include tablet-max-wp {
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		
+		&.extend-list-table {
+			padding: 0 11px;
+			height: 52px;
+			flex-wrap: nowrap;
+			
+			@include tablet-max-wp {
+				flex-wrap: nowrap;
+				height: auto;
+			}
+			
+			.actions {
+				white-space: inherit;
+			}
+			
+			@include mobile-max {
+				flex-wrap: wrap;
+				display: flex;
+			}
+			
+		}
+		
+		.actions {
+			
+			@include mobile-max {
+				padding: 0;
+			}
+			
+		}
+		
+		.tablenav-pages-container {
+			margin: 0 0 0 auto;
+			text-align: right;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			min-width: 350px;
+			z-index: 998;
+			
+			&.no-submit {
+				min-width: 300px;
+			}
+			
+			&.one-page {
+				width: 100%;
+				min-width: 150px;
+				
+				&.no-submit {
+					min-width: 100px;
+				}
+				
+			}
+			
+			input.btn {
+				visibility: hidden;
+			}
+			
+			@include mobile-max {
+				flex-wrap: wrap;
+				min-width: 0;
+			}
+			
+			.tablenav-pages {
+				margin: 0 0 0 auto;
+				
+				&.one-page {
+					width: inherit;
+				}
+				
+				@include tablet-max-wp{
+					margin: 5px 0 5px auto;
+					text-align: right;
+				}
+				
+				@include mobile-max{
+					margin: 5px 0 5px auto;
+				}
+				
+				.displaying-num {
+					display: inline-block;
+				}
+				
+			}
+		}
+		
+		.filters-container-box {
+			position: relative;
+			
+			&.no-pagination {
+				&.no-submit {
+					@media screen and (max-width: $screen-lg-max + 200px) {
+						width: calc(100% - 100px);
+					}
+				}
+				
+				@media screen and (max-width: $screen-lg-max + 200px) {
+					width: calc(100% - 200px);
+				}
+				
+				@include tablet-max-wp {
+					width: inherit;
+				}
+				
+				@include mobile-max {
+					width: 100% !important;
+					margin-top: 10px;
+				}
+			}
+			
+			&.no-submit {
+				@media screen and (max-width: $screen-lg-max + 200px) {
+					width: calc(100% - 300px);
+				}
+			}
+			
+			@media screen and (max-width: $screen-lg-max + 200px) {
+				width: calc(100% - 400px);
+			}
+			
+			@include tablet-max-wp {
+				width: inherit;
+			}
+			
+			@include mobile-max {
+				width: 100% !important;
+				margin-top: 10px;
+			}
+			
+			.overflow-opacity-effect-right {
+				
+				@include tablet-max-wp {
+					display: none !important;
+				}
+				
+				@include mobile-max {
+					display: none !important;
+				}
+			}
+			
+			.overflow-opacity-effect-right, .overflow-opacity-effect-left {
+				height: 50px;
+				display: none;
+			}
+		}
+		
+		.nav-with-scroll-effect {
+			height: 52px;
+			justify-content: start;
+			visibility: hidden;
+			
+			.actions {
+				overflow: initial;
+			}
+			
+			@include mobile-max {
+				width: 100%;
+				display: contents;
+				white-space: normal;
+			}
+			
+			@include tablet-max-wp {
+				right: 63%;
+				width: inherit;
+			}
+		}
+	}
+	
+	&.bottom {
+		margin: 10px 11px 0;
+		
+		.tablenav-pages-container {
+			flex-grow: 1;
+		}
+		
+		.tablenav-pages {
+			margin-left: auto;
+			margin-bottom: 0;
+			z-index: 999;
+			
+			@include mobile-max {
+				display: inline-block;
+				margin: 0 0 10px;
+			}
+			
+			.displaying-num {
+				display: contents;
+				
+				@include mobile-max {
+					display: inline-block;
+					position: inherit;
+					top: inherit;
+				}
+			}
+		}
+		
+	}
+}
+
+#bulk-titles {
+	.ntdelbutton:before {
+		font-family: $atum-icon-font;
+		content: $atmi-cross;
+	}
+}
+
+.atum-list-wrapper {
+	width: 100%;
+	overflow: hidden;
+	@include atum-panel();
+	padding: 0 0 10px;
+	margin: 0 0 18px;
+	
+	a {
+		transition: .2s ease-in-out;
+		
+		&:focus {
+			box-shadow: none;
+		}
+	}
+
+	.rotate {
+		transform: rotate(45deg);
+	}
+	
+	.table-style-buttons {
+		display: flex;
+		align-items: center;
+		
+		button {
+			width: 30px;
+			height: 30px;
+			border-radius: 5px;
+			border: solid 1px $gray-200;
+			background-color: $white;
+			color: $gray-600;
+			cursor: pointer;
+			transition: all 0.20s;
+			line-height: 2;
+			
+			&:first-child {
+				margin-left: 9px;
+				margin-right: 5px;
+			}
+			
+			&:focus {
+				outline: 0;
+			}
+			
+			&.active, &:hover {
+				background-color: $blue;
+				color: $white;
+				border-color: $white;
+			}
+			
+			&:hover {
+				background-color: rgba($blue, 0.6);
+				border-color: $white;
+			}
+			
+		}
+		
+		@include mobile-max {
+			display: none;
+		}
+		
+	}
+	
+	.search-submit {
+		margin-left: 4px;
+		background-color: $orange;
+		color: $white;
+		font-size: 10px;
+		font-weight: normal;
+		line-height: 1.6px;
+		letter-spacing: normal;
+		text-transform: uppercase;
+		box-shadow: none;
+		border: none;
+		border-radius: 5px;
+		height: 26px;
+		width: 63px;
+		
+		&:hover, &:active, &:focus {
+			background-color: rgba($orange, 0.7);
+			color: $white;
+			box-shadow: none;
+		}
+		
+		&:disabled {
+			opacity: 1;
+		}
+		
+		@include tablet-max-wp {
+			height: 31px;
+			padding: 0;
+			margin-bottom: 0;
+		}
+	}
+	
+	.tablenav-pages, .search-box {
+		position: relative;
+	}
+	
+	.subsubsub {
+		position: relative;
+		font-size: 16px;
+		letter-spacing: 0.4px;
+		font-weight: bold;
+		text-transform: capitalize;
+		margin: 10px 20px;
+		
+		@include tablet-max-wp {
+			margin: 10px 10px;
+		}
+		
+		li {
+			margin-right: 15px;
+			color: $gray-500;
+			text-transform: uppercase;
+			
+			span {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-left: 3px;
+				
+				&.active {
+					border-radius: 5px;
+					background-color: $blue;
+					font-size: 16px;
+					padding: 0 10px;
+					font-weight: bold;
+					letter-spacing: 0.4px;
+					color: $white;
+					
+					.text-blue {
+						color: $white;
+					}
+					
+					.extra-links-container {
+						font-size: 14px;
+						font-weight: normal;
+						color: $white;
+						
+						&.empty {
+							color: $white;
+						}
+						
+						a {
+							color: $white;
+							&.empty {
+								color: $white;
+							}
+						}
+					}
+					
+					a {
+						color: $white;
+						padding: 0;
+						&.empty, &.tips, &.empty {
+							color: $white;
+						}
+						.active {
+							padding: 0;
+						}
+					}
+					
+					.count {
+						font-size: 16px;
+						font-weight: bold;
+						color: $white;
+						&.empty {
+							color: $white;
+						}
+					}
+					
+				}
+				
+				a {
+					color: $gray-500;
+					padding: 0;
+					
+					&.current {
+						pointer-events: none;
+						color: $white;
+						font-weight: bold;
+					}
+					
+					.text-blue {
+						color: $blue;
+					}
+					
+					&.tips {
+						color: $blue;
+					}
+					
+					&.empty {
+						color: $gray-500;
+					}
+					
+				}
+				
+				.extra-links-container {
+					font-size: 14px;
+					font-weight: normal;
+					color: $blue;
+					&.empty {
+						color: $gray-500;
+						a {
+							padding: 0;
+							color: $gray-500;
+						}
+					}
+					a {
+						padding: 0;
+						color: $blue;
+					}
+				}
+				
+				.count {
+					font-size: 16px;
+					
+					&.extra-links-container {
+						font-size: 14px;
+						font-weight: normal;
+					}
+					
+					font-weight: bold;
+					color: $blue;
+					
+					&.empty {
+						color: $gray-500;
+					}
+				}
+			}
+		}
+		
+	}
+	
+	.reset-filters {
+		border-radius: 50%;
+		text-align: center;
+		border: none;
+		background-color: $primary;
+		color: $white;
+		padding: 2px;
+		cursor: pointer;
+		z-index: 999;
+		margin-left: 10px;
+		width: 26px;
+		height: 26px;
+		transition: 0.2s ease-in-out;
+		
+		@include mobile-max {
+			margin-bottom: 15px;
+		}
+		
+		&:focus {
+			outline: none;
+		}
+		
+		&:hover {
+			background-color: darken($primary, 5%);
+		}
+		
+		i {
+			font-size: 18px;
+		}
+	}
+	
+	.actions {
+		
+		&.bulkactions {
+			padding-right: 0;
+			
+			select {
+				max-width: 150px;
+			}
+			
+			button {
+				height: 30px;
+				line-height: 0;
+				text-transform: uppercase;
+				font-size: 12px;
+				
+				@include tablet-max-wp {
+					font-size: 14px;
+					height: 35px;
+				}
+				
+				@include mobile-max {
+					width: 100%;
+					margin: 10px 0;
+				}
+			}
+			
+			@include mobile-max {
+				width: 100%;
+				float: none;
+			}
+		}
+		
+		input[type=submit] {
+			font-size: 12px;
+		}
+		
+		input, select, .select2-container {
+			height: 30px;
+			margin: 0 0 0 5px;
+			float: none;
+			
+			@include tablet-max-wp {
+				height: 35px;
+				
+				.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+					height: 35px;
+					line-height: 35px;
+				}
+			}
+			
+			@include mobile-max {
+				width: 100% !important;
+				margin: 0;
+			}
+		}
+		
+		#select2-supplier-container {
+			padding: 0 30px 0 16px;
+		}
+		
+		input[type=submit] {
+			line-height: 0;
+			text-transform: uppercase;
+			font-size: 12px;
+			
+			@include tablet-max-wp {
+				font-size: 14px;
+				height: 35px;
+			}
+		}
+		
+		.filter-text {
+			display: inline;
+			float: left;
+			line-height: 28px;
+			padding-right: 10px;
+		}
+		
+		.dropdown_extra_filter {
+			max-width: 160px;
+		}
+		
+	}
+	
+	// Float Thead
+	.floatThead-wrapper {
+		tr.size-row {
+			display: none;
+		}
+		
+		.floatThead-container {
+			height: 0;
+			
+			// Avoid issues when toggling columns while the header is floating
+			.group-toggler {
+				display: none;
+			}
+		}
+	}
+	
+	// Fixed columns
+	.atum-list-table.cloned {
+		width: auto;
+		position: absolute;
+		top: 0;
+		border-right: none;
+		box-shadow: rgba($black, 0.04) 5px 1px 10px;
+	}
+	
+	@include tablet-max-wp {
+		
+		ul.subsubsub {
+			font-size: 16px;
+			float: none;
+			text-align: left;
+		}
+		
+		.search-box {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			
+			input[type="text"], input[type="number"], button:not(.reset-filters) {
+				height: 30px;
+			}
+		}
+		
+		.actions.bulkactions {
+			display: block;
+			float: left;
+			
+			select {
+				width: auto;
+				float: none;
+				display: block;
+				margin: auto;
+			}
+		}
+		
+		.filter-box {
+			display: flex;
+			float: none;
+			margin: auto;
+			width: 90%;
+		}
+		
+		.tablenav {
+			.tablenav-pages {
+				width: auto;
+				margin: 0 0 0 auto;
+			}
+		}
+		
+	}
+	
+	@include mobile-max {
+		.tablenav {
+			.tablenav-pages {
+				width: 100%;
+				margin: 0;
+			}
+		}
+	}
+}
+
+.list-table-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 11px 0 11px;
+	background-color: $white;
+	border-bottom: 1px solid $gray-200;
+	
+	&.no-margin {
+		margin: 0;
+		border-top-right-radius: 8px;
+		border-top-left-radius: 8px;
+	}
+	
+	@include tablet-max-wp {
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 15px;
+	}
+	
+	@include mobile-max {
+		margin: 0 11px 15px;
+	}
+	
+	.nav-container-box {
+		flex-grow: 1;
+		position: relative;
+		overflow: hidden;
+	}
+	
+}
+
+.nav-with-scroll-effect {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	cursor: grab;
+	overflow: hidden;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	-webkit-overflow-scrolling: touch;
+	white-space: nowrap;
+	width: 100%;
+	float: left;
+	margin: 0 11px 0 0;
+	
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.subsubsub {
+		margin: 0;
+	}
+	
+	&.dragging {
+		a {
+			pointer-events: none;
+		}
+	}
+	
+}
+
+.overflow-opacity-effect-right, .overflow-opacity-effect-left {
+	width: 100px;
+	position: absolute;
+	z-index: 998;
+	height: 49px;
+	pointer-events: none;
+	background-repeat: no-repeat;
+}
+
+.overflow-opacity-effect-right {
+	right: 0;
+	background-image: linear-gradient(to right, rgba($white,0), rgba($white,0.9));
+}
+
+.overflow-opacity-effect-left {
+	display: none;
+	left: 0;
+	background-image: linear-gradient(to left, rgba($white,0), rgba($white,0.9));
+}
+
+.atum-table-wrapper, #table-container {
+	clear: both;
+	
+	// JScrollpane
+	.jspContainer {
+		overflow: hidden;
+		position: relative;
+	}
+	
+	.jspPane {
+		position: absolute;
+		//overflow: hidden;
+	}
+	
+	.jspVerticalBar, .jspCap, .jspArrow {
+		display: none;
+	}
+	
+	.jspHorizontalBar {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 16px;
+		
+		.jspCap {
+			float: left;
+		}
+		
+		.jspTrack, .jspDrag {
+			float: left;
+			height: 100%;
+		}
+		
+		.jspArrow {
+			width: 16px;
+			float: left;
+			height: 100%;
+		}
+	}
+	
+	.jspTrack {
+		background: rgba($secondary, 0.2);
+		position: relative;
+	}
+	
+	.jspDrag {
+		background: $gray-500;
+		position: relative;
+		top: 0;
+		left: 0;
+		cursor: pointer;
+	}
+	
+	.jspCorner {
+		background: $light;
+		float: left;
+		height: 100%;
+	}
+	
+}
+
+.select2-container .select2-search__field {
+	min-width: inherit;
+}
+
+.atum-list-table {
+	border: none !important;
+	
+	// Fixed columns
+	&.cloned {
+		width: auto;
+		position: absolute;
+		bottom: 0;
+		margin-bottom: 0;
+		border-right: none;
+		box-shadow: rgba($black, 0.04) 5px 1px 10px;
+		
+		@media all and (max-width: 600px) {
+			display: none !important;
+		}
+	}
+	
+}
+
+#table-container {
+	overflow: scroll;
+	table {
+		min-width: 1200px;
+	}
+}
+
+table.wp-list-table {
+	border: none;
+	border-top: 1px solid $gray-200;
+	&:not(.cloned) {
+		min-width: 1200px;
+	}
+	
+	thead, tfoot {
+		th {
+			padding: 0;
+			font-size: 14px;
+			font-weight: bold;
+			letter-spacing: 0.3px;
+			color: $gray-500;
+		}
+	}
+	
+	td {
+		a {
+			color: $blue;
+			
+			&:hover, &:focus, &:active {
+				color: $blue;
+			}
+		}
+	}
+	
+	tbody {
+		tr:hover {
+			box-shadow: -1px -1px 19px -1px rgba($black, 0.15) inset;
+			
+		}
+	}
+}
+
+table.atum-list-table, .floatThead-container, .inbound-stock-list, table.wp-list-table  {
+	margin-bottom: 15px;
+	border-collapse: collapse;
+	
+	thead .item-heads, tfoot {
+		background-color: $white;
+		border-top: 1px solid $gray-200;
+		border-bottom: 1px solid $gray-200;
+		
+		th:not(.column-calc_returns):not(.column-calc_other):not(.multi-inventory),
+		td:not(.column-calc_returns):not(.column-calc_other):not(.multi-inventory) {
+			border: none;
+		}
+		
+		th {
+			padding: 3px 5px;
+			line-height: 1.1;
+			font-size: 14px;
+			min-width: 50px;
+			height: 60px;
+			white-space: normal;
+			font-weight: 600;
+			letter-spacing: 0.3px;
+			color: $gray-500;
+			
+			.atum-icon {
+				display: block;
+				text-indent: -9999px;
+				position: relative;
+				height: 1em;
+				width: 1em;
+				margin: 0 auto;
+				font-size: 19px;
+				color: $gray-500;
+				
+				&:before {
+					text-indent: 0;
+					position: absolute;
+					left: 0;
+					top: 0;
+				}
+			}
+			
+		}
+	}
+	
+	tfoot {
+		.item-heads {
+			border-top: 1px solid $gray-200;
+			border-bottom: 1px solid $gray-200;
+			th {
+				padding: 3px 5px;
+				line-height: 1.1;
+				font-size: 14px;
+				min-width: 50px;
+				height: 60px;
+				white-space: normal;
+				font-weight: bold;
+				letter-spacing: 0.3px;
+				color: $gray-500;
+			}
+		}
+	}
+	
+	.item-heads {
+		td, th {
+			box-shadow: 0 1px 0 0 $gray-200;
+		}
+	}
+	
+	.column-groups {
+		background-color: $gray-200;
+		
+		th {
+			padding: 6px 20px;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: normal;
+			min-width: 80px;
+			height: 20px;
+			font-weight: bold;
+			letter-spacing: 0.3px;
+			color: $gray-600;
+			
+			&:not(:last-child) {
+				border-right: 1px solid $gray-400;
+			}
+			
+			.group-toggler {
+				float: right;
+				font-size: 16px;
+				cursor: pointer;
+				font-family: $atum-icon-font;
+				
+				&:before {
+					content: $atmi-chevron-left-circle;
+				}
+				
+				&:hover {
+					color: $wp-link-hover;
+				}
+				
+			}
+			
+			&.collapsed {
+				min-width: 0;
+				width: 37px;
+				
+				.group-toggler {
+					transform: rotate(180deg);
+				}
+			}
+			
+		}
+	}
+	
+	th {
+		
+		&.sortable, &.sorted {
+			a {
+				padding: 0;
+				display: flex;
+				color: $gray-500;
+				overflow: visible;
+				
+				&, span {
+					&:hover {
+						color: $blue;
+					}
+				}
+			}
+			
+			&[class*="column-calc_"], &.column-_supplier_sku, &.numeric {
+				a {
+					justify-content: center;
+					align-items: center;
+					
+					> span {
+						float: none;
+						
+						&:first-child {
+							padding-left: 10px;
+						}
+					}
+				}
+				
+			}
+			
+			.sorting-indicator {
+				visibility: visible;
+				position: relative;
+				width: 10px;
+				
+				&:before {
+					@include vertical-align-absolute;
+					margin-top: -2px;
+					color: $gray-500;
+					content: "\f140";
+				}
+			}
+			
+			&.asc {
+				.sorting-indicator {
+					&:before {
+						content: "\f142";
+					}
+				}
+			}
+			
+		}
+		
+		&.sortable {
+			.sorting-indicator {
+				visibility: hidden !important;
+			}
+			
+			a:hover {
+				.sorting-indicator {
+					visibility: visible !important;
+				}
+			}
+		}
+		
+		&.column-_supplier_sku {
+			white-space: pre-wrap;
+			max-width: 71px;
+		}
+		
+		
+		&.check-column {
+			padding: 11px 20px 0 3px;
+			
+			input[type=checkbox] {
+				@include vertical-align-absolute;
+				z-index: 10;
+			}
+		}
+	}
+	
+	tr {
+		&.main-row, &.mi-row , &.expandable {
+			transition: .2s ease-in;
+			
+			&:hover {
+				box-shadow: 0 1px 19px 6px rgba($black, 0.04) inset;
+			}
+		}
+		
+		&.even {
+			background-color: $light;
+		}
+		
+		&.expanded {
+			transition: all 0.1s ease-in-out;
+			
+			&.variable, &.variable-subscription {
+				background-color: $primary;
+			}
+			
+			&.bundle {
+				background-color: $wc-purple;
+			}
+			
+			&.group {
+				background-color: $warning;
+			}
+			
+			&.variable, &.variable-subscription, &.group, &.bundle {
+				
+				td, a {
+					color: $white;
+				}
+				
+				.check-column {
+					input[type=checkbox] {
+						border-color: transparent;
+					}
+				}
+				
+				.column-calc_type {
+					
+					.has-child {
+						
+						&.product-type {
+							&:before {
+								content: $atmi-wc-contract;
+								color: $white;
+							}
+						}
+						
+					}
+				}
+				
+			}
+		}
+		
+		&.expandable {
+			.check-column {
+				input[type=checkbox] {
+					margin-left: 13px;
+				}
+			}
+			
+			&.bundle {
+				background-color: darken($wp-pink-light, 6%);
+				
+				&:nth-child(even) {
+					background-color: $wp-pink-light;
+				}
+				
+				&.active-row:not(.expanded) {
+					background-color: darken($wp-pink-light, 8%);
+				}
+				
+				&.expanded {
+					background-color: $wc-purple;
+				}
+				
+				td.title {
+					.child-arrow {
+						color: $wc-purple;
+					}
+				}
+			}
+		}
+		
+		&.variation {
+			background-color: $blue-light;
+			
+			&:nth-child(even) {
+				background-color: $blue-light-2;
+			}
+			
+			&.active-row {
+				background-color: darken($blue-light, 10%);
+			}
+			
+			td.title {
+				.child-arrow {
+					color: $blue;
+				}
+			}
+		}
+		
+		&.main-bundle {
+			background-color: darken($wp-pink-light, 6%);
+			td {
+				color: $white;
+				&.column-ID {
+					color: $white;
+				}
+			}
+		}
+		
+		&.bundle-item {
+			background-color: $wp-pink-light;
+			
+			&.active-row {
+				background-color: darken($wp-pink-light, 10%);
+			}
+
+			td.title {
+				.child-arrow {
+					color: $wp-pink-light;
+				}
+			}
+		}
+		
+		&.grouped {
+			background-color: $orange-light;
+			
+			&:nth-child(even) {
+				background-color: $orange-light-2;
+			}
+			
+			&.active-row {
+				background-color: darken($orange-light, 10%);
+			}
+			
+			td.title {
+				.child-arrow {
+					color: $orange;
+				}
+			}
+		}
+		
+		&.no-items {
+			td {
+				padding: 10px 24px;
+				.alert {
+					margin-top: $grid-gutter-width/2;
+					flex-wrap: wrap;
+					
+					h3, p {
+						width: 100%;
+					}
+					
+					h3 {
+						margin-bottom: $grid-gutter-width/2;
+					}
+					
+					i {
+						margin-right: 0;
+						font-size: 24px;
+						width: 24px;
+						height: 24px;
+						line-height: 0.8;
+					}
+					
+					p {
+						font-weight: bold;
+						padding-left: 10px;
+						margin-bottom: 0;
+					}
+					
+					button {
+						display: inline-block;
+						vertical-align: middle;
+						margin-top: 10px;
+					}
+					
+					.atum-spinner {
+						display: inline-block;
+						vertical-align: 8px;
+						margin-left: 10px;
+						
+						span {
+							@include loader($color: $secondary);
+						}
+					}
+					
+				}
+			}
+		}
+		
+		&.totals {
+			background-color: $gray-200;
+			
+			td, th {
+				font-size: 12px;
+				font-weight: 400;
+				color: $gray-600;
+				padding-top: 0;
+				padding-bottom: 0;
+				text-align: center;
+				
+				&.totals-heading {
+					span {
+						font-size: 14px;
+						font-weight: bold;
+						letter-spacing: 0.3px;
+						color: $gray-600;
+						text-transform: uppercase;
+						background-color: transparent;
+					}
+				}
+				
+				span {
+					display: inline-block;
+					font-size: 16px;
+					font-weight: bold;
+					letter-spacing: 0.4px;
+					text-align: center;
+					color: $white;
+					border-radius: 5px;
+					background-color: $gray-600;
+					padding: 4px;
+					
+					&.danger {
+						background-color: $danger;
+					}
+				}
+			}
+		}
+		
+	}
+	
+	.stock-selling-manager {
+		.atum-icon {
+			font-size: 20px;
+		}
+	}
+	
+	.cell {
+		&-green {
+			color: $success !important;
+		}
+		
+		&-yellow {
+			color: $warning !important;
+			.set-meta {
+				color: $warning !important;
+			}
+		}
+
+		&-red {
+			color: $danger !important;
+			.set-meta {
+				color: $danger !important;
+			}
+		}
+		
+		&-blue {
+			color: $primary !important;
+		}
+	}
+	
+	input[type=checkbox] {
+		border-radius: 3px;
+		box-shadow: none;
+		border-color: $gray-400;
+		
+		&:checked {
+			background-color: $blue;
+			border: 0;
+			
+			&:before {
+				color: $white;
+				content: $atmi-checkmark;
+				font-family: $atum-icon-font;
+				font-size: 14px;
+				margin: 1px 0 0;
+				font-weight: bold;
+			}
+		}
+		
+		
+	}
+	
+	tbody, #the-list {
+		
+		tr {
+			&.expanded {
+				&.variable, &.group, &.bundle {
+					td {
+						color: $white !important;
+						
+						a, span {
+							color: $white !important;
+							
+							&:before {
+								color: $white !important;
+							}
+						}
+					}
+				}
+			}
+			
+			&.expandable {
+				td {
+					&.column-calc_location {
+						a {
+							pointer-events: none;
+							&:before {
+								content: '-';
+								color: $gray-600;
+							}
+						}
+					}
+				}
+			}
+			
+			td {
+				color: $gray-600;
+				
+				.set-meta {
+					color: $blue;
+				}
+				
+				&.column-title, &.atum_order_title {
+					a, .row-title {
+						font-size: 14px;
+						font-weight: 600;
+						color: $blue;
+					}
+				}
+				
+				&.column-calc_mi_status {
+					> span {
+						font-size: 22px;
+						-webkit-font-smoothing: antialiased;
+						-moz-osx-font-smoothing: grayscale;
+					}
+				}
+				
+				&.column-_sku {
+					span {
+						font-size: 14px;
+						color: $blue;
+					}
+				}
+				
+				&.calc_purchase_order {
+					a {
+						color: $blue;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+		
+	}
+	
+	td, th {
+		position: relative;
+		vertical-align: middle;
+		padding: 6px 5px;
+		height: 47px;
+		font-size: 14px;
+		color: $blue;
+		
+		&.column-ID {
+			font-size: 14px;
+			letter-spacing: 0.3px;
+			color: $gray-600;
+		}
+		
+		&.pro-version {
+			background-color: $secondary;
+		}
+		
+		&.column-title {
+			min-width: 171px;
+			display: flex;
+			align-items: center;
+			
+			> span {
+				white-space: nowrap;
+				
+				i {
+					margin-right: 4px;
+				}
+			}
+			
+			.child-arrow {
+				display: inline-block;
+				margin-right: 2px;
+				margin-left: 5px;
+				font-weight: bold;
+				font-size: 14px;
+				position: relative;
+				top: -2px;
+				transform: rotate(90deg);
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		}
+		
+		&.column-sku {
+			min-width: 70px;
+		}
+		
+		&[class*="column-calc_"], &.column-_supplier_sku, &.numeric {
+			text-align: center;
+		}
+		
+		a {
+			cursor: pointer;
+		}
+		
+		&.ghost-column {
+			width: 37px;
+			padding: 0 !important;
+			min-width: 0 !important;
+			height: auto !important;
+			border-left: 1px solid $gray-200;
+			border-right: 1px solid $gray-200;
+		}
+		
+	}
+	
+	th {
+		span {
+			&.col-stock-counters, &.col-stock-negatives, &.col-stock-selling-manager {
+				color: $gray-500;
+				font-weight: bold;
+				font-size: 14px;
+				.set-header {
+					color: $blue;
+				}
+			}
+		}
+	}
+	
+	.column-calc_type {
+		max-width: 50px;
+		text-align: center;
+		
+		span.product-type, span.product-type-icon {
+			display: block;
+			position: relative;
+			height: 1em;
+			width: 1em;
+			font-size: 1.6em;
+			margin: 0 auto;
+			color: $gray-500;
+			
+			&:before {
+				content: $atmi-wc-simple;
+				font-family: $atum-icon-font !important; // important required to overwrite booking icon
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				speak: none;
+				font-weight: 400;
+				text-transform: none;
+				line-height: 1;
+				text-indent: 0px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				font-variant: normal;
+				margin: 0;
+			}
+			
+			&.bundle::before {
+				content: $atmi-bundle;
+			}
+			
+			&.grouped::before {
+				content: $atmi-wc-grouped;
+			}
+			
+			&.variable::before {
+				content: $atmi-wc-variable;
+			}
+			
+			&.downloadable::before {
+				content: $atmi-wc-downloadable;
+			}
+			
+			&.virtual::before {
+				content: $atmi-wc-virtual;
+			}
+			
+			&.booking::before {
+				content: $atmi-calendar-full;
+			}
+			
+			&.product-part::before {
+				content: $atmi-product-part;
+			}
+			
+			&.variable-product-part::before {
+				content: $atmi-variable-product-part;
+			}
+			
+			&.raw-material::before {
+				content: $atmi-raw-material;
+			}
+			
+			&.variable-raw-material::before {
+				content: $atmi-variable-raw-material;
+			}
+			
+		}
+		
+		.has-child {
+			cursor: pointer;
+			
+			&.product-type, &.product-type-icon {
+				
+				&.variable {
+					&, &-subscription, &-product-part, &-raw-material {
+						color: $primary;
+					}
+				}
+				
+				&.variable-subscription {
+					&:before {
+						content: $atmi-wc-variable;
+					}
+				}
+				
+				&.grouped {
+					color: $warning;
+				}
+				
+				&.bundle {
+					color: $wc-purple;
+				}
+				
+				&:hover {
+					&:before {
+						content: $atmi-wc-expand;
+					}
+				}
+				
+			}
+			
+		}
+		
+		.variation, .grouped-item {
+			&:before {
+				content: $atmi-wc-status !important;
+			}
+		}
+		
+		.product-part, .raw-material {
+			display: block;
+			padding-top: 6px;
+		}
+	}
+
+	.show-locations{
+		cursor: pointer;
+		color: $gray-500;
+		font-size: 20px;
+		&.not-empty {
+			color: $blue;
+		}
+	}
+	
+	.show-hierarchy {
+		cursor: pointer;
+		color: $gray-500;
+		font-size: 20px;
+		&.not-empty {
+			color: $blue;
+		}
+	}
+	
+	.set-meta {
+		cursor: pointer;
+		color: $blue;
+		
+		&:hover {
+			color: $link-hover-color;
+		}
+		
+		&.unsaved {
+			color: $danger !important;
+		}
+	}
+
+	.set-header {
+		cursor: pointer;
+		color: $blue;
+		
+		.select2-selection__rendered {
+			padding-left: 8px;
+		}
+
+		&:hover {
+			color: $link-hover-color;
+		}
+	}
+	
+	.highlight-danger {
+		background-color: $danger;
+		color: $white;
+		padding: 2px 3px;
+		border-radius: 2px;
+	}
+	
+	#calc_stock_out_days {
+		min-width: 56px;
+	}
+	
+	.column-calc_stock_indicator {
+		.atum-icon {
+			font-size: 20px;
+		}
+	}
+	
+	.atum-title-small {
+		display: none;
+	}
+	
+	.column-groups {
+		th {
+			padding: 6px 20px !important;
+		}
+	}
+	
+	@include tablet-max-wp {
+		
+		th, td {
+			display: table-cell !important;
+			padding: 6px 5px !important;
+			
+			&.check-column {
+				input[type="checkbox"] {
+					width: 18px;
+					height: 18px;
+					
+					&:before {
+						margin: -5px -8px;
+					}
+				}
+			}
+		}
+		
+		th {
+			&.column-primary {
+				width: auto !important;
+			}
+			padding: 0 5px !important;
+		}
+		
+		tr:not(.inline-edit-row):not(.no-items) td:not(.column-primary)::before {
+			content: none;
+		}
+		
+		.column-primary {
+			.toggle-row {
+				display: none;
+			}
+		}
+		
+	}
+	
+}
+
+// Float Thead
+.floatThead-wrapper {
+	tr.size-row {
+		display: none;
+	}
+	
+	.floatThead-container {
+		height: 0;
+		overflow-y: hidden;
+		margin-bottom: 0;
+		
+		// Avoid issues when toggling columns while the header is floating
+		.group-toggler {
+			display: none;
+		}
+	}
+}
+
+// Manage Stock notice
+.atum-notice {
+	display: flex;
+	align-items: center;
+	
+	.manage-message {
+		position: relative;
+		flex-grow: 1;
+	}
+	
+	.notice-dismiss {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	.add-manage-option {
+		margin-top: 3px;
+	}
+}
+
+// Help Tabs
+.contextual-help-tabs-wrap {
+	padding: 20px;
+	
+	table {
+		tr {
+			td {
+				&:first-child {
+					width: 20%;
+				}
+			}
+		}
+	}
+	
+	.atum-icon {
+		font-size: 16px;
+	}
+	
+}
+
+// Filter Range Dates Modal
+.filter-range-dates-modal {
+	height: 200px;
+	min-height: 200px !important;
+	//overflow: hidden;
+	overflow-y: unset;
+	overflow-x: unset;
+	.swal2-title {
+		text-align: left;
+		line-height: 1;
+		
+		.title {
+			font-size: 26px;
+			font-weight: bold;
+			color: $blue-dark;
+			margin: 0;
+		}
+		.sub-title {
+			font-size: 15px;
+			color: $gray-500;
+			font-weight: 400;
+		}
+	}
+	.swal2-content {
+		display: flex !important;
+		justify-content: center;
+		align-items: flex-end;
+		
+		a {
+			
+			color: $wp-link !important;
+			
+			&:hover {
+				
+				color: $wp-link-hover;
+				
+			}
+		}
+		
+		button {
+			height: 30px;
+			width: 60px;
+			box-shadow: none;
+			padding: 0;
+			font-size: 12px;
+			font-weight: 300;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+		
+		.input-date {
+			margin-right: 10px;
+			text-align: left;
+			label {
+				font-weight: 400;
+				font-size: 12px;
+				line-height: 1.67;
+				color: $gray-600;
+			}
+			
+			input {
+				width: 150px;
+				font-size: 15px;
+				line-height: 1;
+				color: $gray-600;
+				font-weight: 400;
+				&:after {
+					font-family: atum-icon-font;
+					content: $atmi-chevron-down;
+				}
+			}
+		}
+		
+		.date-picker::-webkit-input-placeholder {
+			font-size: 12px;
+			font-style: italic;
+			line-height: 1.67;
+			font-weight: 400;
+			color: $gray-500;
+		}
+	}
+}
+
+// Popovers' customisations
+.popover {
+	
+	// Inner content for "Set Field" popovers
+	.popover-content {
+		
+		> input[type=number], > input[type=text], > .button {
+			display: inline-block;
+			vertical-align: middle;
+			height: 30px;
+		}
+		
+		> input[type=number], > input[type=text] {
+			width: 73%;
+		}
+		
+		> .button {
+			margin-left: 3px;
+			
+			&:disabled {
+				color: $light !important;
+				opacity: 0.6;
+			}
+		}
+		
+		@include tablet-max {
+			> input[type=number], > input[type=text], > .button {
+				width: 100%;
+			}
+			
+			> .button {
+				margin-left: 0;
+				margin-top: 5px;
+			}
+		}
+		
+	}
+	
+	// Popover with extra meta fields
+	&.with-meta {
+		
+		.popover-content {
+			input, button {
+				width: 100%;
+				margin: 3px 0;
+			}
+			
+			.btn-link {
+				font-size: 10px;
+				padding: 0;
+			}
+			
+			hr {
+				border-color: $info;
+			}
+		}
+		
+	}
+	
+}
+
+// Hide filter button on Inbound Stock list
+[data-screen="atum-inventory_page_atum-inbound-stock"] {
+	.tablenav {
+		[name="filter_action"] {
+			visibility: hidden;
+		}
+	}
+}

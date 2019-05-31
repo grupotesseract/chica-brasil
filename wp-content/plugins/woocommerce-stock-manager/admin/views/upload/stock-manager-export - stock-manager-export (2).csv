@@ -1,0 +1,8 @@
+Id,Sku,Product name,Manage stock,Stock status,Backorders,Stock,Type,Parent ID
+9377,top-helo,Top Helo,,instock,no,,variable,
+9378,top-helo-verde-neon-p,Verde Neon P,TRUE,instock,no,1,product-variant,9377
+9379,top-helo-laranja-neon-p,Laranja Neon P,TRUE,instock,no,1,product-variant,9377
+9380,top-helo-verde-neon-g,Verde Neon G,TRUE,instock,no,1,product-variant,9377
+9381,top-helo-verde-neon-m,Verde Neon M,TRUE,,no,,product-variant,9377
+9382,top-helo-laranja-neon-g,Laranja Neon G,TRUE,,no,,product-variant,9377
+9383,top-helo-laranja-neon-m,Laranja Neon M,TRUE,,no,,product-variant,9377
